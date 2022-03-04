@@ -52,18 +52,6 @@ const Card = styled.div`
     position: absolute;
     display: none;
 
-    & div.ph_user-image {
-      width: 40px;
-      height: 100%;
-      padding: 10px;
-
-      & img {
-        border-radius: 10px;
-        width: 30px;
-        height: 30px;
-      }
-    }
-
     & p {
       margin: 0;
       padding: 0;

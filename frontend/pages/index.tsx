@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import GridComponent from "components/grid";
+import HomeComponent from "components/home";
 
 const Home: NextPage = () => {
-  return <GridComponent></GridComponent>;
+  return <HomeComponent />;
 };
 
 export default Home;

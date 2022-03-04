@@ -6,13 +6,13 @@ import { imagesList } from "./Grid.images";
 import { Body } from "./Grid.style";
 import GridItemComponent from "./grid-item";
 
-const GridComponent = () => {
+const GridSharedComponent = ({ showMeta }: any) => {
   return (
     <Body>
       <Container>
         <div className="masonry">
           {imagesList.map((x: any) => (
-            <GridItemComponent key={x.id} data={x} />
+            <GridItemComponent key={x.id} data={x} showMeta={showMeta} />
           ))}
         </div>
       </Container>
@@ -20,4 +20,4 @@ const GridComponent = () => {
   );
 };
 
-export default GridComponent;
+export default GridSharedComponent;
