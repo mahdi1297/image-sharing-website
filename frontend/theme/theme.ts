@@ -1,13 +1,14 @@
 // my-theme.ts
-import { DefaultTheme } from 'styled-components';
+import { DefaultTheme } from "styled-components";
 
-const myTheme: DefaultTheme = {
-  borderRadius: '5px',
+const Theme: DefaultTheme = {
+  borderRadius: "5px",
 
   colors: {
-    main: 'cyan',
-    secondary: 'magenta',
+    main: "#a65fec",
+    black: "#132d4b",
+    gray: "#d1d1d1",
   },
 };
 
-export { myTheme };
+export { Theme };

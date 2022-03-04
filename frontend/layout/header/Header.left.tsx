@@ -1,17 +1,31 @@
-import Link from "next/link";
-import React from "react";
-import { Grid, Justify } from "shared/common/style";
-import Icon from "shared/icons";
-import { Search } from "./Header.style";
+import React, { useState } from "react";
+import Image from "next/image";
+import { AlignCenter, Grid, Justify } from "shared/common/style";
+import { Search, Avatar } from "./Header.style";
+import { userAvatar } from "constaints/Data.const";
+import HeaderSubmenu from "./Header.submenu";
 
 const HeaderLeft = () => {
+  const [showSubmenu, setShowmenu] = useState<boolean>(false);
+
+  const showSubmenuHandler = () => {
+    setShowmenu(true);
+  };
+  const hideSubmenuHandler = () => {
+    setShowmenu(false);
+  };
+
   return (
     <Justify justify="flex-start">
-      <Link href="/">
-        <a>
-          <Icon type="logo" color="#a65fec" size={40} />
-        </a>
-      </Link>
+      <Avatar
+        onMouseEnter={showSubmenuHandler}
+        onMouseLeave={hideSubmenuHandler}
+      >
+        <AlignCenter>
+          <Image src={userAvatar} width={40} height={40} alt="userAvatar" />
+        </AlignCenter>
+        {showSubmenu && <HeaderSubmenu />}
+      </Avatar>
       <Search>
         <form>
           <Grid align="center">
