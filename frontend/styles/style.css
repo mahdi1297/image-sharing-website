@@ -1,0 +1,57 @@
+/* Regular 400 */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.masonry {
+  column-count: 3;
+  column-gap: 16px;
+}
+
+.masonry img {
+  width: 100%;
+}
+
+.masonry .mItem {
+  display: inline-block;
+  width: 95%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1199px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 991px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 767px) {
+  .masonry {
+    column-count: 1;
+  }
+  .masonry .mItem {
+    width: 100%;
+  }
+}
