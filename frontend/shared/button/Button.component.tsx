@@ -7,7 +7,7 @@ const ButtonComponent = ({ children, size, color }: IButtomModel) => {
   let colorName, bgColor, sizeNumber, borderColor;
 
   switch (size) {
-    case "xg":
+    case "xl":
       sizeNumber = "10px 20px";
       break;
     case "lg":
@@ -40,7 +40,12 @@ const ButtonComponent = ({ children, size, color }: IButtomModel) => {
   }
 
   return (
-    <ButtonBody bgColor={bgColor} borderColor={borderColor} colorName={colorName} size={sizeNumber}>
+    <ButtonBody
+      bgColor={bgColor}
+      borderColor={borderColor}
+      colorName={colorName}
+      size={sizeNumber}
+    >
       {children}
     </ButtonBody>
   );

@@ -4,7 +4,9 @@ import { MetaBody } from "../Images.style";
 import ButtonComponent from "shared/button";
 import Icon from "shared/icons";
 import { Theme } from "theme/theme";
-import { metaDataSeed } from "./ImagesMeta.seed";
+import { metaDataSeed } from "./ImagesMeta.metaDataSeed";
+import { tagsSeed } from "./ImageMeta.tagsSeed";
+import Link from "next/link";
 
 const ImageMetaComponent = () => {
   return (
@@ -43,6 +45,15 @@ const ImageMetaComponent = () => {
               ))}
             </ul>
           </div>
+          <ul className="tags">
+            {tagsSeed.map((t) => (
+              <li key={t.id}>
+                <Link href="/tag/tagSample">
+                  <a>{t.title}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </Grid>
       </MetaBody>
     </>

@@ -85,6 +85,38 @@ const MetaBody = styled.div`
       }
     }
   }
+
+  & ul.tags {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    & li {
+      height: 30px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      background: #eee;
+      border-radius: 2px;
+
+      & a {
+        padding: 12px 5px;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        color: #767676;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: capitalize;
+        transition: all 0.1s ease-in-out 0s;
+      }
+
+      & a:hover {
+        opacity: 60%;
+      }
+    }
+  }
 `;
 
 const ContentWrapper = styled.div`
