@@ -4,10 +4,11 @@ import { AlignCenter } from "shared/common/style";
 import { userAvatar } from "constaints/Data.const";
 import { AvatarBody } from "./Avatar.style";
 import { Theme } from "theme/theme";
+import { AvatarModel } from "./Avatar.model";
 
-const AvatarComponent = () => {
+const AvatarComponent = ({ radius, width }: AvatarModel) => {
   return (
-    <AvatarBody>
+    <AvatarBody radius={radius} width={width}>
       <AlignCenter>
         <div className="ph_user-image">
           <AlignCenter>

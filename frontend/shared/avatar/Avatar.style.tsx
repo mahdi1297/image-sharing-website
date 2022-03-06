@@ -1,15 +1,16 @@
 import styled from "styled-components";
+import { AvatarModel } from "./Avatar.model";
 
-const AvatarBody = styled.div`
+const AvatarBody = styled.div<AvatarModel>`
   & div.ph_user-image {
     width: 40px;
     height: 100%;
     padding: 10px;
 
     & img {
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
+      border-radius: ${(p) => (p.radius ? p.radius : "50%")};
+      width: ${(p) => (p.width ? p.width : "30px")};
+      height: ${(p) => (p.width ? p.width : "30px")};
     }
   }
 `;

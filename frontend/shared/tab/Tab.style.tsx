@@ -4,15 +4,16 @@ import { Theme } from "theme/theme";
 const TabBody = styled.ul`
   width: 100%;
   height: 60px;
-  box-shadow: 1px 3px 7px #e0e0e0;
+  border-bottom: 1px solid rgba(12, 18, 28, 0.12);
   display: flex;
   align-items: center;
   flex-wrap: no-wrap;
 
   & li {
-    width: 100%;
-    height: 100%;
-    line-height: 55px;
+    margin-top: 12px;
+    padding: 0 15px;
+    height: 80%;
+    line-height: 45px;
     text-align: center;
     cursor: pointer;
   }
