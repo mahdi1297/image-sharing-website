@@ -1,7 +1,8 @@
 import React from "react";
 import { Container } from "shared/common/style";
-import Grid from "shared/grid";
-import ImageMainComponent from "./components/ImageMain.component";
+import GridSharedComponent from "shared/grid";
+import ImageMainComponent from "./image-main";
+import ImagesContentComponent from "./images-content";
 import { Body, Head } from "./Images.style";
 
 const ImagesComponent = () => {
@@ -13,10 +14,11 @@ const ImagesComponent = () => {
             <div className="images_main-image">
               <ImageMainComponent />
             </div>
-            <div className="images_ph-images">
+            <ImagesContentComponent />
+            {/* <div className="images_ph-images">
               <div>Related Images from Mahdi Alipoor</div>
-              <Grid />
-            </div>
+              <GridSharedComponent />
+            </div> */}
           </Head>
         </Body>
       </Container>

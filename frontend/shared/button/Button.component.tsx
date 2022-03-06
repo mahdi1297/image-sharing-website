@@ -4,7 +4,7 @@ import { IButtomModel } from "./Button.model";
 import { ButtonBody } from "./Button.style";
 
 const ButtonComponent = ({ children, size, color }: IButtomModel) => {
-  let colorName, bgColor, sizeNumber;
+  let colorName, bgColor, sizeNumber, borderColor;
 
   switch (size) {
     case "xg":
@@ -21,14 +21,26 @@ const ButtonComponent = ({ children, size, color }: IButtomModel) => {
   switch (color) {
     case "gray":
       colorName = Theme.colors.gray;
+      borderColor = Theme.colors.gray;
       bgColor = "#fff";
       break;
     case "primary":
       colorName = Theme.colors.main;
+      borderColor = Theme.colors.main;
+      break;
+    case "danger":
+      colorName = Theme.colors.danger;
+      borderColor = Theme.colors.danger;
+      bgColor = "#fff";
+      break;
+    case "light":
+      colorName = Theme.colors.gray;
+      borderColor = "none";
+      bgColor = "none";
   }
 
   return (
-    <ButtonBody bgColor={bgColor} colorName={colorName} size={sizeNumber}>
+    <ButtonBody bgColor={bgColor} borderColor={borderColor} colorName={colorName} size={sizeNumber}>
       {children}
     </ButtonBody>
   );

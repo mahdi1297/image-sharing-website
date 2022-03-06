@@ -8,6 +8,7 @@ const Theme: DefaultTheme = {
     main: "#a65fec",
     black: "#132d4b",
     gray: "#d1d1d1",
+    danger: "#e25c3d",
   },
 };
 

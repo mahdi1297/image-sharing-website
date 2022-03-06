@@ -43,9 +43,9 @@ const Grid = styled.div<IGrid>`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: ${(p) => p.direction || "row"};
-  justify-content: ${(p) => p.justify || "center"};
-  align-items: ${(p) => p.align || "center"};
+  flex-direction: ${(p) => (p.direction ? p.direction : "row")};
+  justify-content: ${(p) => (p.justify ? p.justify : "center")};
+  align-items: ${(p) => (p.align ? p.align : "center")};
 `;
 
 export { Wrapper, Container, Center, AlignCenter, Justify, Grid };
