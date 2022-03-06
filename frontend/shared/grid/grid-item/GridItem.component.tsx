@@ -13,7 +13,11 @@ const GridItemComponent = ({ data, showMeta }: any) => {
     <>
       <Card>
         <div className="mItem">
-          <div className="ph_user">{showMeta && <AvatarComponent />}</div>
+          {showMeta && (
+            <div className="ph_user">
+              <AvatarComponent />
+            </div>
+          )}
           <Link href={`/images/${data.id}`}>
             <a>
               <img src={data.path} />

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Theme } from "theme/theme";
 
 const Body = styled.div`
   margin-top: 30px;
@@ -9,9 +10,10 @@ const Body = styled.div`
 const Head = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
 
   & > div.images_main-image {
-    width: 65%;
+    width: 100%;
     height: auto;
   }
 
@@ -23,8 +25,12 @@ const Head = styled.div`
 
   & > div.images_ph-images {
     width: 35%;
-    height: 500px;
+    height: 100vh;
     overflow-y: scroll;
+
+    & div.masonry {
+      column-count: 2 !important;
+    }
 
     & img,
     div {
@@ -48,4 +54,69 @@ const Head = styled.div`
   }
 `;
 
-export { Body, Head };
+const MetaBody = styled.div`
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  display: block;
+  margin-top: 50px;
+
+  & button {
+    margin-left: 0 !important;
+    margin-right: 10px;
+  }
+
+  & div.meta-likes {
+    margin-left: 20px !important;
+  }
+
+  & ul {
+    margin-top: 20px;
+
+    & li {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+
+      & p {
+        margin: 0;
+        margin-left: 15px;
+        font-size: 14px;
+      }
+    }
+  }
+`;
+
+const ContentWrapper = styled.div`
+  width: 100%;
+  height: 500px;
+  margin-top: 60px;
+`;
+
+const Tab = styled.ul`
+  width: 100%;
+  height: 60px;
+  box-shadow: 1px 3px 7px #e0e0e0;
+  display: flex;
+  align-items: center;
+  flex-wrap: no-wrap;
+
+  & li {
+    width: 100%;
+    height: 100%;
+    line-height: 55px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  & li.active {
+    border-bottom: 2px solid ${Theme.colors.main};
+  }
+
+  & li:hover {
+    background: ${Theme.colors.gray};
+    color: ${Theme.colors.main};
+  }
+`;
+
+export { Body, Head, MetaBody, ContentWrapper, Tab };

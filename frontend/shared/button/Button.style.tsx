@@ -4,7 +4,7 @@ import { IButtonStyleModel } from "./Button.model";
 const ButtonBody = styled.button<IButtonStyleModel>`
   border: none;
   cursor: pointer;
-  border: 1px solid ${(p) => p.colorName};
+  border: 1px solid ${(p) => p.borderColor};
   color: ${(p) => p.colorName};
   background: ${(p) => p.bgColor};
   padding: ${(p) => p.size};

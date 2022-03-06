@@ -8,4 +8,5 @@ export interface IButtonStyleModel {
   colorName?: string;
   bgColor?: string;
   size?: string;
+  borderColor?: string;
 }
