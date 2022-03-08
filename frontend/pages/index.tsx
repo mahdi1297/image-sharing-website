@@ -1,8 +1,11 @@
 import type { NextPage } from "next";
 import HomeComponent from "components/home";
+import HeaderLayout from "layout/basic-layouts/HeaderLayout";
 
-const Home: NextPage = () => {
+const Home: any = () => {
   return <HomeComponent />;
 };
+
+Home.Layout = HeaderLayout;
 
 export default Home;

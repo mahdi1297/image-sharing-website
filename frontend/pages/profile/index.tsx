@@ -1,9 +1,10 @@
-import React from 'react'
+import HeaderLayout from "layout/basic-layouts/HeaderLayout";
+import React from "react";
 
-const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
-}
+const ProfilePage = () => {
+  return <div>Profile</div>;
+};
 
-export default Profile
+ProfilePage.Layout = HeaderLayout;
+
+export default ProfilePage;

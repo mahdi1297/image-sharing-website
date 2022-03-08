@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { AlignCenter, Grid, Justify } from "shared/common/style";
-import { Search, Avatar } from "./Header.style";
+import { Search, Avatar } from "../Header.style";
 import { userAvatar } from "constaints/Data.const";
 import HeaderSubmenu from "./Header.submenu";
 

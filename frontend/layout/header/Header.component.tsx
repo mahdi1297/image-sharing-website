@@ -1,8 +1,8 @@
 import React from "react";
-import { AlignCenter, Container, Grid, Justify } from "shared/common/style";
+import { Container, Grid } from "shared/common/style";
 import { Body, Wrapper } from "./Header.style";
-import HeaderLeft from "./Header.left";
-import HeaderRight from "./Header.Right";
+import HeaderLeft from "./components/Header.left";
+import HeaderRight from "./components/Header.Right";
 
 const Header = () => {
   return (

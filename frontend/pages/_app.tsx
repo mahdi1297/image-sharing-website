@@ -1,17 +1,18 @@
-import type { AppProps } from "next/app";
-import Header from "layout/header";
 import NextNProgress from "nextjs-progressbar";
-import "styles/style.css";
 import { Theme } from "theme/theme";
+import "styles/style.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: any) {
+  const Layout = Component.Layout || EmptyLayout;
+
   return (
-    <>
+    <Layout>
       <NextNProgress height={3} color={Theme.colors.main} />
-      <Header />
       <Component {...pageProps} />
-    </>
+    </Layout>
   );
 }
+
+const EmptyLayout = ({ children }: any) => <>{children}</>;
 
 export default MyApp;
