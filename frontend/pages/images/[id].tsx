@@ -1,7 +1,8 @@
 import React from "react";
 import ImagesComponent from "components/images";
+import HeaderLayout from "layout/basic-layouts/HeaderLayout";
 
-const Page = () => {
+const ImageDetailePage = () => {
   return (
     <div>
       <ImagesComponent />
@@ -9,4 +10,6 @@ const Page = () => {
   );
 };
 
-export default Page;
+ImageDetailePage.Layout = HeaderLayout;
+
+export default ImageDetailePage;

@@ -1,7 +1,8 @@
 import React from "react";
 import UserProfileComponent from "components/user-profole";
+import HeaderLayout from "layout/basic-layouts/HeaderLayout";
 
-const ProfileId = () => {
+const ProfileDetailPage = () => {
   return (
     <div>
       <UserProfileComponent />
@@ -9,4 +10,6 @@ const ProfileId = () => {
   );
 };
 
-export default ProfileId;
+ProfileDetailPage.Layout = HeaderLayout;
+
+export default ProfileDetailPage;

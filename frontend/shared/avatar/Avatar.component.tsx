@@ -6,13 +6,13 @@ import { AvatarBody } from "./Avatar.style";
 import { Theme } from "theme/theme";
 import { AvatarModel } from "./Avatar.model";
 
-const AvatarComponent = ({ radius, width }: AvatarModel) => {
+const AvatarComponent = ({ radius, width, id }: AvatarModel) => {
   return (
     <AvatarBody radius={radius} width={width}>
       <AlignCenter>
         <div className="ph_user-image">
           <AlignCenter>
-            <Link href="/">
+            <Link href={`/profile/${id}`}>
               <a>
                 <img src={userAvatar} />
               </a>
@@ -20,7 +20,7 @@ const AvatarComponent = ({ radius, width }: AvatarModel) => {
           </AlignCenter>
         </div>
         <p style={{ paddingBottom: "3px" }}>
-          <Link href="/">
+          <Link href={`/profile/${id}`}>
             <a
               style={{
                 fontSize: "14px",

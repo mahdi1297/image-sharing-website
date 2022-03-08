@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { AvatarModel } from "./Avatar.model";
+import { AvatarStyleModel } from "./Avatar.model";
 
-const AvatarBody = styled.div<AvatarModel>`
+const AvatarBody = styled.div<AvatarStyleModel>`
   & div.ph_user-image {
     width: 40px;
     height: 100%;

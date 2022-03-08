@@ -7,9 +7,8 @@ export const routes: IHeaderRoutes[] = [
 ];
 
 export const submenuRoutes: ISubmenuRoutes[] = [
-  { id: 1, name: "Profile", path: "/user/panel" },
-  { id: 2, name: "Submit photo", path: "/user/profile/submit-photo" },
-  { id: 3, name: "Submit photo", path: "/user/profile/submit-photo" },
-  { id: 4, name: "Account settings", path: "/user/panel/submit-photo" },
-  { id: 5, name: "Logout", path: "/user/panel/submit-photo" },
+  { id: 1, name: "Profile", path: "/user-panel/home" },
+  { id: 2, name: "Submit photo", path: "/user-panel/submit-photo" },
+  { id: 4, name: "Account settings", path: "/user-panel/account" },
+  { id: 5, name: "Logout", path: "/user-panel/logout" },
 ];

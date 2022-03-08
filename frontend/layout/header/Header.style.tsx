@@ -77,6 +77,7 @@ const Menu = styled.ul`
     }
   }
 `;
+
 const Avatar = styled.div`
   width: 70px;
   height: 100%;
@@ -86,10 +87,12 @@ const Avatar = styled.div`
     cursor: pointer;
   }
 `;
+
 const SudMenu = styled.div`
   width: 200px;
   height: auto;
   position: absolute;
+  z-index: 99999;
   background: #fff;
   box-shadow: 1px 3px 7px #e0e0e0;
   border-radius: 10px;

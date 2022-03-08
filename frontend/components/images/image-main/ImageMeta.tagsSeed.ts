@@ -3,5 +3,5 @@ export const tagsSeed = [
   { id: 2, title: "drawing" },
   { id: 3, title: "laptop" },
   { id: 4, title: "designer" },
-  { id: 4, title: "ui/ux" },
+  { id: 5, title: "ui/ux" },
 ];

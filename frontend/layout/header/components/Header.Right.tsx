@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { AlignCenter, Grid } from "shared/common/style";
 import Icon from "shared/icons";
-import { routes } from "./Header.routes";
-import { Menu } from "./Header.style";
+import { Grid } from "shared/common/style";
 import { Theme } from "theme/theme";
+import { routes } from "../Header.routes";
+import { Menu } from "../Header.style";
 
 const HeaderRight = () => {
   return (

@@ -15,7 +15,7 @@ const GridItemComponent = ({ data, showMeta }: any) => {
         <div className="mItem">
           {showMeta && (
             <div className="ph_user">
-              <AvatarComponent />
+              <AvatarComponent id={data.id} />
             </div>
           )}
           <Link href={`/images/${data.id}`}>
