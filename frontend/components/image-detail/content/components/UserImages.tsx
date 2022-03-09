@@ -1,7 +1,7 @@
 import React from "react";
 import GridSharedComponent from "shared/grid";
 
-const UserOtherImagesComponent = () => {
+const UserImages = () => {
   return (
     <div>
       <GridSharedComponent />
@@ -9,4 +9,4 @@ const UserOtherImagesComponent = () => {
   );
 };
 
-export default UserOtherImagesComponent;
+export default UserImages;

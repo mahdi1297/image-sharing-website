@@ -1,9 +1,8 @@
 import React from "react";
+import ImageMainComponent from "./main-image";
+import ImagesContentComponent from "./content";
 import { Container } from "shared/common/style";
-import GridSharedComponent from "shared/grid";
-import ImageMainComponent from "./image-main";
-import ImagesContentComponent from "./images-content";
-import { Body, Head } from "./Images.style";
+import { Body, Head } from "./ImageDetail.style";
 
 const ImagesComponent = () => {
   return (
@@ -15,10 +14,6 @@ const ImagesComponent = () => {
               <ImageMainComponent />
             </div>
             <ImagesContentComponent />
-            {/* <div className="images_ph-images">
-              <div>Related Images from Mahdi Alipoor</div>
-              <GridSharedComponent />
-            </div> */}
           </Head>
         </Body>
       </Container>

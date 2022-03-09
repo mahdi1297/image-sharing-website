@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
-import HomeComponent from "components/home";
+import type {NextPage} from "next";
 import HeaderLayout from "layout/basic-layouts/HeaderLayout";
+import HomeComponent from "../components/home";
 
-const Home: any = () => {
-  return <HomeComponent />;
+const Home: NextPage = () => {
+    return <HomeComponent/>;
 };
 
 Home.Layout = HeaderLayout;

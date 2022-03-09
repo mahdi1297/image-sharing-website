@@ -46,6 +46,7 @@ const UserPanelBody = styled.div`
           ${Theme.colors.main},
           transparent
         );
+        border-radius: 5px;
 
         & span,
         svg {

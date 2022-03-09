@@ -1,1 +1,1 @@
-export { default } from "./Grid.component";
+export { default } from "./Grid";

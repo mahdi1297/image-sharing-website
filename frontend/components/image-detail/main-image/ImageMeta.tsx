@@ -1,11 +1,10 @@
 import React from "react";
 import { AlignCenter, Grid } from "shared/common/style";
-import { MetaBody } from "../Images.style";
+import { MetaBody } from "../ImageDetail.style";
 import ButtonComponent from "shared/button";
 import Icon from "shared/icons";
 import { Theme } from "theme/theme";
-import { metaDataSeed } from "./ImagesMeta.metaDataSeed";
-import { tagsSeed } from "./ImageMeta.tagsSeed";
+import { metaDataSeed, tagsSeed } from "./ImagesMeta.dataSeed";
 import Link from "next/link";
 
 const ImageMetaComponent = () => {
@@ -14,7 +13,7 @@ const ImageMetaComponent = () => {
       <MetaBody>
         <Grid direction="column" align="flex-start" justify="flex-start">
           <div>
-            <AlignCenter>
+            <AlignCenter>=
               <ButtonComponent color="gray" size="md">
                 <Icon type="share" size={14} color={Theme.colors.gray} />
                 <span>Share</span>

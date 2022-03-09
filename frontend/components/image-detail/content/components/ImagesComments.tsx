@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ImagesCommentsComponent = () => {
+const ImagesComments = () => {
   return (
     <div>ImagesCommentsComponent</div>
   )
 }
 
-export default ImagesCommentsComponent
+export default ImagesComments
