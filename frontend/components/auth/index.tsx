@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Body } from "./style";
-import Login from "./login/login";
-import Register from "./register/register";
+import Login from "./login";
+import Register from "./register";
 import { LOGIN_MODE, REGISTER_MODE } from "constaints/consts";
 
 const AuthComponent = () => {

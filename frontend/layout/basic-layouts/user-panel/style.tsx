@@ -9,13 +9,13 @@ const UserPanelBody = styled.div`
   justify-content: space-between;
 
   & div.sidebar {
-    width: 25%;
+    width: 20%;
     height: 100vh;
     overflow-y: auto;
 
     & h2 {
-      color: ${Theme.colors.main};
-      font-size: 18px;
+      color: ${Theme.colors.black};
+      font-size: 16px;
     }
 
     & ul {
@@ -36,22 +36,23 @@ const UserPanelBody = styled.div`
         & span {
           margin-left: 10px;
           color: ${Theme.colors.black};
-          font-size: 18px;
+          font-size: 14px;
         }
       }
 
       & a:hover {
-        background: linear-gradient(
-          to right,
-          ${Theme.colors.main},
-          transparent
-        );
-        border-radius: 5px;
+        border-left: 3px solid ${Theme.colors.main};
+        background: #eee;
 
         & span,
         svg {
-          color: #fff;
+          // color: #fff;
         }
+      }
+
+      & a.active {
+        border-left: 3px solid ${Theme.colors.main};
+        background: #f7f7f7;
       }
     }
   }
