@@ -1,7 +1,7 @@
 import React from "react";
 import Avatar from "shared/avatar";
 import {AlignCenter} from "shared/common/style";
-import {HeadInfoStyle} from "./../../UserProfile.style";
+import {HeadInfoStyle} from "../../style";
 
 type componentType = {}
 

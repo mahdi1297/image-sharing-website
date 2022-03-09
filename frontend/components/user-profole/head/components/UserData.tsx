@@ -1,4 +1,4 @@
-import {UserDataStyle} from "./../../UserProfile.style";
+import {UserDataStyle} from "../../style";
 import React from "react";
 import ButtonComponent from "shared/button";
 
