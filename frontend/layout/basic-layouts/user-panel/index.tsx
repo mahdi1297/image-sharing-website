@@ -6,6 +6,7 @@ import { Container } from "shared/common/style";
 import { userPanelLayoutRoutes } from "./routes";
 import { UserPanelBody } from "./style";
 import { useRouter } from "next/router";
+import Avatar from "shared/avatar";
 
 const UserPanelLayout = ({ children }: any) => {
   const router = useRouter();
@@ -14,11 +15,13 @@ const UserPanelLayout = ({ children }: any) => {
     <>
       <Header />
       <Navigator />
-      <Container style={{ marginTop: "100px" }}>
+      <Container>
         <UserPanelBody>
           <div className="sidebar">
-            <h2>Mahdi Alipoor</h2>
-
+            <h1>Your Panel</h1>
+            <div className="avatar">
+              <Avatar id="0" width="40px" radius="5px" />
+            </div>
             <ul>
               {userPanelLayoutRoutes.map((route) => (
                 <li key={route.id}>
