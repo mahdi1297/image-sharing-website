@@ -1,4 +1,6 @@
+import { LG, TEXT } from "constaints/consts";
 import React from "react";
+import Error from "shared/error";
 import { InputShareModel } from "./model";
 import { FormWrapper } from "./style";
 
@@ -8,20 +10,23 @@ import { FormWrapper } from "./style";
  * @param {string} type - The input type. default: text - optional.
  * @param {string} label - The label of input - required.
  * @param {string} placeholder - The placeholder of input - required.
+ * @param {string} register - The form handler registeration.
+ * @param {string} errors - The form error - required.
  */
 const FormSharedComponent = ({
-  size = "larg",
-  type = "text",
+  size = LG,
+  type = TEXT,
   label,
   placeholder,
+  register,
+  errors,
 }: InputShareModel) => {
-  //
-  console.log(size);
-
   return (
     <FormWrapper size={size}>
       <div className="label">{label}</div>
-      <input type={type} placeholder={placeholder} />
+      <input type={type} placeholder={placeholder} {...register} />
+
+      {errors && <Error message={errors.message} />}
     </FormWrapper>
   );
 };

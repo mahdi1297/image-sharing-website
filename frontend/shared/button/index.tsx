@@ -1,39 +1,41 @@
 import React from "react";
 import { Theme } from "theme/theme";
-import { IButtomModel } from "./model";
+import { ButtomModel } from "./model";
 import { ButtonBody } from "./style";
+import { DANGER, GRAY, LG, LIGHT, MD, PRIMARY, XL } from "constaints/consts";
 
-const ButtonComponent = ({ children, size, color }: IButtomModel) => {
+const ButtonComponent = ({ children, size, color, block }: ButtomModel) => {
   let colorName, bgColor, sizeNumber, borderColor;
 
   switch (size) {
-    case "xl":
+    case XL:
       sizeNumber = "10px 20px";
       break;
-    case "lg":
+    case LG:
       sizeNumber = "8px 17px";
       break;
-    case "md":
+    case MD:
       sizeNumber = "5px 15px";
       break;
   }
 
   switch (color) {
-    case "gray":
+    case GRAY:
       colorName = Theme.colors.gray;
       borderColor = Theme.colors.gray;
       bgColor = "#fff";
       break;
-    case "primary":
-      colorName = Theme.colors.main;
+    case PRIMARY:
+      colorName = "#fff";
       borderColor = Theme.colors.main;
+      bgColor = Theme.colors.main;
       break;
-    case "danger":
+    case DANGER:
       colorName = Theme.colors.danger;
       borderColor = Theme.colors.danger;
       bgColor = "#fff";
       break;
-    case "light":
+    case LIGHT:
       colorName = Theme.colors.gray;
       borderColor = "none";
       bgColor = "none";
@@ -45,6 +47,7 @@ const ButtonComponent = ({ children, size, color }: IButtomModel) => {
       borderColor={borderColor}
       colorName={colorName}
       size={sizeNumber}
+      block={block}
     >
       {children}
     </ButtonBody>

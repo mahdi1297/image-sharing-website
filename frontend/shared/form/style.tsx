@@ -4,7 +4,7 @@ import { InputShareStyle } from "./model";
 let boxShadowColor = "#a65fec6e";
 
 const FormWrapper = styled.div<InputShareStyle>`
-  width: ${(p) => (p.size === "larg" ? "100%" : "50%")};
+  width: ${(p) => (p.size === "lg" ? "100%" : "50%")};
   display: flex;
   flex-direction: column;
   margin-bottom: 14px;
@@ -23,7 +23,7 @@ const FormWrapper = styled.div<InputShareStyle>`
   & input {
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(207, 214, 228);
-    border-radius: 8px;
+    border-radius: 5px;
     box-sizing: border-box;
     color: rgb(0, 0, 0);
     max-width: 100%;
