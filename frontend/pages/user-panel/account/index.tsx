@@ -2,7 +2,7 @@ import React from "react";
 import UserPanelLayout from "layout/basic-layouts/user-panel";
 
 const UserPanelAccount = () => {
-  return <div>UserPanelAccount</div>;
+  return <div></div>;
 };
 
 UserPanelAccount.Layout = UserPanelLayout;

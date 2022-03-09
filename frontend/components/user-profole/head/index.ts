@@ -1,1 +1,1 @@
-export { default } from "./ProfileHead.component";
+export { default } from "./ProfileHead";

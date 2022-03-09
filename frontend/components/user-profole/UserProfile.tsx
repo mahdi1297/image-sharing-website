@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Container } from "shared/common/style";
-import ProfileHeadComponent from "./head";
+import ProfileHead from "./head";
 import GridSharedComponent from "shared/grid";
 import TabSharedComponent from "shared/tab";
 import { userProfileTabs } from "./UserProfile.tab";
 
-const UserProfileComponent = () => {
+const UserProfile = () => {
   const [tab, setTab] = useState<number>(1);
 
   return (
     <Container>
       {/* head */}
-      <ProfileHeadComponent />
+      <ProfileHead />
 
       {/* content */}
       <TabSharedComponent data={userProfileTabs} tab={tab} setTab={setTab} />
@@ -21,4 +21,4 @@ const UserProfileComponent = () => {
   );
 };
 
-export default UserProfileComponent;
+export default UserProfile;

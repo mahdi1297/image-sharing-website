@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { Theme } from "theme/theme";
+import {Theme} from "theme/theme";
 
-const ProfileHead = styled.div`
+const ProfileHeadStyle = styled.div`
   width: 100%;
   height: auto;
   margin-top: 60px;
@@ -12,7 +12,7 @@ const ProfileHead = styled.div`
   }
 `;
 
-const HeadInfo = styled.ul`
+const HeadInfoStyle = styled.ul`
   & img {
     border: 2px solid ${Theme.colors.main};
     border-radius: 1em;
@@ -48,7 +48,7 @@ const HeadInfo = styled.ul`
   }
 `;
 
-const UserData = styled.div`
+const UserDataStyle = styled.div`
   margin-top: 20px;
   width: 100%;
 
@@ -79,4 +79,4 @@ const UserData = styled.div`
   }
 `;
 
-export { ProfileHead, HeadInfo, UserData };
+export {ProfileHeadStyle, HeadInfoStyle, UserDataStyle};
