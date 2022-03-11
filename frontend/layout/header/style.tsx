@@ -1,11 +1,11 @@
-import { SCROLL_UP } from "constaints/consts";
 import styled from "styled-components";
 import { Theme } from "theme/theme";
+import { SCROLL_UP } from "constaints/consts";
 
 const Body = styled.div<any>`
   width: 100%;
   display: none;
-  box-shadow: 1px 3px 7px #e0e0e0;
+  box-shadow: 0 4px 12px #00000014, 0 0 1px #0100001a;
   position: fixed;
   top: ${(p) => (p.scrollDirection === SCROLL_UP ? "0" : "-80px")};
   transition: all 0.2s ease-in;
@@ -15,6 +15,10 @@ const Body = styled.div<any>`
 
   @media (min-width: 623px) {
     display: flex;
+  }
+
+  @media (max-width: 700px) {
+    padding: 0 10px;
   }
 `;
 

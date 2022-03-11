@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { AlignCenter, Justify } from "shared/common/style";
 import { Avatar } from "../style";
-import HeaderSubmenu from "./HeaderSubmenu";
 import { userAvatar } from "constaints/Data.const";
+import HeaderSubmenu from "./headerSubmenu";
 
 const HeaderLeft = () => {
   const [showSubmenu, setShowmenu] = useState<boolean>(false);

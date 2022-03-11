@@ -1,9 +1,16 @@
-import type {NextPage} from "next";
-import HeaderLayout from "layout/basic-layouts";
-import HomeComponent from "../components/home";
+// import type { NextPage } from "next";
+import dynamic from "next/dynamic";
 
-const Home: NextPage = () => {
-    return <HomeComponent/>;
+const HeaderLayout = dynamic(() => import("layout/basic-layouts"), {
+  loading: () => <p>Loading...</p>,
+});
+
+const HomeComponent = dynamic(() => import("components/home"), {
+  loading: () => <p>Loading...</p>,
+});
+
+const Home: any = () => {
+  return <HomeComponent />;
 };
 
 Home.Layout = HeaderLayout;

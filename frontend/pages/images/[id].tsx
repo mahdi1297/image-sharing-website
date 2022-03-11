@@ -1,6 +1,10 @@
 import React from "react";
-import ImagesComponent from "components/image-detail";
 import HeaderLayout from "layout/basic-layouts";
+import dynamic from "next/dynamic";
+
+const ImagesComponent = dynamic(() => import("components/image-detail"), {
+  loading: () => <p>Loading...</p>,
+});
 
 const ImageDetailePage = () => {
   return (

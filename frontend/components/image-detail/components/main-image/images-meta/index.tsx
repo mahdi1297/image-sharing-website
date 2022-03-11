@@ -13,7 +13,7 @@ const ImageMetaComponent = () => {
       <MetaBody>
         <Grid direction="column" align="flex-start" justify="flex-start">
           <div>
-            <AlignCenter>=
+            <AlignCenter>
               <ButtonComponent color="gray" size="md">
                 <Icon type="share" size={14} color={Theme.colors.gray} />
                 <span>Share</span>

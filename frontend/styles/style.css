@@ -35,6 +35,10 @@ ul {
   margin-bottom: 20px;
 }
 
+.masonry .mItem img {
+  border-radius: 3px;
+}
+
 @media (max-width: 1199px) {
   .masonry {
     column-count: 3;

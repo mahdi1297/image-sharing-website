@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Grid } from "shared/common/style";
+import React from "react";
 import { ProfileHeadStyle } from "../style";
 import HeadInfo from "./components/HeadInfo";
 import UserData from "./components/UserData";
@@ -7,10 +6,8 @@ import UserData from "./components/UserData";
 const ProfileHead = () => {
   return (
     <ProfileHeadStyle>
-      <Grid direction="column" justify="flex-start" align="flex-start">
-        <HeadInfo />
-        <UserData />
-      </Grid>
+      <HeadInfo />
+      <UserData />
     </ProfileHeadStyle>
   );
 };

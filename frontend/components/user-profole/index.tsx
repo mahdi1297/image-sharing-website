@@ -11,7 +11,7 @@ const UserProfile = () => {
   return (
     <Container>
       {/* head */}
-      <ProfileHead />``
+      <ProfileHead />
 
       {/* content */}
       <TabSharedComponent data={userProfileTabs} tab={tab} setTab={setTab} />

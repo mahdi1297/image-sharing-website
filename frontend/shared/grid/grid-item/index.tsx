@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
 import React from "react";
-import AvatarComponent from "shared/avatar";
-import { AlignCenter } from "shared/common/style";
+import Link from "next/link";
 import Icon from "shared/icons";
+import AvatarComponent from "shared/avatar";
+import ButtonComponent from "shared/button";
+import { AlignCenter } from "shared/common/style";
 import { Theme } from "theme/theme";
 import { Card } from "../style";
+import { LIGHT, SM } from "constaints/consts";
 
 const GridItemComponent = ({ data, showMeta }: any) => {
   return (
@@ -26,18 +28,18 @@ const GridItemComponent = ({ data, showMeta }: any) => {
           {showMeta && (
             <div className="mItem-meta">
               <AlignCenter>
-                <span>
-                  <AlignCenter>
-                    <Icon type="heart" color={Theme.colors.gray} size={25} />
-                    <span className="grid_meta">125</span>
-                  </AlignCenter>
-                </span>
-                <span>
-                  <AlignCenter>
-                    <Icon type="message" color={Theme.colors.gray} size={25} />
-                    <span className="grid_meta">125</span>
-                  </AlignCenter>
-                </span>
+                <ButtonComponent size={SM} color={LIGHT}>
+                  <Icon type="heart" color={Theme.colors.danger} size={20} />
+                  <span className="grid_meta">125</span>
+                </ButtonComponent>
+                <ButtonComponent size={SM} color={LIGHT}>
+                  <Icon type="heart" color={Theme.colors.gray} size={20} />
+                  <span className="grid_meta">125</span>
+                </ButtonComponent>
+                <ButtonComponent size={SM} color={LIGHT}>
+                  <Icon type="message" color={Theme.colors.gray} size={20} />
+                  <span className="grid_meta">125</span>
+                </ButtonComponent>
               </AlignCenter>
             </div>
           )}

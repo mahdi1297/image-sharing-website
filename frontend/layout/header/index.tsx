@@ -2,8 +2,8 @@ import React from "react";
 import { Container, Grid } from "shared/common/style";
 import { Body, Wrapper } from "./style";
 import useScrollDirection from "hooks/useScrollDirection";
-import HeaderLeft from "./components/Headerleft";
-import HeaderRight from "./components/HeaderRight";
+import HeaderLeft from "./components/headerleft";
+import HeaderRight from "./components/headerRight";
 
 const Header = () => {
   const scrollDirection = useScrollDirection();

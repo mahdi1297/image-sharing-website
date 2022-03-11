@@ -2,7 +2,16 @@ import React from "react";
 import { Theme } from "theme/theme";
 import { ButtomModel } from "./model";
 import { ButtonBody } from "./style";
-import { DANGER, GRAY, LG, LIGHT, MD, PRIMARY, XL } from "constaints/consts";
+import {
+  DANGER,
+  DARK,
+  GRAY,
+  LG,
+  LIGHT,
+  MD,
+  PRIMARY,
+  XL,
+} from "constaints/consts";
 
 const ButtonComponent = ({ children, size, color, block }: ButtomModel) => {
   let colorName, bgColor, sizeNumber, borderColor;
@@ -23,6 +32,11 @@ const ButtonComponent = ({ children, size, color, block }: ButtomModel) => {
     case GRAY:
       colorName = Theme.colors.gray;
       borderColor = Theme.colors.gray;
+      bgColor = "#fff";
+      break;
+    case DARK:
+      colorName = Theme.colors.black;
+      borderColor = Theme.colors.black;
       bgColor = "#fff";
       break;
     case PRIMARY:

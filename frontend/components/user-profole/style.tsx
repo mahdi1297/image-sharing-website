@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import {Theme} from "theme/theme";
+import { Theme } from "theme/theme";
 
 const ProfileHeadStyle = styled.div`
+  padding: 5px;
   width: 100%;
   height: auto;
   margin-top: 60px;
@@ -9,6 +10,10 @@ const ProfileHeadStyle = styled.div`
 
   & p a {
     display: none;
+  }
+
+  @media (min-width: 700px) {
+    padding: 0;
   }
 `;
 
@@ -46,6 +51,10 @@ const HeadInfoStyle = styled.ul`
       }
     }
   }
+
+  & button:last-child {
+    border: none !important;
+  }
 `;
 
 const UserDataStyle = styled.div`
@@ -79,4 +88,4 @@ const UserDataStyle = styled.div`
   }
 `;
 
-export {ProfileHeadStyle, HeadInfoStyle, UserDataStyle};
+export { ProfileHeadStyle, HeadInfoStyle, UserDataStyle };
