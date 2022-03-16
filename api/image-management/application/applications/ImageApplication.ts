@@ -1,42 +1,32 @@
 import ImageRepository from "../../infrastructure/repository/ImageRepository";
-import CreateImage from "../application.contracts/image/CrateImage";
+import CreateImage from "../../domain/image/CreateImage";
 import IIMageApplication from "../application.contracts/image/IImageApplication";
 import express from "express";
+import ResponseHandler from "../../../0-framework/response-handler";
 
 class ImageApplication implements IIMageApplication {
   private _repo: ImageRepository;
+  private _responseHandler: ResponseHandler;
 
   constructor() {
     this._repo = new ImageRepository();
+    this._responseHandler = new ResponseHandler();
   }
 
   async create(req: express.Request, res: express.Response) {
-    const image: CreateImage = {
-      phoserId: "string",
-      title: "string",
-      description: "string",
-      alt: "string",
-      color: "string",
-      tags: [{ detail: "string" }],
-      user: {
-        username: "string",
-        profile: "string",
-      },
-      linkes: {
-        download_link: "string",
-        path: "string",
-      },
-      location: {
-        country: "string",
-        city: "string",
-      },
-    };
-
     try {
-      const result = await this._repo.create(image);
-      console.log(result);
+      const imageData: CreateImage = req.body;
 
-      res.json({ message: "Ok", result });
+      // Store image data in Db
+      const result = await this._repo.create(imageData);
+
+      // Validate if there is no result
+      if (!result) {
+        this._responseHandler.BadRequest(res, "Bad Request");
+      }
+
+      // Send data to client
+      this._responseHandler.Ok(res, "Ok", result);
     } catch (err) {
       console.log(err);
     }

@@ -30,6 +30,10 @@ const useScrollDirection = () => {
     };
 
     scrollableElement.addEventListener("wheel", checkScrollDirection);
+
+    return () => {
+      scrollableElement.removeEventListener("wheel", checkScrollDirection);
+    };
   }, [scrollableElement]);
 
   return scrollDirection;

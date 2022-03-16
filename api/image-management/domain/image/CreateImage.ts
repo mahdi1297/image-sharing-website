@@ -11,7 +11,6 @@ export default interface CreateImage {
   tags: Tag[];
   user: {
     username: string;
-    profile: string;
   };
   linkes: {
     download_link: string;

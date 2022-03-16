@@ -1,4 +1,4 @@
-import CreateImage from "../../application/application.contracts/image/CrateImage";
+import CreateImage from "../../domain/image/CreateImage";
 import IImageRepository from "../../domain/image/IRepository";
 import ImageContext from "./../context/ImageContext";
 

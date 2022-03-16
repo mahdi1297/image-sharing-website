@@ -1,4 +1,4 @@
-import CreateImage from "../../application/application.contracts/image/CrateImage";
+import CreateImage from "./CreateImage";
 
 export default interface IImageRepository {
   create: (data: CreateImage) => Promise<any>;

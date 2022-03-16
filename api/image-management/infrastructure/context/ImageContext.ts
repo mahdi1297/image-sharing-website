@@ -11,17 +11,17 @@ class ImageScehma {
       {
         phoserId: {
           type: String,
-          required: true,
         },
         downloads: {
           type: Number,
+          default: 0,
         },
         likes: {
           type: Number,
+          default: 0,
         },
         title: {
           type: String,
-          required: true,
         },
         alt: {
           type: String,
@@ -39,13 +39,16 @@ class ImageScehma {
           type: String,
           default: "true",
         },
-        tags: [
-          {
-            detailr: {
-              type: String,
-            },
-          },
-        ],
+        isBanned: {
+          type: String,
+          default: "false",
+        },
+        tags: {
+          type: [],
+        },
+        reports: {
+          type: [],
+        },
         user: {
           username: {
             type: String,

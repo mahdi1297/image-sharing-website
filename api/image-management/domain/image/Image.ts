@@ -1,3 +1,7 @@
+interface Tag {
+  detail: string;
+}
+
 export default interface Image {
   phoserId: string;
   downloads: number;
@@ -6,7 +10,8 @@ export default interface Image {
   alt: string;
   description: string;
   color: string;
-  tags: [detail: string];
+  tags: Tag[];
+  reports: Tag[];
   user: {
     username: string;
     profile: string;
@@ -21,4 +26,5 @@ export default interface Image {
   };
   updatedAt: string;
   isConfirmed: string;
+  isBanned: string;
 }
