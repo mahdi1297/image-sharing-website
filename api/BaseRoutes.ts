@@ -1,5 +1,5 @@
 import express from "express";
-import ImageEndpoints from "./image-management/presentation/endpoint/ImageEndpoints";
+import ImageEndpoints from "./image-management/presentation/endpoint/image/ImageEndpoints";
 const app = express();
 
 class BaseRoutes {

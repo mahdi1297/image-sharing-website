@@ -9,7 +9,7 @@ class ImageScehma {
   static get schema() {
     var schema = new Schema(
       {
-        phoserId: {
+        userId: {
           type: String,
         },
         downloads: {

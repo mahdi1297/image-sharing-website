@@ -3,7 +3,7 @@ interface Tag {
 }
 
 export default interface Image {
-  phoserId: string;
+  userId: string;
   downloads: number;
   likes: number;
   title: string;

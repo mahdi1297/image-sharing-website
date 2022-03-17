@@ -1,9 +1,13 @@
-import CreateImage from "../../domain/image/CreateImage";
+import CreateImage from "../../domain/image/dtos/CreateImage";
 import IImageRepository from "../../domain/image/IRepository";
 import ImageContext from "./../context/ImageContext";
 
 class ImageRepository implements IImageRepository {
   private _context = ImageContext;
+
+  async list(itemsToShow: any): Promise<any> {
+    return await this._context.find({}, itemsToShow).lean();
+  }
 
   async create(data: CreateImage): Promise<any> {
     return await this._context.create(data);

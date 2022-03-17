@@ -3,7 +3,7 @@ interface Tag {
 }
 
 export default interface CreateImage {
-  phoserId: string;
+  userId: string;
   title: string;
   description: string;
   alt: string;

@@ -5,6 +5,7 @@ import BaseRoutes from "./BaseRoutes";
 import path from "path";
 import morgan from "morgan";
 import * as dotenv from "dotenv";
+import { S3Client } from "@aws-sdk/client-s3";
 
 const cors = require("cors");
 
