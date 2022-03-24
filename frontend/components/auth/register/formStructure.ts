@@ -20,7 +20,7 @@ import {
 import {
   MINLENGTH_FIELD_ERROR,
   REQUIRED_FIELD_ERROR,
-} from "constaints/Messages.const";
+} from "constaints/errors.const";
 import { emailRegex } from "constaints/regex";
 
 export const formStructure = [

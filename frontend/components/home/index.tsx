@@ -1,12 +1,14 @@
 import React from "react";
 import GridSharedComponent from "shared/grid";
 
-type Props = {};
+type Props = {
+  images: any;
+};
 
-const HomeComponent: React.FC<Props> = () => {
+const HomeComponent: React.FC<Props> = ({ images }) => {
   return (
     <div>
-      <GridSharedComponent showMeta />
+      <GridSharedComponent showMeta images={images} />
     </div>
   );
 };

@@ -6,7 +6,7 @@ class ImageRepository implements IImageRepository {
   private _context = ImageContext;
 
   async list(itemsToShow: any): Promise<any> {
-    return await this._context.find({}, itemsToShow).lean();
+    return await this._context.find({}).lean();
   }
 
   async create(data: CreateImage): Promise<any> {

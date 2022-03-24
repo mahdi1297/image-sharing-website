@@ -5,6 +5,7 @@ export const REGISTER_MODE = "REGISTER";
 
 // Input types
 export const TEXT = "text";
+export const TEXTAREA = "textarea";
 
 // Colors
 export const PRIMARY = "primary";
@@ -38,3 +39,16 @@ export const PASSWORD_LABEL = "Password";
 export const AUTH_PASSWORD_MINLENGTH = 8;
 export const AUTH_PASSWORD_MAXLENGTH = 30;
 export const PASSWORD_PLACEHOLDER = "**********";
+
+// Submit Photo
+export const TITLE = "title";
+export const TITLE_LABEL = "Title";
+export const IMAGE_TITLE_PLACEHOLDER = "Image title";
+
+export const DESCRIPTION = "description";
+export const DESCRIPTION_LABEL = "Description";
+export const DESCRIPTION_PLACEHOLDER = "Description placeholder";
+
+export const ALT_IMAGE = "alt";
+export const ALT_IMAGE_LABEL = "Alternative text";
+export const ALT_IMAGE_PLACEHOLDER = "Image alternative text";

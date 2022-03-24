@@ -73,4 +73,4 @@ class Http implements HttpType {
   }
 }
 
-export default new Http();
+export default Http;

@@ -2,7 +2,11 @@ import React from "react";
 import { Theme } from "theme/theme";
 import IconsModel from "./model";
 
-const Icon = ({ type, color = Theme.colors.black, size = 14 }: IconsModel) => {
+const IconsShared = ({
+  type,
+  color = Theme.colors.black,
+  size = 14,
+}: IconsModel) => {
   let icon;
   switch (type) {
     case "plus":
@@ -332,4 +336,4 @@ const Icon = ({ type, color = Theme.colors.black, size = 14 }: IconsModel) => {
   return <>{icon}</>;
 };
 
-export default Icon;
+export default IconsShared;

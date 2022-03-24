@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { AlignCenter, Justify } from "shared/common/style";
 import { Avatar } from "../style";
-import { userAvatar } from "constaints/Data.const";
+import { userAvatar } from "constaints/data.const";
 import HeaderSubmenu from "./headerSubmenu";
 
 const HeaderLeft = () => {

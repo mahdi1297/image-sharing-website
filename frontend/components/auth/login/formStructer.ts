@@ -13,7 +13,7 @@ import {
   PASSWORD_PLACEHOLDER,
   TEXT,
 } from "constaints/consts";
-import { MINLENGTH_FIELD_ERROR, REQUIRED_FIELD_ERROR } from "constaints/Messages.const";
+import { MINLENGTH_FIELD_ERROR, REQUIRED_FIELD_ERROR } from "constaints/errors.const";
 import { emailRegex } from "constaints/regex";
 
 export const formStructure = [

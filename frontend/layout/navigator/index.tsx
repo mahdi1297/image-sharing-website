@@ -3,7 +3,7 @@ import Link from "next/link";
 import Icon from "shared/icons";
 import { routes } from "./routes";
 import { Body } from "./style";
-import { userAvatar } from "constaints/Data.const";
+import { userAvatar } from "constaints/data.const";
 
 const Navigator = () => {
   return (

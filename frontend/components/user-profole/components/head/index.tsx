@@ -1,7 +1,7 @@
+import { ProfileHeadStyle } from "components/user-profole/style";
 import React from "react";
-import { ProfileHeadStyle } from "../style";
-import HeadInfo from "./components/HeadInfo";
-import UserData from "./components/UserData";
+import HeadInfo from "./HeadInfo";
+import UserData from "./UserData";
 
 const ProfileHead = () => {
   return (

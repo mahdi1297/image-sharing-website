@@ -17,12 +17,16 @@ const GridItemComponent = ({ data, showMeta }: any) => {
         <div className="mItem">
           {showMeta && (
             <div className="ph_user">
-              <AvatarComponent id={data.id} />
+              <AvatarComponent
+                id={data._id}
+                username={data.user.username}
+                profile={data.user.profile}
+              />
             </div>
           )}
-          <Link href={`/images/${data.id}`}>
+          <Link href={`/images/${data._id}`}>
             <a>
-              <img src={data.path} />
+              <img src={data.linkes.path} />
             </a>
           </Link>
           {showMeta && (
@@ -30,15 +34,11 @@ const GridItemComponent = ({ data, showMeta }: any) => {
               <AlignCenter>
                 <ButtonComponent size={SM} color={LIGHT}>
                   <Icon type="heart" color={Theme.colors.danger} size={20} />
-                  <span className="grid_meta">125</span>
+                  <span className="grid_meta">{data.likes}</span>
                 </ButtonComponent>
                 <ButtonComponent size={SM} color={LIGHT}>
                   <Icon type="heart" color={Theme.colors.gray} size={20} />
-                  <span className="grid_meta">125</span>
-                </ButtonComponent>
-                <ButtonComponent size={SM} color={LIGHT}>
-                  <Icon type="message" color={Theme.colors.gray} size={20} />
-                  <span className="grid_meta">125</span>
+                  <span className="grid_meta">{data.downloads}</span>
                 </ButtonComponent>
               </AlignCenter>
             </div>

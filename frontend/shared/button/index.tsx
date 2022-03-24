@@ -13,7 +13,7 @@ import {
   XL,
 } from "constaints/consts";
 
-const ButtonComponent = ({ children, size, color, block }: ButtomModel) => {
+const ButtonShared = ({ children, size, color, block }: ButtomModel) => {
   let colorName, bgColor, sizeNumber, borderColor;
 
   switch (size) {
@@ -68,4 +68,4 @@ const ButtonComponent = ({ children, size, color, block }: ButtomModel) => {
   );
 };
 
-export default ButtonComponent;
+export default ButtonShared;

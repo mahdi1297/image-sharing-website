@@ -1,13 +1,27 @@
 import styled from "styled-components";
-import { InputShareStyle } from "./model";
+import { InputShareStyleModel } from "./model";
 
 let boxShadowColor = "#a65fec6e";
 
-const FormWrapper = styled.div<InputShareStyle>`
+const Body = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const FormWrapper = styled.div<InputShareStyleModel>`
   width: ${(p) => (p.size === "lg" ? "100%" : "50%")};
   display: flex;
   flex-direction: column;
   margin-bottom: 14px;
+
+  &:nth-child(odd) {
+    padding-right: 10px;
+  }
+
+  &:nth-child(even) {
+    padding-left: 10px;
+  }
 
   & div.label {
     display: flex;
@@ -44,4 +58,4 @@ const FormWrapper = styled.div<InputShareStyle>`
   }
 `;
 
-export { FormWrapper };
+export { Body, FormWrapper };

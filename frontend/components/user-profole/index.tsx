@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Container } from "shared/common/style";
-import ProfileHead from "./head";
 import GridSharedComponent from "shared/grid";
 import TabSharedComponent from "shared/tab";
+import ProfileHead from "./components/head";
 import { userProfileTabs } from "./tabData";
 
 const UserProfile = () => {

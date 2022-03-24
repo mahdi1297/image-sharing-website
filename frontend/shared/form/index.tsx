@@ -1,8 +1,7 @@
-import { LG, TEXT } from "constaints/consts";
+import { TEXT, TEXTAREA } from "constaints/consts";
 import React from "react";
 import Error from "shared/error";
-import { InputShareModel } from "./model";
-import { FormWrapper } from "./style";
+import { Body, FormWrapper } from "./style";
 
 /**
  * Dynamic input shared component which could be converted to all type of inputs
@@ -13,22 +12,48 @@ import { FormWrapper } from "./style";
  * @param {string} register - The form handler registeration.
  * @param {string} errors - The form error - required.
  */
-const FormSharedComponent = ({
-  size = LG,
-  type = TEXT,
-  label,
-  placeholder,
-  register,
-  errors,
-}: InputShareModel) => {
-  return (
-    <FormWrapper size={size}>
-      <div className="label">{label}</div>
-      <input type={type} placeholder={placeholder} {...register} />
+const FormShared = ({ data, register, errors }: any) => {
+  // Input type specification
+  let inputIndicator =
+    data &&
+    data.map((inp: any) => {
+      //
+      if (inp.type === TEXT) {
+        //
+        return (
+          //
+          <FormWrapper key={inp.id} size={inp.size}>
+            <div className="label">{inp.label}</div>
+            <input
+              type={inp.type}
+              placeholder={inp.placeholder}
+              {...register(inp.name, inp.validation)}
+            />
 
-      {errors && <Error message={errors.message} />}
-    </FormWrapper>
-  );
+            {errors && <Error message={errors?.[inp.name]?.message} />}
+          </FormWrapper>
+        );
+      } else if (inp.type === TEXTAREA) {
+        //
+        return (
+          //
+          <FormWrapper key={inp.id} size={inp.size}>
+            <div className="label">{inp.label}</div>
+            <textarea
+              type={inp.type}
+              placeholder={inp.placeholder}
+              {...register(inp.name, inp.validation)}
+              rows={data.rows | 5}
+              cols={data.cols | 60}
+            ></textarea>
+
+            {errors && <Error message={errors?.[inp.name]?.message} />}
+          </FormWrapper>
+        );
+      }
+    });
+
+  return <Body>{inputIndicator}</Body>;
 };
 
-export default FormSharedComponent;
+export default FormShared;

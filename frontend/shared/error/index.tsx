@@ -5,8 +5,8 @@ type error = {
   message: string;
 };
 
-const Error = ({ message }: error) => {
+const ErrorShared = ({ message }: error) => {
   return <Body>{message}</Body>;
 };
 
-export default Error;
+export default ErrorShared;

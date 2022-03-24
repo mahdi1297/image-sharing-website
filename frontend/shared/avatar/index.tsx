@@ -4,9 +4,15 @@ import { AlignCenter } from "shared/common/style";
 import { AvatarBody } from "./style";
 import { Theme } from "theme/theme";
 import { AvatarModel } from "./model";
-import { userAvatar } from "constaints/Data.const";
+import { userAvatar } from "constaints/data.const";
 
-const AvatarComponent = ({ radius, width, id }: AvatarModel) => {
+const AvatarShared = ({
+  radius,
+  width,
+  id,
+  username,
+  profile,
+}: AvatarModel) => {
   return (
     <AvatarBody radius={radius} width={width}>
       <AlignCenter>
@@ -14,6 +20,11 @@ const AvatarComponent = ({ radius, width, id }: AvatarModel) => {
           <AlignCenter>
             <Link href={`/profile/${id}`}>
               <a>
+                {/* <img
+                  src={
+                    profile ? `http://localhost:7000/${profile}` : userAvatar
+                  }
+                /> */}
                 <img src={userAvatar} />
               </a>
             </Link>
@@ -28,7 +39,7 @@ const AvatarComponent = ({ radius, width, id }: AvatarModel) => {
                 color: Theme.colors.gray,
               }}
             >
-              Mahdi Alipoor
+              {username ? username : "Mahdi Alipoor"}
             </a>
           </Link>
         </p>
@@ -37,4 +48,4 @@ const AvatarComponent = ({ radius, width, id }: AvatarModel) => {
   );
 };
 
-export default AvatarComponent;
+export default AvatarShared;

@@ -6,7 +6,7 @@ import Icon from "shared/icons";
 import GridSharedComponent from "shared/grid";
 import { Theme } from "theme/theme";
 import ImageMetaComponent from "./images-meta";
-import { ADD_TO_COLLOCTION } from "constaints/Messages.const";
+import { ADD_TO_COLLOCTION } from "constaints/errors.const";
 
 let imageSrc =
   "https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80";
