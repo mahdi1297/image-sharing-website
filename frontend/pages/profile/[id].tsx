@@ -1,6 +1,6 @@
 import React from "react";
 import UserProfile from "components/user-profole";
-import HeaderLayout from "layout/basic-layouts/HeaderLayout";
+import HeaderLayout from "layout/basic-layouts";
 
 const ProfileDetailPage = () => {
   return (

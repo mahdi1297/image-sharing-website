@@ -1,4 +1,4 @@
-import HeaderLayout from "layout/basic-layouts/HeaderLayout";
+import HeaderLayout from "layout/basic-layouts";
 import React from "react";
 
 const ProfilePage = () => {
