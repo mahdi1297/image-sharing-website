@@ -63,7 +63,25 @@ class ImageApplication implements IIMageApplication {
 
   update: (_id: string, data: any) => Promise<any>;
 
-  getById: (_id: string) => Promise<any>;
+  async getById(req: express.Request, res: express.Response) {
+    const _id = req.params._id;
+
+    if (!_id) {
+      this._responseHandler.BadRequest(res, "_id is missed");
+    }
+
+    try {
+      const result = await this._repo.getById(_id);
+      console.log(result);
+
+      if (!result) {
+        this._responseHandler.NotFound(res, "No Image Here");
+      }
+      this._responseHandler.Ok(res, "Ok", result);
+    } catch (err) {
+      this._responseHandler.BadRequest(res, "Bad request");
+    }
+  }
 
   delete: (_id: string) => Promise<any>;
 

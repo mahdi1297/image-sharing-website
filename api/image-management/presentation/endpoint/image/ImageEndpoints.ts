@@ -13,7 +13,10 @@ class ImageEndpoints {
   get routers_v1() {
     var controller = this._controller;
 
-    route.get("/", controller.list).post("/", controller.create);
+    route
+      .get("/", controller.list)
+      .get("/:imageId/single", controller.getById)
+      .post("/", controller.create);
 
     return route;
   }
