@@ -4,10 +4,25 @@ import { MetaBody } from "../../../style";
 import ButtonComponent from "shared/button";
 import Icon from "shared/icons";
 import { Theme } from "theme/theme";
-import { metaDataSeed, tagsSeed } from "./dataSeed";
 import Link from "next/link";
+import { processMetaData } from "./dataSeed";
 
-const ImageMetaComponent = () => {
+const ImageMetaComponent = ({
+  tags,
+  title,
+  location,
+  creationDate,
+  likes,
+}: any) => {
+  // Get metaDatas
+
+
+  let metaData = processMetaData({
+    title: title,
+    location: location,
+    creationDate: creationDate,
+  });
+
   return (
     <>
       <MetaBody>
@@ -24,13 +39,13 @@ const ImageMetaComponent = () => {
               </ButtonComponent>
               <ButtonComponent color="light" size="md">
                 <Icon type="heart" size={14} color={Theme.colors.gray} />
-                <span>165</span>
+                <span>{likes}</span>
               </ButtonComponent>
             </AlignCenter>
           </div>
           <div>
             <ul>
-              {metaDataSeed.map((mt) => (
+              {metaData.map((mt) => (
                 <li key={mt.id}>
                   <div>
                     <Icon
@@ -45,13 +60,14 @@ const ImageMetaComponent = () => {
             </ul>
           </div>
           <ul className="tags">
-            {tagsSeed.map((t) => (
-              <li key={t.id}>
-                <Link href="/tag/tagSample">
-                  <a>{t.title}</a>
-                </Link>
-              </li>
-            ))}
+            {tags &&
+              tags.map((t: any, l: any) => (
+                <li key={l}>
+                  <Link href="/tag/tagSample">
+                    <a>{t}</a>
+                  </Link>
+                </li>
+              ))}
           </ul>
         </Grid>
       </MetaBody>

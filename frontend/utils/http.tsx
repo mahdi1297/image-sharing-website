@@ -1,76 +1,52 @@
-import axios, { Axios, AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 
-interface HttpType {
-  get(url: string, successMessage?: boolean): Promise<any>;
-  post(url: string, data?: any, successMessage?: boolean): Promise<any>;
-  put(url: string, data?: any, successMessage?: boolean): Promise<any>;
-  delete(url: string, data?: any, successMessage?: boolean): Promise<any>;
-  handleError(error: AxiosError): Promise<any>;
-}
+let baseUrl = "http://localhost:7000/v1/";
 
-class Http implements HttpType {
-  private readonly baseUrl: string = "http://localhost:8000/";
-
-  async get(url: string, successMessage: boolean = false) {
-    try {
-      const result = await axios.get(`${this.baseUrl}${url}`);
-      if (successMessage) {
-        console.log("this must show the success alert");
-      }
-      return result;
-    } catch (error: any) {
-      this.handleError(error);
+export async function httpGet(url: string, successMessage: boolean = false) {
+  try {
+    const result = await axios.get(`${baseUrl}${url}`);
+    if (successMessage) {
+      console.log("this must show the success alert");
     }
-  }
-
-  async post(url: string, data: any, successMessage: boolean): Promise<any> {
-    try {
-      const result = await axios.post(`${this.baseUrl}${url}`, data);
-      if (successMessage) {
-        console.log("this must show the success alert");
-      }
-      return result;
-    } catch (error: any) {
-      this.handleError(error);
-    }
-  }
-
-  async put(url: string, data: any, successMessage: boolean): Promise<any> {
-    try {
-      const result = await axios.put(`${this.baseUrl}${url}`, data);
-      if (successMessage) {
-        console.log("this must show the success alert");
-      }
-      return result;
-    } catch (error: any) {
-      this.handleError(error);
-    }
-  }
-
-  async delete(
-    url: string,
-    data?: any,
-    successMessage?: boolean
-  ): Promise<any> {
-    try {
-      const result = await axios.delete(`${this.baseUrl}${url}`, data);
-      if (successMessage) {
-        console.log("this must show the success alert");
-      }
-      return result;
-    } catch (error: any) {
-      this.handleError(error);
-    }
-  }
-
-  async handleError(error: AxiosError) {
-    const response = error.response;
-    console.log(response, error);
-  }
-
-  static {
-    console.log("this is static");
+    return result;
+  } catch (error: any) {
+    handleError(error);
   }
 }
 
-export default Http;
+export async function httpPost(
+  url: string,
+  data: any,
+  successMessage: boolean
+): Promise<any> {
+  try {
+    const result = await axios.post(`${url}`, data);
+    if (successMessage) {
+      console.log("this must show the success alert");
+    }
+    return result.data;
+  } catch (error: any) {
+    handleError(error);
+  }
+}
+
+export async function httpPut(
+  url: string,
+  data: any,
+  successMessage: boolean
+): Promise<any> {
+  try {
+    const result = await axios.put(`${baseUrl}${url}`, data);
+    if (successMessage) {
+      console.log("this must show the success alert");
+    }
+    return result;
+  } catch (error: any) {
+    handleError(error);
+  }
+}
+
+async function handleError(error: AxiosError) {
+  const response = error.response;
+  console.log(response, error);
+}

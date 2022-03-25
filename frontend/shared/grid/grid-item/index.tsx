@@ -28,7 +28,7 @@ const GridItemComponent = ({ data, showMeta }: any) => {
             <a>
               <img src={data.linkes.path} />
             </a>
-          </Link>
+          </Link> 
           {showMeta && (
             <div className="mItem-meta">
               <AlignCenter>

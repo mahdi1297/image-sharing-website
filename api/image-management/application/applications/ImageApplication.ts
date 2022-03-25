@@ -23,10 +23,11 @@ class ImageApplication implements IIMageApplication {
         "userId",
         "title",
         "likes",
+        "linkes",
         "downloads",
         "alt",
         "path",
-        "user.username",
+        "user",
       ];
 
       const result = await this._repo.list(itemsToShow);
@@ -63,23 +64,41 @@ class ImageApplication implements IIMageApplication {
 
   update: (_id: string, data: any) => Promise<any>;
 
-  async getById(req: express.Request, res: express.Response) {
-    const _id = req.params._id;
+  async getRelated(req: express.Request, res: express.Response): Promise<any> {
+    const { tags } = req.body;
 
-    if (!_id) {
+    if (!tags) {
+      return this._responseHandler.BadRequest(res, "Tags are required");
+    }
+
+    try {
+      const result = await this._repo.getRelated(tags);
+      if (!result) {
+        return this._responseHandler.NotFound(res, "No images");
+      }
+
+      return this._responseHandler.Ok(res, "Ok", result);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async getById(req: express.Request, res: express.Response) {
+    const imageId = req.params.imageId;
+
+    if (!imageId) {
       this._responseHandler.BadRequest(res, "_id is missed");
     }
 
     try {
-      const result = await this._repo.getById(_id);
-      console.log(result);
+      const result = await this._repo.getById(imageId);
 
       if (!result) {
-        this._responseHandler.NotFound(res, "No Image Here");
+        return this._responseHandler.NotFound(res, "No Image Here");
       }
       this._responseHandler.Ok(res, "Ok", result);
     } catch (err) {
-      this._responseHandler.BadRequest(res, "Bad request");
+      return this._responseHandler.BadRequest(res, "Something bad happend");
     }
   }
 

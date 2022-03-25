@@ -5,8 +5,8 @@ import ImagesComments from "./components/ImagesComments";
 import UserImages from "./components/UserImages";
 import { TabModel } from "./tabData";
 
-const ImagesContentComponent = () => {
-  const [selectedTab, setSelectedTab] = useState<number>(1);
+const ImagesContentComponent = ({ tags }: any) => {
+  const [selectedTab, setSelectedTab] = useState(1);
 
   return (
     <ContentWrapper>
@@ -15,8 +15,8 @@ const ImagesContentComponent = () => {
         tab={selectedTab}
         setTab={setSelectedTab}
       />
-      {selectedTab === 1 && <UserImages />}
-      {selectedTab === 2 && <ImagesComments />}
+      {/* {selectedTab === 1 && <UserImages />}
+      {selectedTab === 2 && <ImagesComments />} */}
     </ContentWrapper>
   );
 };

@@ -1,5 +1,3 @@
-// import type { NextPage } from "next";
-import axios, { Axios } from "axios";
 import dynamic from "next/dynamic";
 import homeService from "services/homeService";
 
@@ -14,8 +12,6 @@ const HomeComponent = dynamic(() => import("components/home"), {
 const Home: any = ({ images }: any) => {
   return <HomeComponent images={images} />;
 };
-
-Home.Layout = HeaderLayout;
 
 export async function getServerSideProps(context: any) {
   try {
@@ -32,5 +28,7 @@ export async function getServerSideProps(context: any) {
     };
   }
 }
+
+Home.Layout = HeaderLayout;
 
 export default Home;
