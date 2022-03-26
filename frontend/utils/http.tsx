@@ -4,7 +4,7 @@ let baseUrl = "http://localhost:7000/v1/";
 
 export async function httpGet(url: string, successMessage: boolean = false) {
   try {
-    const result = await axios.get(`${baseUrl}${url}`);
+    const result = await axios.get(`${url}`);
     if (successMessage) {
       console.log("this must show the success alert");
     }

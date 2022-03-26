@@ -82,6 +82,29 @@ class ImageApplication implements IIMageApplication {
       console.log(err);
     }
   }
+  async getListByUsername(
+    req: express.Request,
+    res: express.Response
+  ): Promise<any> {
+    const { username } = req.params;
+
+    if (!username) {
+      return this._responseHandler.BadRequest(res, "Bad Requst");
+    }
+
+    try {
+      const result = await this._repo.getListByUsername(username);
+
+      if (!result) {
+        return this._responseHandler.NotFound(res, "Not Found");
+      }
+
+      return this._responseHandler.Ok(res, "Ok", result, result.length);
+    } catch (err) {
+      console.log(err);
+      return this._responseHandler.NotFound(res, "Not Found");
+    }
+  }
 
   async getById(req: express.Request, res: express.Response) {
     const imageId = req.params.imageId;

@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { SCROLL_DOWN, SCROLL_UP } from "constaints/consts";
 
 const useScrollDirection = () => {
@@ -11,7 +11,7 @@ const useScrollDirection = () => {
     scrollableElement = document.body;
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     // Sets scroll direction state
     const checkScrollDirection = (event: any) => {
       if (checkScrollIsUp(event)) {

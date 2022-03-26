@@ -15,6 +15,10 @@ class ImageController {
     const _app = new ImageApplication();
     await _app.getRelated(req, res);
   }
+  async getListByUsername(req: express.Request, res: express.Response) {
+    const _app = new ImageApplication();
+    await _app.getListByUsername(req, res);
+  }
 
   async create(req: express.Request, res: express.Response) {
     const _app = new ImageApplication();
