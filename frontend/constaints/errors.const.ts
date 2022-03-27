@@ -23,3 +23,18 @@ export const ALT_IMAGE_MINLENGTH_ERROR =
   "Alternative text must be at least 3 characters";
 export const ALT_IMAGE_MAXLENGTH_ERROR =
   "Alternative text must be at less than 350 characters";
+
+export const COLOR_IMAGE_REQUIRED_ERROR = "Image color text is required";
+export const COLOR_IMAGE_MINLENGTH_ERROR =
+  "Image color must be at least 3 characters";
+export const COLOR_IMAGE_MAXLENGTH_ERROR =
+  "Image color must be at less than 10 characters";
+
+export const COUNTRY_REQUIRED_ERROR = "Country text is required";
+export const COUNTRY_MINLENGTH_ERROR = "Country must be at least 2 characters";
+export const COUNTRY_MAXLENGTH_ERROR =
+  "Country must be at less than 50 characters";
+
+export const CITY_REQUIRED_ERROR = "City text is required";
+export const CITY_MINLENGTH_ERROR = "City must be at least 2 characters";
+export const CITY_MAXLENGTH_ERROR = "City must be at less than 50 characters";

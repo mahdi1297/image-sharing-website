@@ -2,6 +2,13 @@ import {
   ALT_IMAGE,
   ALT_IMAGE_LABEL,
   ALT_IMAGE_PLACEHOLDER,
+  CITY,
+  CITY_LABEL,
+  CITY_PLACEHOLDER,
+  COLOR_IMAGE,
+  COUNTRY,
+  COUNTRY_LABEL,
+  COUNTRY_PLACEHOLDER,
   DESCRIPTION,
   DESCRIPTION_LABEL,
   DESCRIPTION_PLACEHOLDER,
@@ -14,6 +21,15 @@ import {
   ALT_IMAGE_MAXLENGTH_ERROR,
   ALT_IMAGE_MINLENGTH_ERROR,
   ALT_IMAGE_REQUIRED_ERROR,
+  CITY_MAXLENGTH_ERROR,
+  CITY_MINLENGTH_ERROR,
+  CITY_REQUIRED_ERROR,
+  COLOR_IMAGE_MAXLENGTH_ERROR,
+  COLOR_IMAGE_MINLENGTH_ERROR,
+  COLOR_IMAGE_REQUIRED_ERROR,
+  COUNTRY_MAXLENGTH_ERROR,
+  COUNTRY_MINLENGTH_ERROR,
+  COUNTRY_REQUIRED_ERROR,
   DESCRIPTION_MAXLENGTH_ERROR,
   DESCRIPTION_MINLENGTH_ERROR,
   DESCRIPTION_REQUIRED_ERROR,
@@ -80,4 +96,63 @@ export const formStructure = [
       },
     },
   },
+  {
+    id: 4,
+    type: TEXT,
+    size: "50%",
+    name: COLOR_IMAGE,
+    placeholder: ALT_IMAGE_PLACEHOLDER,
+    label: ALT_IMAGE_LABEL,
+    validation: {
+      required: COLOR_IMAGE_REQUIRED_ERROR,
+      minLength: {
+        value: 3,
+        message: COLOR_IMAGE_MINLENGTH_ERROR,
+      },
+      maxLength: {
+        value: 10,
+        message: COLOR_IMAGE_MAXLENGTH_ERROR,
+      },
+    },
+  },
+  {
+    id: 5,
+    type: TEXT,
+    size: "50%",
+    name: COUNTRY,
+    placeholder: COUNTRY_PLACEHOLDER,
+    label: COUNTRY_LABEL,
+    validation: {
+      required: COUNTRY_REQUIRED_ERROR,
+      minLength: {
+        value: 2,
+        message: COUNTRY_MINLENGTH_ERROR,
+      },
+      maxLength: {
+        value: 50,
+        message: COUNTRY_MAXLENGTH_ERROR,
+      },
+    },
+  },
+  {
+    id: 6,
+    type: TEXT,
+    size: "50%",
+    name: CITY,
+    placeholder: CITY_PLACEHOLDER,
+    label: CITY_LABEL,
+    validation: {
+      required: CITY_REQUIRED_ERROR,
+      minLength: {
+        value: 2,
+        message: CITY_MINLENGTH_ERROR,
+      },
+      maxLength: {
+        value: 50,
+        message: CITY_MAXLENGTH_ERROR,
+      },
+    },
+  },
 ];
+
+//React-leaflet

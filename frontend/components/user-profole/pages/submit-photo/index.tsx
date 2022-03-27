@@ -1,5 +1,5 @@
 import { sign } from "crypto";
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "shared/common/style";
 import FormSharedComponent from "shared/form";
 import { formStructure } from "./formStructure";
@@ -18,16 +18,18 @@ const SubmitPhoto = () => {
     console.log(data);
   };
 
+  const [isClicked, setIsClicked] = useState(false);
+
   return (
     <div>
-      <Container>
+      <Container className={isClicked ? "display-block-class" : ""}>
         <form onSubmit={handleSubmit(createImageSubmitHandler)}>
           <FormSharedComponent
             data={formStructure}
             register={register}
             errors={errors}
-            // errors={errors?.[inp.name]}
           />
+          <input type="file" {...register("image")} />
           <ButtonComponent color={PRIMARY} size={XL}>
             Submit Image
           </ButtonComponent>

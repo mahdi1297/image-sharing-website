@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Theme } from "theme/theme";
-import { AlignCenter, Justify } from "shared/common/style";
 import GridShared from "shared/grid";
 import ButtonComponent from "shared/button";
 import AvatarComponent from "shared/avatar";
 import Icon from "shared/icons";
 import ImageMetaComponent from "./images-meta";
 import { getRelatedImages } from "./service";
+import { Theme } from "theme/theme";
+import { AlignCenter, Justify } from "shared/common/style";
 import { ADD_TO_COLLOCTION } from "constaints/errors.const";
 
 const ImageMainComponent = ({ data }: any) => {
