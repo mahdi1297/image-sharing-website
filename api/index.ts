@@ -5,7 +5,7 @@ import BaseRoutes from "./BaseRoutes";
 import path from "path";
 import morgan from "morgan";
 import * as dotenv from "dotenv";
-import { S3Client } from "@aws-sdk/client-s3";
+import busboy from "connect-busboy";
 
 const cors = require("cors");
 
@@ -28,6 +28,7 @@ app
   )
   .use(express.json({ limit: "50mb" }))
   .use(express.urlencoded({ limit: "50mb" }))
+  .use(busboy())
   .use(helmet())
   .use(cookieParser())
   .use(morgan("dev"));

@@ -3,14 +3,16 @@ import CreateImage from "../../domain/image/dtos/CreateImage";
 import IIMageApplication from "../application.contracts/image/IImageApplication";
 import ResponseHandler from "../../../0-framework/response-handler";
 import express from "express";
+import S3Uploader from "../../../0-framework/s3-uploader";
 
-class ImageApplication implements IIMageApplication {
+class ImageApplication extends S3Uploader implements IIMageApplication {
   private _repo: ImageRepository;
   private _responseHandler: ResponseHandler;
 
   abrAravanEndpoint: string = "https://s3.ir-thr-at1.arvanstorage.com";
 
   constructor() {
+    super();
     this._repo = new ImageRepository();
     this._responseHandler = new ResponseHandler();
 
@@ -142,6 +144,22 @@ class ImageApplication implements IIMageApplication {
     //   ACL: "public-read", // 'private' | 'public-read'
     //   Body: "BODY",
     // };
+  }
+
+  async Upload(req: any, res: any) {
+    // const { file } = req.file;
+
+    try {
+      if (req.busboy) {
+        req.busboy.on("file", (name, file, info) => {
+          this.UploadImage(res, file, info.filename);
+        });
+        req.pipe(req.busboy);
+      }
+      res.json({ Message: "Ok" });
+    } catch (err) {
+      return res.json({ status: 400, error: err });
+    }
   }
 }
 

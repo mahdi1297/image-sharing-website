@@ -1,14 +1,24 @@
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import homeService from "services/homeService";
+import { SkeletonLoaderShared } from "shared/loader";
 import Modal from "shared/modal";
 
 const HeaderLayout = dynamic(() => import("layout/basic-layouts"), {
   loading: () => <p>Loading...</p>,
 });
 
+// const HomeComponent = dynamic(() => import("components/home"), {
+//   loading: () => <p>Loading...</p>,
+// });
+
 const HomeComponent = dynamic(() => import("components/home"), {
-  loading: () => <p>Loading...</p>,
+  ssr: false,
+  loading: () => (
+    <>
+      <SkeletonLoaderShared />
+    </>
+  ),
 });
 
 const Home: any = ({ images }: any) => {

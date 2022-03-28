@@ -1,7 +1,9 @@
+import SelectShared from "shared/select";
+
 const Accounts = () => {
   return (
     <>
-      <div></div>
+      <SelectShared />
     </>
   );
 };

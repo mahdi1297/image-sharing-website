@@ -24,6 +24,11 @@ class ImageController {
     const _app = new ImageApplication();
     await _app.create(req, res);
   }
+
+  async upload(req: express.Request, res: express.Response) {
+    const _app = new ImageApplication();
+    await _app.Upload(req, res);
+  }
 }
 
 export default ImageController;
