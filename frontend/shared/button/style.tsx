@@ -20,6 +20,11 @@ const ButtonBody = styled.button<ButtonStyleModel>`
   & svg {
     margin-right: 5px;
   }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 50%;
+  }
 `;
 
 export { ButtonBody };

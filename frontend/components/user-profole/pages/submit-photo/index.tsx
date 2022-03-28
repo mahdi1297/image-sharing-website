@@ -1,40 +1,48 @@
-import { sign } from "crypto";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "shared/common/style";
-import FormSharedComponent from "shared/form";
-import { formStructure } from "./formStructure";
-import { useForm } from "react-hook-form";
-import ButtonComponent from "shared/button";
-import { PRIMARY, XL } from "constaints/consts";
+import MultiStep from "shared/multi-step";
+import CreateImageContext from "./context";
+import { multiStepData } from "./multiStepData";
+
+/* eslint-disable react-hooks/exhaustive-deps */
 
 const SubmitPhoto = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const [tabWindow, setTabWindow] = useState(1);
+  const [multiLevelTab, setMultiLevelTab] = useState([]);
+  const [imageData, setImageData] = useState([]);
 
-  const createImageSubmitHandler = (data: object) => {
-    console.log(data);
-  };
+  let steps: any = multiStepData(
+    setNextWindowHandler,
+    setPrevWindowHandler,
+    setImageData
+  );
 
-  const [isClicked, setIsClicked] = useState(false);
+  useEffect(() => {
+    setMultiLevelTab(steps);
+  }, []);
+
+  function setNextWindowHandler() {
+    setTabWindow(2);
+  }
+  function setPrevWindowHandler() {
+    setTabWindow(1);
+  }
 
   return (
     <div>
-      <Container className={isClicked ? "display-block-class" : ""}>
-        <form onSubmit={handleSubmit(createImageSubmitHandler)}>
-          <FormSharedComponent
-            data={formStructure}
-            register={register}
-            errors={errors}
+      <CreateImageContext.Provider
+        value={{
+          images: imageData,
+        }}
+      >
+        <Container>
+          <MultiStep
+            multiLevelTab={multiLevelTab}
+            tabWindow={tabWindow}
+            setTabWindow={setTabWindow}
           />
-          <input type="file" {...register("image")} />
-          <ButtonComponent color={PRIMARY} size={XL}>
-            Submit Image
-          </ButtonComponent>
-        </form>
-      </Container>
+        </Container>
+      </CreateImageContext.Provider>
     </div>
   );
 };

@@ -48,4 +48,11 @@ const Grid = styled.div<IGrid>`
   align-items: ${(p) => (p.align ? p.align : "center")};
 `;
 
-export { Wrapper, Container, Center, AlignCenter, Justify, Grid };
+const CardFooter = styled.div`
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export { Wrapper, Container, Center, AlignCenter, Justify, Grid, CardFooter };

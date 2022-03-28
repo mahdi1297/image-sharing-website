@@ -7,6 +7,10 @@ export const REGISTER_MODE = "REGISTER";
 export const TEXT = "text";
 export const TEXTAREA = "textarea";
 
+// Button types
+export const SUBMIT = "submit";
+export const BUTTON = "button";
+
 // Colors
 export const PRIMARY = "primary";
 export const SUCCRSS = "success";
