@@ -26,6 +26,7 @@ const Home: any = ({ images }: any) => {
 
   return (
     <>
+      <img src="https://imagepicker.s3.ir-thr-at1.arvanstorage.com/justin-yeung-DQVizJTIKxM-unspl ash.jpg" />
       <button onClick={() => setShowModal(true)}>Open Modal</button>
       <Modal onClose={() => setShowModal(false)} show={showModal}>
         Hello from the modal!

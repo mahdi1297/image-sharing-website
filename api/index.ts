@@ -6,8 +6,9 @@ import path from "path";
 import morgan from "morgan";
 import * as dotenv from "dotenv";
 import busboy from "connect-busboy";
+import fileUpload from "express-fileupload";
 
-const cors = require("cors");
+import cors from "cors";
 
 const app = express();
 
@@ -30,6 +31,7 @@ app
   .use(express.urlencoded({ limit: "50mb" }))
   .use(busboy())
   .use(helmet())
+  .use(fileUpload())
   .use(cookieParser())
   .use(morgan("dev"));
 

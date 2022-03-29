@@ -4,6 +4,14 @@ import IIMageApplication from "../application.contracts/image/IImageApplication"
 import ResponseHandler from "../../../0-framework/response-handler";
 import express from "express";
 import S3Uploader from "../../../0-framework/s3-uploader";
+import sharp from "sharp";
+import { FileUploaderHelper } from "../../../0-framework/helper/file-uploader/FileUploader";
+import { v4 as uuidv4 } from "uuid";
+import fileUpload from "express-fileupload";
+
+const app = express();
+
+app.use(fileUpload());
 
 class ImageApplication extends S3Uploader implements IIMageApplication {
   private _repo: ImageRepository;
@@ -150,14 +158,24 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
     // const { file } = req.file;
 
     try {
-      if (req.busboy) {
-        req.busboy.on("file", (name, file, info) => {
-          this.UploadImage(res, file, info.filename);
-        });
-        req.pipe(req.busboy);
+      if (req.files && req.files.main_file !== null) {
+        const imageStorageId = uuidv4();
+        let date = new Date();
+
+        let resizedFile = await sharp(req.files.main_file.data)
+          .toFormat("jpeg")
+          .jpeg({ quality: 70 });
+
+        await this.UploadImage(
+          res,
+          resizedFile,
+          `${imageStorageId}-${date.getMilliseconds()}-${Math.random()}-${
+            req.files.main_file.name
+          }`
+        );
       }
-      res.json({ Message: "Ok" });
     } catch (err) {
+      console.log(err);
       return res.json({ status: 400, error: err });
     }
   }
