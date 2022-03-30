@@ -5,5 +5,7 @@ export default interface IIMageApplication {
   create: (req: express.Request, res: express.Response) => Promise<any>;
   update: (_id: string, data: any) => Promise<any>;
   getById: (req: express.Request, res: express.Response) => any;
+  getRelated: (req: express.Request, res: express.Response) => any;
+  getListByUsername: (req: express.Request, res: express.Response) => any;
   delete: (_id: string) => Promise<any>;
 }

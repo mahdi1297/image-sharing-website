@@ -3,6 +3,10 @@ export interface ButtomModel {
   children: any;
   color?: string;
   block?: boolean;
+  onClick?: any;
+  onclick?: any;
+  disabled?: boolean;
+  type?: string;
 }
 
 export interface ButtonStyleModel {
@@ -11,4 +15,6 @@ export interface ButtonStyleModel {
   size?: string;
   borderColor?: string;
   block?: boolean;
+  className?: string;
+  type?: string;
 }

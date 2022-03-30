@@ -1,21 +1,37 @@
-// import type { NextPage } from "next";
-import axios, { Axios } from "axios";
+import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import homeService from "services/homeService";
+import { SkeletonLoaderShared } from "shared/loader";
 
 const HeaderLayout = dynamic(() => import("layout/basic-layouts"), {
   loading: () => <p>Loading...</p>,
 });
 
 const HomeComponent = dynamic(() => import("components/home"), {
-  loading: () => <p>Loading...</p>,
+  ssr: false,
+  loading: () => (
+    <>
+      <SkeletonLoaderShared />
+    </>
+  ),
 });
 
 const Home: any = ({ images }: any) => {
-  return <HomeComponent images={images} />;
-};
+  // const [showModal, setShowModal] = useState(false);
 
-Home.Layout = HeaderLayout;
+  return (
+    <>
+      {/* <img src="https://imagepicker.s3.ir-thr-at1.arvanstorage.com/justin-yeung-DQVizJTIKxM-unspl ash.jpg" /> */}
+      {/* <button onClick={() => setShowModal(true)}>Open Modal</button>
+      <Modal onClose={() => setShowModal(false)} show={showModal}>
+        Hello from the modal!
+      </Modal> */}
+      <Suspense fallback={<SkeletonLoaderShared />}>
+        <HomeComponent images={images} />
+      </Suspense>
+    </>
+  );
+};
 
 export async function getServerSideProps(context: any) {
   try {
@@ -32,5 +48,7 @@ export async function getServerSideProps(context: any) {
     };
   }
 }
+
+Home.Layout = HeaderLayout;
 
 export default Home;

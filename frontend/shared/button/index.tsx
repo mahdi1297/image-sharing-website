@@ -13,7 +13,15 @@ import {
   XL,
 } from "constaints/consts";
 
-const ButtonShared = ({ children, size, color, block }: ButtomModel) => {
+const ButtonShared = ({
+  children,
+  size,
+  color,
+  block,
+  onclick,
+  disabled,
+  type,
+}: ButtomModel) => {
   let colorName, bgColor, sizeNumber, borderColor;
 
   switch (size) {
@@ -26,6 +34,16 @@ const ButtonShared = ({ children, size, color, block }: ButtomModel) => {
     case MD:
       sizeNumber = "5px 15px";
       break;
+  }
+
+  function setButtonType(
+    colorName: string,
+    borderColor: string,
+    bgColor: string
+  ) {
+    colorName = colorName;
+    borderColor = borderColor;
+    bgColor = bgColor;
   }
 
   switch (color) {
@@ -57,11 +75,15 @@ const ButtonShared = ({ children, size, color, block }: ButtomModel) => {
 
   return (
     <ButtonBody
+      className={disabled ? "disabled" : ""}
       bgColor={bgColor}
       borderColor={borderColor}
       colorName={colorName}
       size={sizeNumber}
       block={block}
+      onClick={onclick}
+      disabled={disabled}
+      type={type}
     >
       {children}
     </ButtonBody>

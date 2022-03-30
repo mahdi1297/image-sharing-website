@@ -4,16 +4,16 @@ import ImagesContentComponent from "./components/content";
 import { Container } from "shared/common/style";
 import { Body, Head } from "./style";
 
-const ImagesComponent = () => {
+const ImagesComponent = ({ image }: any) => {
   return (
     <>
       <Container>
         <Body>
           <Head>
             <div className="images_main-image">
-              <ImageMainComponent />
+              <ImageMainComponent data={image} />
             </div>
-            <ImagesContentComponent />
+            <ImagesContentComponent tags={image.tags} />
           </Head>
         </Body>
       </Container>

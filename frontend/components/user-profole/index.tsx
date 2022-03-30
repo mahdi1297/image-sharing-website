@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { Container } from "shared/common/style";
-import GridSharedComponent from "shared/grid";
 import TabSharedComponent from "shared/tab";
 import ProfileHead from "./components/head";
+// import ProfileImages from "./components/images";
 import { userProfileTabs } from "./tabData";
 
-const UserProfile = () => {
+const ProfileImages = dynamic(() => import("./components/images"));
+
+const UserProfile = ({ slug }: any) => {
   const [tab, setTab] = useState<number>(1);
 
   return (
@@ -16,7 +19,7 @@ const UserProfile = () => {
       {/* content */}
       <TabSharedComponent data={userProfileTabs} tab={tab} setTab={setTab} />
 
-      {tab === 1 && <GridSharedComponent showMeta />}
+      {tab === 1 && <ProfileImages slug={slug} />}
     </Container>
   );
 };

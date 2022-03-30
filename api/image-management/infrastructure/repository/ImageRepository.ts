@@ -6,7 +6,7 @@ class ImageRepository implements IImageRepository {
   private _context = ImageContext;
 
   async list(itemsToShow: any): Promise<any> {
-    return await this._context.find({}).lean();
+    return await this._context.find({}, itemsToShow).lean();
   }
 
   async create(data: CreateImage): Promise<any> {
@@ -19,6 +19,14 @@ class ImageRepository implements IImageRepository {
 
   async getById(_id: string) {
     return await this._context.findOne({ _id });
+  }
+
+  async getRelated(tags: any) {
+    return await this._context.find({ tags: { $in: tags } });
+  }
+
+  async getListByUsername(username: string) {
+    return await this._context.find({ "user.username": username });
   }
 
   async delete(_id: string) {}

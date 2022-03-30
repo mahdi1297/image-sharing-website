@@ -5,9 +5,10 @@ import BaseRoutes from "./BaseRoutes";
 import path from "path";
 import morgan from "morgan";
 import * as dotenv from "dotenv";
-import { S3Client } from "@aws-sdk/client-s3";
+import busboy from "connect-busboy";
+import fileUpload from "express-fileupload";
 
-const cors = require("cors");
+import cors from "cors";
 
 const app = express();
 
@@ -22,13 +23,15 @@ app.use(express.static("public"));
 app
   .use(
     cors({
-      origin: ["http://127.0.0.1:8080"],
+      origin: ["http://127.0.0.1:8080", "http://localhost:3000"],
       optionsSuccessStatus: 200,
     })
   )
   .use(express.json({ limit: "50mb" }))
   .use(express.urlencoded({ limit: "50mb" }))
+  .use(busboy())
   .use(helmet())
+  .use(fileUpload())
   .use(cookieParser())
   .use(morgan("dev"));
 

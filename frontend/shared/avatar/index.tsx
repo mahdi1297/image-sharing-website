@@ -13,12 +13,14 @@ const AvatarShared = ({
   username,
   profile,
 }: AvatarModel) => {
+  //
+
   return (
     <AvatarBody radius={radius} width={width}>
       <AlignCenter>
         <div className="ph_user-image">
           <AlignCenter>
-            <Link href={`/profile/${id}`}>
+            <Link href={`/profile/${username}`}>
               <a>
                 {/* <img
                   src={
@@ -31,7 +33,7 @@ const AvatarShared = ({
           </AlignCenter>
         </div>
         <p style={{ paddingBottom: "3px" }}>
-          <Link href={`/profile/${id}`}>
+          <Link href={`/profile/${username}`}>
             <a
               style={{
                 fontSize: "14px",

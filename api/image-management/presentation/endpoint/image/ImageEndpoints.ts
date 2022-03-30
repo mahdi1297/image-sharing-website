@@ -16,7 +16,10 @@ class ImageEndpoints {
     route
       .get("/", controller.list)
       .get("/:imageId/single", controller.getById)
-      .post("/", controller.create);
+      .get("/:username/profile", controller.getListByUsername)
+      .post("/related", controller.getRelated)
+      .post("/", controller.create)
+      .post("/upload", controller.upload);
 
     return route;
   }

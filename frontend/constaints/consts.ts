@@ -7,6 +7,10 @@ export const REGISTER_MODE = "REGISTER";
 export const TEXT = "text";
 export const TEXTAREA = "textarea";
 
+// Button types
+export const SUBMIT = "submit";
+export const BUTTON = "button";
+
 // Colors
 export const PRIMARY = "primary";
 export const SUCCRSS = "success";
@@ -52,3 +56,15 @@ export const DESCRIPTION_PLACEHOLDER = "Description placeholder";
 export const ALT_IMAGE = "alt";
 export const ALT_IMAGE_LABEL = "Alternative text";
 export const ALT_IMAGE_PLACEHOLDER = "Image alternative text";
+
+export const COLOR_IMAGE = "color";
+export const COLOR_IMAGE_LABEL = "Color";
+export const COLOR_IMAGE_PLACEHOLDER = "#ccc";
+
+export const COUNTRY = "country";
+export const COUNTRY_LABEL = "Country";
+export const COUNTRY_PLACEHOLDER = "IRAN";
+
+export const CITY = "city";
+export const CITY_LABEL = "City";
+export const CITY_PLACEHOLDER = "Qom";

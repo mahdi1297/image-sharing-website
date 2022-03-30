@@ -70,6 +70,7 @@ const UserDataStyle = styled.div`
 
   & div.user-ctas {
     margin-top: 25px;
+    display: flex;
 
     & button {
       border: none;
