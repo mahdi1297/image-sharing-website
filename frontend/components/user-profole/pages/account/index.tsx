@@ -1,11 +1,5 @@
-import SelectShared from "shared/select";
-
 const Accounts = () => {
-  return (
-    <>
-      <SelectShared />
-    </>
-  );
+  return <></>;
 };
 
 export default Accounts;

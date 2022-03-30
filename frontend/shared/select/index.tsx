@@ -1,31 +1,36 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
+import { SelectBody } from "./style";
+import { categoryOptions } from "constaints/data.const";
+import ErrorShared from "shared/error";
 
 const Select = dynamic(() => import("react-select"), {
   ssr: false,
   loading: () => <h1>Loading....</h1>,
 });
 
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
-
-const SelectShared = () => {
-  const [selectedOption, setSelectedOption] = useState<any>([]);
-
+const SelectShared = ({
+  selectedOption,
+  setSelectedOption,
+  label,
+  isSubmitted,
+}: any) => {
   return (
-    <div>
+    <SelectBody>
+      <div className="label">{label}</div>
       <Select
         defaultValue={selectedOption}
-        onChange={(e: any) => {
-          console.log(e);
-          setSelectedOption(e.value);
-        }}
-        options={options}
+        isMulti
+        name="colors"
+        onChange={(e) => setSelectedOption(e)}
+        options={categoryOptions}
+        className="basic-multi-select"
+        classNamePrefix="select"
       />
-    </div>
+      {isSubmitted && selectedOption.length === 0 && (
+        <ErrorShared message="Categories filed is required" />
+      )}
+    </SelectBody>
   );
 };
 
