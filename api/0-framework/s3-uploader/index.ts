@@ -44,7 +44,12 @@ export default class S3Uploader {
       }
     };
 
-    run();
+    try {
+      run();
+      return "ok";
+    } catch (err) {
+      return "false";
+    }
   }
 }
 

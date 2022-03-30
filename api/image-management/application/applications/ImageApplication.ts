@@ -155,8 +155,6 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
   }
 
   async Upload(req: any, res: any) {
-    // const { file } = req.file;
-
     try {
       if (req.files && req.files.main_file !== null) {
         const imageStorageId = uuidv4();
@@ -164,15 +162,67 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
 
         let resizedFile = await sharp(req.files.main_file.data)
           .toFormat("jpeg")
-          .jpeg({ quality: 70 });
+          .jpeg({ quality: 75 });
 
-        await this.UploadImage(
-          res,
-          resizedFile,
-          `${imageStorageId}-${date.getMilliseconds()}-${Math.random()}-${
-            req.files.main_file.name
-          }`
-        );
+        const resizedFile_avif = await sharp(req.files.main_file.data)
+          .ensureAlpha()
+          .extractChannel(3)
+          .toColourspace("b-w")
+          .raw({ depth: "ushort" })
+          .toBuffer();
+
+        let imageName = `${imageStorageId}-${date.getMilliseconds()}-${Math.random()}-${
+          req.files.main_file.name
+        }`;
+
+        let tagItems = req.body.tags.split(",");
+
+        const imageDataToSave: CreateImage = {
+          userId: req.body.userId,
+          title: req.body.title,
+          description: req.body.description,
+          alt: req.body.alt,
+          color: req.body.color,
+          tags: tagItems,
+          user: {
+            username: req.body.username,
+            profile: req.body.profile,
+          },
+          linkes: {
+            download_link: `https://imagepicker.s3.ir-thr-at1.arvanstorage.com/${imageName}`,
+            path: `https://imagepicker.s3.ir-thr-at1.arvanstorage.com/${imageName}`,
+          },
+          location: {
+            country: req.body.country,
+            city: req.body.city,
+          },
+        };
+
+        await this.UploadImage(res, resizedFile, "avif-minivifed_______");
+
+        this.UploadImage(res, resizedFile, imageName)
+          .then(async (uploadResponse) => {
+            // const result = await this._repo.create(imageDataToSave);
+
+            // if (!result) {
+            //   return this._responseHandler.BadRequest(
+            //     res,
+            //     "Something bad happened"
+            //   );
+            // }
+            return this._responseHandler.Ok(
+              res,
+              "Image Submited Successfully",
+              // result
+              {}
+            );
+          })
+          .catch((error: any) => {
+            return this._responseHandler.BadRequest(
+              res,
+              "Problem happend while uploading your image"
+            );
+          });
       }
     } catch (err) {
       console.log(err);

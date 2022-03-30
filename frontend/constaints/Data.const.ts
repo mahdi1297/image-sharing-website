@@ -18,4 +18,6 @@ export const categoryOptions = [
   { value: "ocean", label: "ocean" },
   { value: "wood", label: "wood" },
   { value: "stone", label: "stone" },
+  { value: "animal", label: "animal" },
+  { value: "wild animals", label: "wild animals" },
 ];

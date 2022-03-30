@@ -6,6 +6,8 @@ import {
   CITY_LABEL,
   CITY_PLACEHOLDER,
   COLOR_IMAGE,
+  COLOR_IMAGE_LABEL,
+  COLOR_IMAGE_PLACEHOLDER,
   COUNTRY,
   COUNTRY_LABEL,
   COUNTRY_PLACEHOLDER,
@@ -101,8 +103,8 @@ export const formStructure = [
     type: TEXT,
     size: "50%",
     name: COLOR_IMAGE,
-    placeholder: ALT_IMAGE_PLACEHOLDER,
-    label: ALT_IMAGE_LABEL,
+    placeholder: COLOR_IMAGE_PLACEHOLDER,
+    label: COLOR_IMAGE_LABEL,
     validation: {
       required: COLOR_IMAGE_REQUIRED_ERROR,
       minLength: {

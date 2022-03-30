@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import homeService from "services/homeService";
 import { SkeletonLoaderShared } from "shared/loader";
@@ -20,12 +21,14 @@ const Home: any = ({ images }: any) => {
 
   return (
     <>
-      <img src="https://imagepicker.s3.ir-thr-at1.arvanstorage.com/justin-yeung-DQVizJTIKxM-unspl ash.jpg" />
+      {/* <img src="https://imagepicker.s3.ir-thr-at1.arvanstorage.com/justin-yeung-DQVizJTIKxM-unspl ash.jpg" /> */}
       {/* <button onClick={() => setShowModal(true)}>Open Modal</button>
       <Modal onClose={() => setShowModal(false)} show={showModal}>
         Hello from the modal!
       </Modal> */}
-      <HomeComponent images={images} />
+      <Suspense fallback={<SkeletonLoaderShared />}>
+        <HomeComponent images={images} />
+      </Suspense>
     </>
   );
 };

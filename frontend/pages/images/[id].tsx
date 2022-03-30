@@ -25,7 +25,7 @@ export async function getServerSideProps({ params }: any) {
     };
   }
 
-  const response = await getImageService(params.id);
+  const response: any = await getImageService(params.id);
 
   if (response.status !== 200) {
     return {

@@ -8,6 +8,11 @@ const nextConfig = {
       "www.w3schools.com",
     ],
   },
+  swcMinify: true,
+  experimental: {
+    concurrentFeatures: true,
+    serverComponents: true,
+  },
 };
 
 module.exports = nextConfig;

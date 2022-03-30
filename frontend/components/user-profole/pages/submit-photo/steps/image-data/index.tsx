@@ -39,36 +39,48 @@ const ImageData = ({ prevWindowSetter }: any) => {
       return;
     }
 
+    let categorieTags: any = [];
 
-    // let formData = new FormData();
+    selectedOption.forEach((item: any) => {
+      categorieTags.push(item.value);
+    });
 
-    // formData.append("main_file", imageContext.images[0].file);
+    let formData = new FormData();
 
-    // await axios.post("http://localhost:7000/v1/image/upload", formData, {
-    //   headers: {
-    //     accept: "application/json",
-    //     "Accept-Language": "en-US,en;q=0.8",
-    //     "Content-Type": `multipart/form-data`,
-    //   },
-    // });
+    let formDataItems = [
+      { title: data.title },
+      { description: data.description },
+      { alt: data.alt },
+      { tags: categorieTags },
+      { username: "@emahdi1297" },
+      { color: data.color },
+      { city: data.city },
+      { country: data.country },
+      {
+        profile: "public/static/avatar.png",
+      },
+      { userId: "123456789123456789456123" },
+      {
+        main_file: imageContext.images[0].file,
+      },
+    ];
 
-    // let formDataItems = [
-    //   { title: data.title },
-    //   { description: data.description },
-    //   { alt: data.alt },
-    //   {
-    //     user: {
-    //       username: "@emahdi1297",
-    //       profile: "public/static/avatar.png",
-    //     },
-    //   },
-    //   { userId: "123456789123456789456123" },
-    //   {
-    //     image: imageContext.images[0],
-    //   },
-    // ];
+    formDataItems.forEach((fm: any) => {
+      formData.append(Object.keys(fm)[0], Object.values(fm)[0]);
+    });
 
-    // console.log(formDataItems);
+    try {
+      await axios.post("http://localhost:7000/v1/image/upload", formData, {
+        headers: {
+          accept: "application/json",
+          "Accept-Language": "en-US,en;q=0.8",
+          "Content-Type": `multipart/form-data`,
+        },
+      });
+      alert("Uploaded Successfully");
+    } catch (err) {
+      alert("Something wrong happened");
+    }
   };
 
   return (

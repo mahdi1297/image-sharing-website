@@ -9,6 +9,10 @@ let getImageService = async function (id: string) {
   //
   const data = await axios.get(GET_IMAGE_URL);
 
+  if (!data || data.status !== 200) {
+    return;
+  }
+
   //
   return data;
 };

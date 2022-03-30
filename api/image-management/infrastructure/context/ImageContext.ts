@@ -44,7 +44,7 @@ class ImageScehma {
           default: "false",
         },
         tags: {
-          type: [],
+          type: Array,
         },
         reports: {
           type: [],
