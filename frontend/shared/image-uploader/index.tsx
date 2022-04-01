@@ -11,6 +11,8 @@ const ImageUploaderShared = ({ setImageData }: any) => {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const maxNumber = 1;
+  const maximumFileSize = 3145728;
+  let acceptedFileTypes = ["png", "jpg", "jpeg", "webp", "avif"];
 
   const onChange = (imageList: any, addUpdateIndex: any) => {
     setIsLoading(true);
@@ -32,6 +34,8 @@ const ImageUploaderShared = ({ setImageData }: any) => {
         onChange={onChange}
         maxNumber={maxNumber}
         dataURLKey="data_url"
+        maxFileSize={maximumFileSize}
+        acceptType={acceptedFileTypes}
       >
         {({
           imageList,
@@ -100,11 +104,17 @@ const ImageUploaderShared = ({ setImageData }: any) => {
                   )}
 
                   {errors.acceptType && (
-                    <ErrorShared message="Your selected file type is not allow" />
+                    <ErrorShared
+                      message={`Your selected file type is not allow. Only select ${acceptedFileTypes}`}
+                    />
                   )}
 
                   {errors.maxFileSize && (
-                    <ErrorShared message="Selected file size exceed maxFileSize" />
+                    <ErrorShared
+                      message={`Selected file size exceed ${Math.round(
+                        maximumFileSize / 1000000
+                      )} mb`}
+                    />
                   )}
 
                   {errors.resolution && (

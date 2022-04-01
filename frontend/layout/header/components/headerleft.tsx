@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { AlignCenter, Justify } from "shared/common/style";
-import { Avatar } from "../style";
+import { AlignCenter, Grid, Justify } from "shared/common/style";
+import { Avatar, Search } from "../style";
 import { userAvatar } from "constaints/data.const";
 import HeaderSubmenu from "./headerSubmenu";
 
@@ -27,13 +27,13 @@ const HeaderLeft = () => {
         {showSubmenu && <HeaderSubmenu />}
       </Avatar>
 
-      {/* <Search>
+      <Search>
         <form>
           <Grid align="center">
             <input placeholder="search whatever you want" />
           </Grid>
         </form>
-      </Search> */}
+      </Search>
     </Justify>
   );
 };
