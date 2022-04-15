@@ -49,6 +49,7 @@ const Wrapper = styled.div`
 const Search = styled.div`
   width: 80%;
   height: 70px;
+  position: relative;
 
   & form {
     width: 100%;

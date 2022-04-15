@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ImageMainComponent from "./components/main-image";
 import ImagesContentComponent from "./components/content";
 import { Container } from "shared/common/style";
 import { Body, Head } from "./style";
 
 const ImagesComponent = ({ image }: any) => {
+  // const router = useRouter();
+
+  //   router.push("/search", undefined, { shallow: true });
   return (
     <>
       <Container>

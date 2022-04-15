@@ -1,7 +1,7 @@
-import Http from "utils/http";
+import { httpGet } from "utils/http";
 
 const getUserPanelService = async () => {
-  return await Http.get("/somewhere");
+  return await httpGet("/somewhere", false);
 };
 
 export { getUserPanelService };

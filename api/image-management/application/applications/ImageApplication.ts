@@ -5,9 +5,9 @@ import ResponseHandler from "../../../0-framework/response-handler";
 import express from "express";
 import S3Uploader from "../../../0-framework/s3-uploader";
 import sharp from "sharp";
-import { FileUploaderHelper } from "../../../0-framework/helper/file-uploader/FileUploader";
 import { v4 as uuidv4 } from "uuid";
 import fileUpload from "express-fileupload";
+// import { FileUploaderHelper } from "../../../0-framework/helper/file-uploader/FileUploader";
 
 const app = express();
 
@@ -23,8 +23,6 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
     super();
     this._repo = new ImageRepository();
     this._responseHandler = new ResponseHandler();
-
-    this.checkSBrucket();
   }
 
   async list(req: express.Request, res: express.Response) {
@@ -92,6 +90,7 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
       console.log(err);
     }
   }
+
   async getListByUsername(
     req: express.Request,
     res: express.Response
@@ -137,41 +136,25 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
 
   delete: (_id: string) => Promise<any>;
 
-  async checkSBrucket() {
-    // const s3 = new S3Client({
-    //   region: "default",
-    //   endpoint: this.abrAravanEndpoint,
-    //   credentials: {
-    //     accessKeyId: process.env.ABR_ARAVAN_ACCESS_KEY_ID,
-    //     secretAccessKey: process.env.ABR_ARAVAN_SECRET_KEY_ID,
-    //   },
-    // });
-    // const uploadParams = {
-    //   Bucket: process.env.ABR_ARAVAN_BUCKET_NAME, // bucket name
-    //   Key: "object-name", // the name of the selected file
-    //   ACL: "public-read", // 'private' | 'public-read'
-    //   Body: "BODY",
-    // };
-  }
-
   async Upload(req: any, res: any) {
     try {
       if (req.files && req.files.main_file !== null) {
         const imageStorageId = uuidv4();
         let date = new Date();
 
-        let resizedFile = await sharp(req.files.main_file.data)
+        let resizedDownloadableImage = await sharp(req.files.main_file.data)
           .toFormat("jpeg")
-          .jpeg({ quality: 75 });
+          .jpeg({ quality: 100 });
 
-        const resizedFile_avif = await sharp(req.files.main_file.data)
-          .ensureAlpha()
-          .extractChannel(3)
-          .toColourspace("b-w")
-          .raw({ depth: "ushort" })
-          .toBuffer();
+        let resizedShowableImage = await sharp(req.files.main_file.data)
+          .toFormat("jpeg")
+          .jpeg({ quality: 55 });
 
         let imageName = `${imageStorageId}-${date.getMilliseconds()}-${Math.random()}-${
+          req.files.main_file.name
+        }`;
+
+        let resizedShowableImageName = `${imageStorageId}-${date.getMilliseconds()}-${Math.random()}-small-${
           req.files.main_file.name
         }`;
 
@@ -190,43 +173,55 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
           },
           linkes: {
             download_link: `https://imagepicker.s3.ir-thr-at1.arvanstorage.com/${imageName}`,
-            path: `https://imagepicker.s3.ir-thr-at1.arvanstorage.com/${imageName}`,
+            path: `https://imagepicker.s3.ir-thr-at1.arvanstorage.com/${resizedShowableImageName}`,
           },
           location: {
             country: req.body.country,
             city: req.body.city,
           },
         };
+        await this.UploadImage(res, resizedDownloadableImage, imageName);
+        await this.UploadImage(
+          res,
+          resizedShowableImage,
+          resizedShowableImageName
+        );
+        const result = await this._repo.create(imageDataToSave);
 
-        await this.UploadImage(res, resizedFile, "avif-minivifed_______");
-
-        this.UploadImage(res, resizedFile, imageName)
-          .then(async (uploadResponse) => {
-            // const result = await this._repo.create(imageDataToSave);
-
-            // if (!result) {
-            //   return this._responseHandler.BadRequest(
-            //     res,
-            //     "Something bad happened"
-            //   );
-            // }
-            return this._responseHandler.Ok(
-              res,
-              "Image Submited Successfully",
-              // result
-              {}
-            );
-          })
-          .catch((error: any) => {
-            return this._responseHandler.BadRequest(
-              res,
-              "Problem happend while uploading your image"
-            );
-          });
+        if (!result) {
+          return this._responseHandler.BadRequest(
+            res,
+            "Something bad happened"
+          );
+        }
+        return this._responseHandler.Ok(
+          res,
+          "Image Submited Successfully",
+          result
+        );
       }
     } catch (err) {
       console.log(err);
       return res.json({ status: 400, error: err });
+    }
+  }
+
+  async search(req: express.Request, res: express.Response) {
+    const { tags } = req.body;
+
+    if (!tags) {
+      return this._responseHandler.BadRequest(res, "Tags are required");
+    }
+
+    try {
+      const result = await this._repo.getRelated(tags);
+      if (!result) {
+        return this._responseHandler.NotFound(res, "No images");
+      }
+
+      return this._responseHandler.Ok(res, "Ok", result);
+    } catch (err) {
+      console.log(err);
     }
   }
 }

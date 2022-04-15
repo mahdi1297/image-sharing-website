@@ -9,7 +9,7 @@ const HeaderLayout = ({ children }: any) => {
       <NextNProgress height={3} color={Theme.colors.main} />
       <Header />
       <Navigator />
-      <div style={{ marginTop: "90px" }}>{children}</div>
+      <div style={{ marginTop: "90px", paddingBottom: "30px" }}>{children}</div>
     </>
   );
 };

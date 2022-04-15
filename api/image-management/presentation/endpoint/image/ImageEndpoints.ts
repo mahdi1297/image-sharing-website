@@ -19,6 +19,7 @@ class ImageEndpoints {
       .get("/:username/profile", controller.getListByUsername)
       .post("/related", controller.getRelated)
       .post("/", controller.create)
+      .post("/search", controller.search)
       .post("/upload", controller.upload);
 
     return route;
