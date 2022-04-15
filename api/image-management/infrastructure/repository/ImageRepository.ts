@@ -33,6 +33,10 @@ class ImageRepository implements IImageRepository {
     return await this._context.find({ tags: { $in: tags } });
   }
 
+  async getCategories(items: any): Promise<any> {
+    // return await this._context.find({})
+  }
+
   async delete(_id: string) {}
 }
 
