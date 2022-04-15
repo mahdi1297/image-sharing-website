@@ -134,8 +134,6 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
     }
   }
 
-  delete: (_id: string) => Promise<any>;
-
   async Upload(req: any, res: any) {
     try {
       if (req.files && req.files.main_file !== null) {
@@ -224,6 +222,8 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
       console.log(err);
     }
   }
+
+  delete: (_id: string) => Promise<any>;
 }
 
 export default ImageApplication;
