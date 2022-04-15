@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import Image from "next/image";
+import HeaderSubmenu from "./headerSubmenu";
 import { AlignCenter, Grid, Justify } from "shared/common/style";
+import { SkeletonLoaderShared } from "shared/loader";
 import { Avatar, Search } from "../style";
 import { userAvatar } from "constaints/data.const";
-import HeaderSubmenu from "./headerSubmenu";
 
 const HeaderLeft = () => {
   const [showSubmenu, setShowmenu] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState("");
 
   const showSubmenuHandler = () => {
     setShowmenu(true);
   };
   const hideSubmenuHandler = () => {
     setShowmenu(false);
+  };
+
+  const setSearchValueHandler = (e: any) => {
+    setSearchValue(e.target.value);
   };
 
   return (
@@ -30,9 +36,13 @@ const HeaderLeft = () => {
       <Search>
         <form>
           <Grid align="center">
-            <input placeholder="search whatever you want" />
+            <input
+              placeholder="search whatever you want"
+              onChange={setSearchValueHandler}
+            />
           </Grid>
         </form>
+        <Suspense fallback={<SkeletonLoaderShared />}></Suspense>
       </Search>
     </Justify>
   );

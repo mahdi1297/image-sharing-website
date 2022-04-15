@@ -29,6 +29,10 @@ class ImageRepository implements IImageRepository {
     return await this._context.find({ "user.username": username });
   }
 
+  async search(tags: any): Promise<any> {
+    return await this._context.find({ tags: { $in: tags } });
+  }
+
   async delete(_id: string) {}
 }
 

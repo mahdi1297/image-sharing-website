@@ -8,4 +8,5 @@ export default interface IImageRepository {
   getById: (_id: string) => Promise<any>;
   delete: (_id: string) => Promise<any>;
   getRelated: (tags: any) => Promise<any>;
+  search: (tags: any) => Promise<any>;
 }

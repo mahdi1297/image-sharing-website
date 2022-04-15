@@ -9,8 +9,9 @@ const Container = styled.div`
   width: 100%;
   heigth: 100%;
   margin: auto;
+
   @media (min-width: 700px) {
-    width: 90%;
+    width: 80%;
   }
 `;
 const Center = styled.div`

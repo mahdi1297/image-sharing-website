@@ -23,8 +23,6 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
     super();
     this._repo = new ImageRepository();
     this._responseHandler = new ResponseHandler();
-
-    this.checkSBrucket();
   }
 
   async list(req: express.Request, res: express.Response) {
@@ -92,6 +90,7 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
       console.log(err);
     }
   }
+
   async getListByUsername(
     req: express.Request,
     res: express.Response
@@ -136,23 +135,6 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
   }
 
   delete: (_id: string) => Promise<any>;
-
-  async checkSBrucket() {
-    // const s3 = new S3Client({
-    //   region: "default",
-    //   endpoint: this.abrAravanEndpoint,
-    //   credentials: {
-    //     accessKeyId: process.env.ABR_ARAVAN_ACCESS_KEY_ID,
-    //     secretAccessKey: process.env.ABR_ARAVAN_SECRET_KEY_ID,
-    //   },
-    // });
-    // const uploadParams = {
-    //   Bucket: process.env.ABR_ARAVAN_BUCKET_NAME, // bucket name
-    //   Key: "object-name", // the name of the selected file
-    //   ACL: "public-read", // 'private' | 'public-read'
-    //   Body: "BODY",
-    // };
-  }
 
   async Upload(req: any, res: any) {
     try {
@@ -221,6 +203,25 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
     } catch (err) {
       console.log(err);
       return res.json({ status: 400, error: err });
+    }
+  }
+
+  async search(req: express.Request, res: express.Response) {
+    const { tags } = req.body;
+
+    if (!tags) {
+      return this._responseHandler.BadRequest(res, "Tags are required");
+    }
+
+    try {
+      const result = await this._repo.getRelated(tags);
+      if (!result) {
+        return this._responseHandler.NotFound(res, "No images");
+      }
+
+      return this._responseHandler.Ok(res, "Ok", result);
+    } catch (err) {
+      console.log(err);
     }
   }
 }
