@@ -30,14 +30,25 @@ export default class ImageCategoryApplication
 
   // Create
   async create(req: express.Request, res: express.Response) {
-    const { names } = req.body;
+    const { name } = req.body;
     try {
       const imagetCategoryData = {
-        name: names,
+        label: name,
+        value: name,
       };
-      const result = await this._repo.create(imagetCategoryData);
 
-      console.log(result);
+      // Check if name is repeated
+
+      const isExists = await this._repo.exists(name);
+
+      if (isExists) {
+        return this._responseHandler.BadRequest(
+          res,
+          "The name is exist in database"
+        );
+      }
+
+      const result = await this._repo.create(imagetCategoryData);
 
       if (!result) {
         return this._responseHandler.NotFound(res, "Not Found");
@@ -45,17 +56,23 @@ export default class ImageCategoryApplication
 
       this._responseHandler.Ok(res, "Ok", result);
     } catch (err) {
-      console.log(err);
-      return res.json({ message: "Bad Request", err });
-      // return this._responseHandler.BadRequest(res, "Something bad happend");
+      return this._responseHandler.BadRequest(res, "Something bad happend");
     }
   }
 
   async getSearch(req: express.Request, res: express.Response) {
     const { name } = req.body;
     try {
-      const result = await this._repo.getList();
-    } catch (err) {}
+      const result = await this._repo.getSearch(name);
+
+      if (!result) {
+        return this._responseHandler.BadRequest(res, "No Item Found");
+      }
+
+      return this._responseHandler.Ok(res, "Ok", result, result.length);
+    } catch (err) {
+      return this._responseHandler.BadRequest(res, "Something bad happend");
+    }
   }
 
   async update(req: express.Request, res: express.Response) {}

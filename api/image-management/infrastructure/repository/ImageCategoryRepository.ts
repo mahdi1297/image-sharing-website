@@ -13,8 +13,14 @@ class ImageCategoryRepository implements IImageCategoryRepository {
     return await this._context.find({});
   }
 
+  async exists(name: string): Promise<any> {
+    return await this._context.exists({ label: name });
+  }
+
   async getSearch(name: any): Promise<any> {
-    return await this._context.find({ name: name });
+    return await this._context.find({
+      label: { $regex: name, $options: "i" },
+    });
   }
 
   async update(_id: string, name: string): Promise<any> {

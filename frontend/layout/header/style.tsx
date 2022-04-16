@@ -65,6 +65,35 @@ const Search = styled.div`
       font-size: 16px;
     }
   }
+
+  & div.suggest-body {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    scroll-y: clip;
+    position: absolute;
+    background: #fff;
+    z-index: 999;
+    box-shadow: 0 4px 12px #00000014, 0 0 1px #0100001a;
+    border-radius: 5px;
+
+    & ul {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      padding: 10px;
+
+      & li {
+        display: block;
+
+        & a {
+          padding: 5px;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
 `;
 
 const Menu = styled.ul`
