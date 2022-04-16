@@ -13,7 +13,10 @@ class ImageCategoryEndpoints {
   get routers_v1() {
     var controller = this._controller;
 
-    route.post("/", controller.create);
+    route
+      .get("/", controller.getList)
+      .post("/", controller.create)
+      .post("/search", controller.getSearch);
 
     return route;
   }

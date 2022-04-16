@@ -14,6 +14,7 @@ const SelectShared = ({
   setSelectedOption,
   label,
   isSubmitted,
+  options,
 }: any) => {
   return (
     <SelectBody>
@@ -23,7 +24,7 @@ const SelectShared = ({
         isMulti
         name="colors"
         onChange={(e) => setSelectedOption(e)}
-        options={categoryOptions}
+        options={options || categoryOptions}
         className="basic-multi-select"
         classNamePrefix="select"
       />

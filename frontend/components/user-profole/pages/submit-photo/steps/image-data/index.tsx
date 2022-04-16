@@ -1,19 +1,20 @@
-import dynamic from "next/dynamic";
-import { useContext, useState } from "react";
-import CreateImageContext from "../../context";
+import { useEffect, useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import CreateImageContext from "../../context";
+import dynamic from "next/dynamic";
 import { CardFooter } from "shared/common/style";
 import FormSharedComponent from "shared/form";
 import ButtonShared from "shared/button";
+import { SkeletonSingleLoaderShared } from "shared/loader";
 import { formStructure } from "./formStructure";
-import { BUTTON, DARK, PRIMARY, SUBMIT, XL } from "constaints/consts";
-import axios from "axios";
+import { createImage, getImageCategories } from "./data";
 import FormData from "form-data";
+import { BUTTON, DARK, PRIMARY, SUBMIT, XL } from "constaints/consts";
 import { categoryOptions } from "constaints/data.const";
 
 const SelectShared = dynamic(() => import("shared/select"), {
   ssr: false,
-  loading: () => <h1>Loading....</h1>,
+  loading: () => <SkeletonSingleLoaderShared />,
 });
 
 const ImageData = ({ prevWindowSetter }: any) => {
@@ -23,12 +24,25 @@ const ImageData = ({ prevWindowSetter }: any) => {
     formState: { errors, isSubmitted },
   } = useForm();
 
+  // Uploaded image data
   const imageContext: any = useContext(CreateImageContext);
 
   const [selectedOption, setSelectedOption] = useState<any>([
     categoryOptions[0],
     categoryOptions[1],
   ]);
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    // Get image categories
+    const imageCategories = async () => {
+      const imageCats = await getImageCategories();
+
+      setCategories(imageCats.result);
+    };
+    imageCategories();
+  }, []);
 
   const prevStepHandler = () => {
     prevWindowSetter();
@@ -69,18 +83,8 @@ const ImageData = ({ prevWindowSetter }: any) => {
       formData.append(Object.keys(fm)[0], Object.values(fm)[0]);
     });
 
-    try {
-      await axios.post("http://localhost:7000/v1/image/upload", formData, {
-        headers: {
-          accept: "application/json",
-          "Accept-Language": "en-US,en;q=0.8",
-          "Content-Type": `multipart/form-data`,
-        },
-      });
-      alert("Uploaded Successfully");
-    } catch (err) {
-      alert("Something wrong happened");
-    }
+    // Upload created image
+    await createImage(formData);
   };
 
   return (
@@ -91,6 +95,7 @@ const ImageData = ({ prevWindowSetter }: any) => {
           setSelectedOption={setSelectedOption}
           label="Categories"
           isSubmitted={isSubmitted}
+          options={categories}
         />
 
         <FormSharedComponent

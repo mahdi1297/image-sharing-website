@@ -1,4 +1,5 @@
 export default interface ImageCategory {
-  name: string;
+  label: string;
+  value: string;
   isRemoved: string; // default is "false"
 }

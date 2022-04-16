@@ -11,4 +11,9 @@ export default class ImageCategoryController {
     const _app = new ImageCategoryApplication();
     await _app.create(req, res);
   }
+
+  async getSearch(req: express.Request, res: express.Response) {
+    const _app = new ImageCategoryApplication();
+    await _app.getSearch(req, res);
+  }
 }

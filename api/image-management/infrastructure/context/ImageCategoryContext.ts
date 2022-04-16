@@ -8,7 +8,10 @@ const dbContextConnection = Context.mongooseConnection;
 class ImageCategorySchema {
   static get schema() {
     var schema = new Schema({
-      name: {
+      label: {
+        type: String,
+      },
+      value: {
         type: String,
       },
       isRemoved: {

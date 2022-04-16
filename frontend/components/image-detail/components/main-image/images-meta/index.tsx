@@ -16,7 +16,6 @@ const ImageMetaComponent = ({
 }: any) => {
   // Get metaDatas
 
-
   let metaData = processMetaData({
     title: title,
     location: location,
@@ -63,7 +62,7 @@ const ImageMetaComponent = ({
             {tags &&
               tags.map((t: any, l: any) => (
                 <li key={l}>
-                  <Link href="/tag/tagSample">
+                  <Link href={`/search/${t}`}>
                     <a>{t}</a>
                   </Link>
                 </li>

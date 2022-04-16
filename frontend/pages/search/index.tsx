@@ -1,10 +1,10 @@
 import HeaderLayout from "layout/basic-layouts";
 import React from "react";
 
-const SearchPage = () => {
-  return <div>index</div>;
+const CategoriesPage = () => {
+  return <div>CategoriesPage</div>;
 };
 
-SearchPage.Layout = HeaderLayout;
+CategoriesPage.Layout = HeaderLayout;
 
-export default SearchPage;
+export default CategoriesPage;
