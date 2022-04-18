@@ -1,10 +1,10 @@
 import React from "react";
 import ButtonComponent from "shared/button";
-import FormSharedComponent from "shared/form";
 import { useForm } from "react-hook-form";
 import { formStructure } from "./formStructer";
-import { PRIMARY, XL } from "constaints/consts";
+import { PRIMARY, SUBMIT, XL } from "constaints/consts";
 import { validateEmail } from "helper/emailValidator";
+import FormShared from "shared/form";
 
 const Login: React.FC = () => {
   const {
@@ -14,25 +14,16 @@ const Login: React.FC = () => {
   } = useForm();
 
   const loginSubmitHandler = (data: any) => {
-    console.log(validateEmail(data.username));
+    console.log(data);
+    // console.log(validateEmail(data.username));
   };
+
+  console.log(errors);
 
   return (
     <form onSubmit={handleSubmit(loginSubmitHandler)}>
-      {formStructure.map((inp) => (
-        <FormSharedComponent
-          key={inp.id}
-          size={inp.size}
-          type={inp.type}
-          label={inp.label}
-          placeholder={inp.placeholder}
-          register={{
-            ...register(inp.name, inp.validators),
-          }}
-          errors={errors[inp.name]}
-        />
-      ))}
-      <ButtonComponent block size={XL} color={PRIMARY}>
+      <FormShared data={formStructure} register={register} errors={errors} />
+      <ButtonComponent block size={XL} color={PRIMARY} type={SUBMIT}>
         Login
       </ButtonComponent>
     </form>

@@ -35,7 +35,7 @@ export const AUTH_EMAIL_MAXlENGTH = 150;
 export const USERNAME = "username";
 export const USERNAME_LABEL = " Username";
 export const AUTH_USERNAME_MINLENGTH = 3;
-export const AUTH_USERNAME_MAXLENGTH = 155;
+export const AUTH_USERNAME_MAXLENGTH = 150;
 export const USERNAME_PLACEHOLDER = "@mahdialipoor";
 
 export const PASSWORD = "password";

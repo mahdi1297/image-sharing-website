@@ -5,7 +5,6 @@ const Body = styled.div`
   width: 400px;
   height: auto;
   margin: auto;
-  margin-top: 100px;
 
   & div.header {
     display: flex;

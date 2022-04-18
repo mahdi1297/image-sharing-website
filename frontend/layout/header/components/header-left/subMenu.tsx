@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import { submenuRoutes } from "../routes";
-import { SudMenu } from "../style";
+import { submenuRoutes } from "../../routes";
+import { SudMenu } from "../../style";
 
 const HeaderSubmenu = () => {
   return (

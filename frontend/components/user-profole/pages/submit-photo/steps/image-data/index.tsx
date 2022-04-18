@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import CreateImageContext from "../../context";
 import dynamic from "next/dynamic";
 import { CardFooter } from "shared/common/style";
-import FormSharedComponent from "shared/form";
+import FormShared from "shared/form";
 import ButtonShared from "shared/button";
 import { SkeletonSingleLoaderShared } from "shared/loader";
 import { formStructure } from "./formStructure";
@@ -98,11 +98,7 @@ const ImageData = ({ prevWindowSetter }: any) => {
           options={categories}
         />
 
-        <FormSharedComponent
-          data={formStructure}
-          register={register}
-          errors={errors}
-        />
+        <FormShared data={formStructure} register={register} errors={errors} />
 
         <CardFooter>
           <ButtonShared

@@ -15,13 +15,13 @@ const FormWrapper = styled.div<InputShareStyleModel>`
   flex-direction: column;
   margin-bottom: 14px;
 
-  &:nth-child(odd) {
-    padding-right: 10px;
-  }
+  // &:nth-child(odd) {
+  //   padding-right: 10px;
+  // }
 
-  &:nth-child(even) {
-    padding-left: 10px;
-  }
+  // &:nth-child(even) {
+  //   padding-left: 10px;
+  // }
 
   & div.label {
     display: flex;

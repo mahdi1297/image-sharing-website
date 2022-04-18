@@ -14,32 +14,36 @@ const UserPanelLayout = ({ children }: any) => {
   return (
     <>
       <Header />
-      <Navigator />
-      <Container>
-        <UserPanelBody>
-          <div className="sidebar">
-            <h1>Your Panel</h1>
-            <div className="avatar">
-              <Avatar id="0" width="40px" radius="5px" />
+      <div style={{ paddingTop: "30px", paddingBottom: "60px" }}>
+        <Container>
+          <UserPanelBody>
+            <div className="sidebar">
+              <h1>Your Panel</h1>
+              <div className="avatar">
+                <Avatar id="0" width="40px" radius="5px" />
+              </div>
+              <ul>
+                {userPanelLayoutRoutes.map((route) => (
+                  <li key={route.id}>
+                    <Link href={route.path}>
+                      <a
+                        className={
+                          router.pathname === route.path ? "active" : ""
+                        }
+                      >
+                        <Icon type={route.icon} size={14} />
+                        <span>{route.title}</span>
+                      </a>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul>
-              {userPanelLayoutRoutes.map((route) => (
-                <li key={route.id}>
-                  <Link href={route.path}>
-                    <a
-                      className={router.pathname === route.path ? "active" : ""}
-                    >
-                      <Icon type={route.icon} size={14} />
-                      <span>{route.title}</span>
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <main>{children}</main>
-        </UserPanelBody>
-      </Container>
+            <main>{children}</main>
+          </UserPanelBody>
+        </Container>
+      </div>
+      <Navigator />
     </>
   );
 };
