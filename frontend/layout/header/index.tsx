@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Grid } from "shared/common/style";
-import HeaderLeft from "./components/header-left";
-import HeaderRight from "./components/header-right";
+import HeaderLeft from "./header-left";
+import HeaderRight from "./header-right";
 import { Body, Wrapper } from "./style";
 import { SCROLL_UP } from "constaints/consts";
 

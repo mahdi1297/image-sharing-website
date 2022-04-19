@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchContent from "./components/content";
+import SearchContent from "./content";
 import { getSearchedImages } from "./service";
 
 const SearchComponent = ({ slug }: any) => {

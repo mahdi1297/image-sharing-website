@@ -8,11 +8,12 @@ import IconsShared from "shared/icons";
 import Modal from "shared/modal";
 import { SkeletonLoaderShared } from "shared/loader";
 import { AlignCenter, Grid, Justify } from "shared/common/style";
-import HeaderSubmenu from "./subMenu";
-import { getSearches } from "../../data";
+import HeaderSubmenu from "../submenu";
+import { getSearches } from "../data";
 import { Theme } from "theme/theme";
-import { AuthBtn, Avatar, Search } from "../../style";
+import { AuthBtn } from "../style";
 import { userAvatar } from "constaints/data.const";
+import { Avatar, Search } from "./style";
 
 const AuthComponent = dynamic(() => import("components/auth"), {
   ssr: false,

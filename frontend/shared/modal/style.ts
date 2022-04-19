@@ -13,10 +13,10 @@ export const StyledModalHeader = styled.div`
 export const StyledModal = styled.div`
   background: white;
   width: 500px;
-  min-height: 80%;
   height: auto;
   border-radius: 15px;
   padding: 15px;
+  padding-bottom: 50px;
   overflow-y: auto;
 `;
 export const StyledModalOverlay = styled.div`

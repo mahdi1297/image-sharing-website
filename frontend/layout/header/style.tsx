@@ -62,68 +62,6 @@ const Wrapper = styled.div`
   }
 `;
 
-const Search = styled.div`
-  width: 100%;
-  height: 70px;
-  position: relative;
-
-  & form {
-    width: 100%;
-    height: 100%;
-
-    & input {
-      width: 100%;
-      height: 35px;
-      border: none;
-      background: #eee;
-      border-radius: 10px;
-      padding: 10px;
-      font-size: 16px;
-    }
-  }
-
-  & div.suggest-body {
-    width: 100%;
-    height: auto;
-    max-height: 300px;
-    scroll-y: clip;
-    position: absolute;
-    background: #fff;
-    z-index: 999;
-    box-shadow: 0 4px 12px #00000014, 0 0 1px #0100001a;
-    border-radius: 5px;
-
-    & ul {
-      width: 100%;
-      height: auto;
-      max-height: 300px;
-      padding: 10px;
-
-      & li {
-        display: block;
-
-        & a {
-          padding: 5px;
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
-  }
-
-  & button {
-    border: none !important;
-    background: none !important;
-    position: absolute;
-    right: 0;
-    margin-top: 3px;
-  }
-
-  @media (min-width: 623px) {
-    width: 80%;
-  }
-`;
-
 const Menu = styled.ul`
   display: flex;
   height: 100%;
@@ -152,43 +90,6 @@ const Menu = styled.ul`
   }
 `;
 
-const Avatar = styled.div`
-  width: 70px;
-  height: 100%;
-
-  & img {
-    border-radius: 100%;
-    cursor: pointer;
-  }
-`;
-
-const SudMenu = styled.div`
-  width: 200px;
-  height: auto;
-  position: absolute;
-  z-index: 99999;
-  background: #fff;
-  box-shadow: 1px 3px 7px #e0e0e0;
-  border-radius: 10px;
-
-  & ul {
-    width: 100%;
-    padding: 20px;
-
-    & li {
-      width: 100%;
-      padding: 6px 0;
-
-      & a {
-        width: 100% !important;
-        height: auto !important;
-        padding: 0 !important;
-        color: ${Theme.colors.black};
-      }
-    }
-  }
-`;
-
 const AuthBtn = styled.div`
   height: 100%;
   padding: 0 !important;
@@ -214,4 +115,4 @@ const AuthBtn = styled.div`
   }
 `;
 
-export { Body, Wrapper, Search, Menu, Avatar, SudMenu, AuthBtn };
+export { Body, Wrapper, Menu, AuthBtn };

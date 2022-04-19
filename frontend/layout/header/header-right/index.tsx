@@ -3,8 +3,8 @@ import Link from "next/link";
 import Icon from "shared/icons";
 import { Grid } from "shared/common/style";
 import { Theme } from "theme/theme";
-import { routes } from "../../routes";
-import { Menu } from "../../style";
+import { routes } from "../routes";
+import { Menu } from "../style";
 
 const HeaderRight = () => {
   return (

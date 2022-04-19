@@ -13,12 +13,12 @@ const Modal = ({ show, onClose, children, title, setShow }: any) => {
   useEffect(() => {
     setIsBrowser(true);
 
-    if (show === true && typeof window !== "undefined") {
-      const body = document.querySelector("body");
-      if (body) {
-        body.style.overflow = "hidden";
-      }
-    }
+    // if (show === true && typeof window !== "undefined") {
+    //   const body = document.querySelector("body");
+    //   if (body) {
+    //     body.style.overflow = "hidden";
+    //   }
+    // }
   }, [show]);
 
   const handleCloseClick = (e: any) => {

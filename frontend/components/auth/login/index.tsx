@@ -3,7 +3,6 @@ import ButtonComponent from "shared/button";
 import { useForm } from "react-hook-form";
 import { formStructure } from "./formStructer";
 import { PRIMARY, SUBMIT, XL } from "constaints/consts";
-import { validateEmail } from "helper/emailValidator";
 import FormShared from "shared/form";
 
 const Login: React.FC = () => {
@@ -15,10 +14,7 @@ const Login: React.FC = () => {
 
   const loginSubmitHandler = (data: any) => {
     console.log(data);
-    // console.log(validateEmail(data.username));
   };
-
-  console.log(errors);
 
   return (
     <form onSubmit={handleSubmit(loginSubmitHandler)}>
