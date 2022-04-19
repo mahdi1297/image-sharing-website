@@ -1,6 +1,6 @@
 import React from "react";
 import { AlignCenter, Grid } from "shared/common/style";
-import { MetaBody } from "../../../style";
+import { MetaBody } from "../../style";
 import ButtonComponent from "shared/button";
 import Icon from "shared/icons";
 import { Theme } from "theme/theme";

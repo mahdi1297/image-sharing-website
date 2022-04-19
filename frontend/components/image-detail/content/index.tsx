@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import TabSharedComponent from "shared/tab";
-import { ContentWrapper, Tab } from "../../style";
-import ImagesComments from "./components/ImagesComments";
-import UserImages from "./components/UserImages";
+import { ContentWrapper, Tab } from "../style";
+import ImagesComments from "./comments";
+import UserImages from "./user-images";
 import { TabModel } from "./tabData";
 
 const ImagesContentComponent = ({ tags }: any) => {

@@ -9,11 +9,16 @@ import busboy from "connect-busboy";
 import fileUpload from "express-fileupload";
 
 import cors from "cors";
+import winstonLogger from "./0-framework/logger/winston";
 
 const app = express();
 
 dotenv.config({ path: __dirname + "/.env" });
 dotenv.config();
+
+// Logger - winston
+
+winstonLogger();
 
 app.use(express.static(path.resolve("./public")));
 app.use("/public", express.static(path.resolve("./public")));

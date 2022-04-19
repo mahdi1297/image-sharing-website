@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import ImageMainComponent from "./components/main-image";
-import ImagesContentComponent from "./components/content";
+import ImageMainComponent from "./main-image";
+import ImagesContentComponent from "./content";
 import { Container } from "shared/common/style";
 import { Body, Head } from "./style";
 

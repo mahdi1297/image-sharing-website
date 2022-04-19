@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { SCROLL_DOWN, SCROLL_UP } from "constaints/consts";
 
 const useScrollDirection = () => {
-  const [scrollDirection, setScrollDirection] = useState("UP");
+  const [scrollDirection, setScrollDirection] = useState(SCROLL_UP);
 
   let scrollableElement: any = "";
 

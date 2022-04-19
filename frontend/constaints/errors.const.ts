@@ -38,3 +38,17 @@ export const COUNTRY_MAXLENGTH_ERROR =
 export const CITY_REQUIRED_ERROR = "City text is required";
 export const CITY_MINLENGTH_ERROR = "City must be at least 2 characters";
 export const CITY_MAXLENGTH_ERROR = "City must be at less than 50 characters";
+
+export const EMAIL_MINLENGTH_ERROR = "Email must be at less than 8 characters";
+export const EMAIL_MAXLENGTH_ERROR = "Email must be less than 150 characters";
+export const EMAIL_PATTERN_ERROR = "Email is not correct";
+
+export const PASSWORD_MINLENGTH_ERROR =
+  "Password must be at less than 8 characters";
+export const PASSWORD_MAXLENGTH_ERROR =
+  "Password must be less than 30 characters";
+
+export const USERNAME_MINLENGTH_ERROR =
+  "Username must be at less than 3 characters";
+export const USERNAME_MAXLENGTH_ERROR =
+  "Username must be less than 150 characters";

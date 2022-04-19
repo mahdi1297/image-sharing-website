@@ -1,6 +1,6 @@
 export const routes = [
-  { id: 3, name: "Search", path: "/search" },
-  { id: 2, name: "Blog", path: "/blog" },
+  // { id: 3, name: "Search", path: "/search" },
+  // { id: 2, name: "Blog", path: "/blog" },
   { id: 1, name: "Categories", path: "/categories" },
 ];
 

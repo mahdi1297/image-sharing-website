@@ -1,4 +1,4 @@
-import { TEXT, TEXTAREA } from "constaints/consts";
+import { PASSWORD, TEXT, TEXTAREA } from "constaints/consts";
 import React from "react";
 import Error from "shared/error";
 import { Body, FormWrapper } from "./style";
@@ -18,7 +18,7 @@ const FormShared = ({ data, register, errors }: any) => {
     data &&
     data.map((inp: any) => {
       //
-      if (inp.type === TEXT) {
+      if (inp.type === TEXT || inp.type === PASSWORD) {
         //
         return (
           //

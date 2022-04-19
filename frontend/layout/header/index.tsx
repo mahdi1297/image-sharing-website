@@ -1,15 +1,13 @@
 import React from "react";
 import { Container, Grid } from "shared/common/style";
+import HeaderLeft from "./header-left";
+import HeaderRight from "./header-right";
 import { Body, Wrapper } from "./style";
-import useScrollDirection from "hooks/useScrollDirection";
-import HeaderLeft from "./components/headerleft";
-import HeaderRight from "./components/headerRight";
+import { SCROLL_UP } from "constaints/consts";
 
 const Header = () => {
-  const scrollDirection = useScrollDirection();
-
   return (
-    <Body scrollDirection={scrollDirection}>
+    <Body scrollDirection={SCROLL_UP}>
       <Container>
         <Wrapper>
           <Grid justify="space-between">

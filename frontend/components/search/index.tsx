@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchContent from "./components/content";
+import SearchContent from "./content";
 import { getSearchedImages } from "./service";
 
 const SearchComponent = ({ slug }: any) => {
@@ -20,7 +20,7 @@ const SearchComponent = ({ slug }: any) => {
 
       setImagesLength(result.length);
       setTimeout(() => {
-        setImages(result);  
+        setImages(result);
       }, 700);
     };
 
@@ -29,7 +29,7 @@ const SearchComponent = ({ slug }: any) => {
 
   return (
     <div>
-      <SearchContent images={images} imagesLength={imagesLength} />
+      <SearchContent images={images} imagesLength={imagesLength}  slug={slug}/>
     </div>
   );
 };

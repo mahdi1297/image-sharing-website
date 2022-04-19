@@ -13,7 +13,14 @@ import {
   PASSWORD_PLACEHOLDER,
   TEXT,
 } from "constaints/consts";
-import { MINLENGTH_FIELD_ERROR, REQUIRED_FIELD_ERROR } from "constaints/errors.const";
+import {
+  EMAIL_MAXLENGTH_ERROR,
+  EMAIL_MINLENGTH_ERROR,
+  EMAIL_PATTERN_ERROR,
+  PASSWORD_MAXLENGTH_ERROR,
+  PASSWORD_MINLENGTH_ERROR,
+  REQUIRED_FIELD_ERROR,
+} from "constaints/errors.const";
 import { emailRegex } from "constaints/regex";
 
 export const formStructure = [
@@ -24,19 +31,19 @@ export const formStructure = [
     label: EMAIL_LABEL,
     name: EMAIL,
     placeholder: EMAIL_PLACEHOLDER,
-    validators: {
+    validation: {
       required: REQUIRED_FIELD_ERROR,
       minLength: {
         value: AUTH_EMAIL_MINLENGTH,
-        message: MINLENGTH_FIELD_ERROR(AUTH_EMAIL_MINLENGTH),
+        message: EMAIL_MINLENGTH_ERROR,
       },
       maxLength: {
         value: AUTH_EMAIL_MAXlENGTH,
-        message: MINLENGTH_FIELD_ERROR(AUTH_EMAIL_MAXlENGTH),
+        message: EMAIL_MAXLENGTH_ERROR,
       },
       pattern: {
         value: emailRegex,
-        message: "Email pattern is incorrect",
+        message: EMAIL_PATTERN_ERROR,
       },
     },
   },
@@ -47,15 +54,15 @@ export const formStructure = [
     label: PASSWORD_LABEL,
     name: PASSWORD,
     placeholder: PASSWORD_PLACEHOLDER,
-    validators: {
+    validation: {
       required: REQUIRED_FIELD_ERROR,
       minLength: {
         value: AUTH_PASSWORD_MINLENGTH,
-        message: MINLENGTH_FIELD_ERROR(AUTH_PASSWORD_MINLENGTH),
+        message: PASSWORD_MINLENGTH_ERROR,
       },
       maxLength: {
         value: AUTH_USERNAME_MAXLENGTH,
-        message: MINLENGTH_FIELD_ERROR(AUTH_PASSWORD_MAXLENGTH),
+        message: PASSWORD_MAXLENGTH_ERROR,
       },
     },
   },
