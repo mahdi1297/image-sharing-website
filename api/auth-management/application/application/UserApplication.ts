@@ -18,9 +18,20 @@ export default class UserApplication implements IUserApplication {
 
   // Register
   async create(req: express.Request, res: express.Response): Promise<any> {
+    const { username, email, password } = req.body;
     try {
+      // Check existing user by email and username
+      const exists = await this._repo.existsBy(username, email);
+
+      if (exists) {
+        return this._responseHandler.BadRequest(
+          res,
+          "Username or password are not unique!"
+        );
+      }
+
       // Hash password
-      const hashedPass: any = await hashPassword(req.body.password);
+      const hashedPass: any = await hashPassword(password);
 
       if (!hashPassword) {
         return this._responseHandler.BadRequest(res, "could not hash password");
@@ -36,8 +47,8 @@ export default class UserApplication implements IUserApplication {
       }
 
       const data: Partial<User> = {
-        email: req.body.email,
-        username: req.body.username,
+        email: email,
+        username: username,
         password: hashedPass,
         uuid: uuid,
         u_t: jwt,
@@ -50,7 +61,11 @@ export default class UserApplication implements IUserApplication {
         await this._responseHandler.BadRequest(res, "Bad Requset");
       }
 
-      return this._responseHandler.Ok(res, "Ok", result);
+      return this._responseHandler.Ok(
+        res,
+        "Account created successfully",
+        result
+      );
     } catch (err) {
       return this._responseHandler.BadRequest(res, "Bad Request");
     }

@@ -5,4 +5,5 @@ export default interface IUserRepository {
   update: (_id: string, data: Partial<User>) => Promise<any>;
   remove: (_id: string) => Promise<any>;
   refactor: (_id: string) => Promise<any>;
+  existsBy: (username: string, email: string) => Promise<any>;
 }

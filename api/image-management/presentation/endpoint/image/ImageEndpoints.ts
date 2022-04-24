@@ -11,16 +11,14 @@ class ImageEndpoints {
   }
 
   get routers_v1() {
-    var controller = this._controller;
-
     route
-      .get("/", controller.list)
-      .get("/:imageId/single", controller.getById)
-      .get("/:username/profile", controller.getListByUsername)
-      .post("/related", controller.getRelated)
-      .post("/", controller.create)
-      .post("/search", controller.search)
-      .post("/upload", controller.upload);
+      .get("/", this._controller.list)
+      .get("/:imageId/single", this._controller.getById)
+      .get("/:username/profile", this._controller.getListByUsername)
+      .post("/related", this._controller.getRelated)
+      .post("/", this._controller.create)
+      .post("/search", this._controller.search)
+      .post("/upload", this._controller.upload);
 
     return route;
   }

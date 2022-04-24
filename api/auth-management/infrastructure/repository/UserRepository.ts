@@ -17,6 +17,19 @@ export default class UserRepository implements IUserRepository {
     return await this._context.findOneAndUpdate({ _id }, { isRemoved: "true" });
   }
 
+  async existsBy(username: string, email: string): Promise<any> {
+    return await this._context.exists({
+      $or: [
+        {
+          username: username,
+        },
+        {
+          email: email,
+        },
+      ],
+    });
+  }
+
   async refactor(_id: string): Promise<any> {
     return await this._context.findOneAndUpdate(
       { _id },
