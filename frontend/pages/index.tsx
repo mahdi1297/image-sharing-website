@@ -1,7 +1,7 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import dynamic from "next/dynamic";
-import homeService from "services/homeService";
 import { SkeletonLoaderShared } from "shared/loader";
+import homeService from "services/homeService";
 
 const HeaderLayout = dynamic(() => import("layout/basic-layouts"), {
   loading: () => <p>Loading...</p>,
@@ -17,15 +17,8 @@ const HomeComponent = dynamic(() => import("components/home"), {
 });
 
 const Home: any = ({ images }: any) => {
-  // const [showModal, setShowModal] = useState(false);
-
   return (
     <>
-      {/* <img src="https://imagepicker.s3.ir-thr-at1.arvanstorage.com/justin-yeung-DQVizJTIKxM-unspl ash.jpg" /> */}
-      {/* <button onClick={() => setShowModal(true)}>Open Modal</button>
-      <Modal onClose={() => setShowModal(false)} show={showModal}>
-        Hello from the modal!
-      </Modal> */}
       <Suspense fallback={<SkeletonLoaderShared />}>
         <HomeComponent images={images} />
       </Suspense>

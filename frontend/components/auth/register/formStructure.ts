@@ -77,7 +77,7 @@ export const formStructure = [
   {
     id: 3,
     size: LG,
-    type: TEXT,
+    type: PASSWORD,
     label: PASSWORD_LABEL,
     name: PASSWORD,
     placeholder: PASSWORD_PLACEHOLDER,

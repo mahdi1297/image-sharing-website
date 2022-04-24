@@ -10,6 +10,7 @@ declare module "styled-components" {
       gray: string;
       danger: string;
       success: string;
+      warning: string;
     };
   }
 }

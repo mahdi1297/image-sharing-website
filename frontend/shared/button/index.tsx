@@ -26,7 +26,7 @@ const ButtonShared = ({
 
   switch (size) {
     case XL:
-      sizeNumber = "10px 20px";
+      sizeNumber = "10px 40px";
       break;
     case LG:
       sizeNumber = "8px 17px";

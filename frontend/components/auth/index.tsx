@@ -15,28 +15,30 @@ const AuthComponent = () => {
   };
 
   return (
-    <Body>
-      <div className="header">
-        <div
-          onClick={setLoginModeHandler}
-          className={authMode === LOGIN_MODE ? "active" : ""}
-        >
-          Login
+    <div style={{ position: "relative" }}>
+      <Body>
+        <div className="header">
+          <div
+            onClick={setLoginModeHandler}
+            className={authMode === LOGIN_MODE ? "active" : ""}
+          >
+            Login
+          </div>
+          <div>/</div>
+          <div
+            onClick={setRegisterModeHandler}
+            className={authMode === REGISTER_MODE ? "active" : ""}
+          >
+            Register
+          </div>
         </div>
-        <div>/</div>
-        <div
-          onClick={setRegisterModeHandler}
-          className={authMode === REGISTER_MODE ? "active" : ""}
-        >
-          Register
-        </div>
-      </div>
 
-      <main>
-        {authMode === LOGIN_MODE && <Login />}
-        {authMode === REGISTER_MODE && <Register />}
-      </main>
-    </Body>
+        <main>
+          {authMode === LOGIN_MODE && <Login />}
+          {authMode === REGISTER_MODE && <Register />}
+        </main>
+      </Body>
+    </div>
   );
 };
 

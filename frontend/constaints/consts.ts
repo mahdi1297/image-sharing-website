@@ -13,7 +13,9 @@ export const BUTTON = "button";
 
 // Colors
 export const PRIMARY = "primary";
-export const SUCCRSS = "success";
+export const SUCCESS = "success";
+export const WARNING = "warning";
+export const ERROR = "error";
 export const LIGHT = "light";
 export const DANGER = "danger";
 export const DARK = "dark";

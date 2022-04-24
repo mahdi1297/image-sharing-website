@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import toast from "react-hot-toast";
 
 let baseUrl = "http://localhost:7000/v1/";
 
@@ -22,7 +23,7 @@ export async function httpPost(
   try {
     const result = await axios.post(`${url}`, data);
     if (successMessage) {
-      console.log("this must show the success alert");
+      showSuccessToast(result.data.message);
     }
     return result.data;
   } catch (error: any) {
@@ -48,5 +49,13 @@ export async function httpPut(
 
 async function handleError(error: AxiosError) {
   const response = error.response;
-  console.log(response, error);
+  showErrorToast(response?.data.message);
+}
+
+async function showSuccessToast(message: string) {
+  toast.success(message);
+}
+
+async function showErrorToast(message: string) {
+  toast.error(message);
 }

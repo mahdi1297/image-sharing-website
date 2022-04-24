@@ -88,3 +88,15 @@ export const SkeletonSingleLoaderShared = () => {
     </div>
   );
 };
+
+export const Loader = () => {
+  return (
+    <div className="loadingio-spinner-dual-ball-25b87pivm21">
+      <div className="ldio-n0pwkbu7h3h">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  );
+};
