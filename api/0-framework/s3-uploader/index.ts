@@ -17,11 +17,11 @@ export default class S3Uploader {
 
     const s3 = new S3Client({
       region: "default",
-      endpoint: "https://s3.ir-thr-at1.arvanstorage.com",
+      endpoint: process.env.3S_ENDPOINT,
       credentials: {
-        accessKeyId: "8cf4319a-032e-4099-8dbc-4f9fc844d5a2",
+        accessKeyId: process.env.ACCESS_KEY_ID,
         secretAccessKey:
-          "85a34f59b7c9a6b01a917e271b96e258cb556026d09d671f0a650520cab4fd30",
+          process.env.SECRET_ACCESS_KEY,
       },
     });
 
