@@ -11,9 +11,12 @@ class UserEndpoint {
   }
 
   get routers_v1() {
-    router.post("/register", this._controller.register);
+    router
+      .post("/register", this._controller.register)
+      .post("/login", this._controller.login)
+      .put("/", this._controller.update);
 
-    return router;  
+    return router;
   }
 }
 

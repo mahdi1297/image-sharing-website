@@ -1,5 +1,3 @@
-//
-
 export default interface User {
   u_t: string;
   uuid: string;

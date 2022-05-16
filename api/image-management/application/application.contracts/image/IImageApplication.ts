@@ -9,4 +9,5 @@ export default interface IIMageApplication {
   getListByUsername: (req: express.Request, res: express.Response) => any;
   delete: (_id: string) => Promise<any>;
   search: (req: express.Request, res: express.Response) => Promise<any>;
+  getIds: (req: express.Request, res: express.Response) => Promise<any>;
 }

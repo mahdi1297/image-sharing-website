@@ -4,6 +4,16 @@ import UserApplication from "../../application/application/UserApplication";
 export default class UserController {
   async register(req: express.Request, res: express.Response) {
     const _app = new UserApplication();
-    await _app.create(req, res);
+    await _app.register(req, res);
+  }
+
+  async login(req: express.Request, res: express.Response) {
+    const _app = new UserApplication();
+    await _app.login(req, res);
+  }
+
+  async update(req: express.Request, res: express.Response) {
+    const _app = new UserApplication();
+    await _app.update(req, res);
   }
 }

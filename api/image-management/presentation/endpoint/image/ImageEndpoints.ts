@@ -15,6 +15,7 @@ class ImageEndpoints {
       .get("/", this._controller.list)
       .get("/:imageId/single", this._controller.getById)
       .get("/:username/profile", this._controller.getListByUsername)
+      .get("/ids", this._controller.getIds)
       .post("/related", this._controller.getRelated)
       .post("/", this._controller.create)
       .post("/search", this._controller.search)

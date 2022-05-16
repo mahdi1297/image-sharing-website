@@ -223,6 +223,20 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
     }
   }
 
+  async getIds(req: express.Request, res: express.Response) {
+    try {
+      const result = await this._repo.getIds();
+
+      if (!result) {
+        return this._responseHandler.BadRequest(res, "Bad Request");
+      }
+
+      this._responseHandler.Ok(res, "Ok", result);
+    } catch (error) {
+      return this._responseHandler.NotFound(res, "Not Found");
+    }
+  }
+
   delete: (_id: string) => Promise<any>;
 }
 

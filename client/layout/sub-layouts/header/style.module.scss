@@ -1,0 +1,47 @@
+@mixin center {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  height: auto;
+  box-shadow: rgb(0 0 0 / 10%) 0px 7px 21px 0px;
+
+  .inner__header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    li {
+      width: 50%;
+      height: 60px;
+
+      > div {
+        @include center;
+        height: 100%;
+      }
+
+      div.logo__wraper {
+        display: flex;
+      }
+
+      div.menu__container {
+        input {
+          width: 80%;
+          height: 40px;
+        }
+        button {
+          border: none;
+          display: block;
+          width: 40px;
+          height: 40px;
+          color: $dark;
+        }
+        height: 100%;
+      }
+    }
+  }
+}

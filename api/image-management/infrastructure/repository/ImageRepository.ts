@@ -1,4 +1,5 @@
 import CreateImage from "../../domain/image/dtos/CreateImage";
+import ImageIdDto from "../../domain/image/dtos/ImageIdDto";
 import IImageRepository from "../../domain/image/IRepository";
 import ImageContext from "./../context/ImageContext";
 
@@ -35,6 +36,10 @@ class ImageRepository implements IImageRepository {
 
   async getCategories(items: any): Promise<any> {
     // return await this._context.find({})
+  }
+
+  async getIds(): Promise<any> {
+    return await this._context.find({}, ["_id"]);
   }
 
   async delete(_id: string) {}

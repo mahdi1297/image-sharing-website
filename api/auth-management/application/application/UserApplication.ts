@@ -4,8 +4,13 @@ import { v4 as uuidv4 } from "uuid";
 import UserRepository from "../../infrastructure/repository/UserRepository";
 import ResponseHandler from "../../../0-framework/response-handler";
 import User from "../../domain/User";
-import { hashPassword } from "./../../../0-framework/middlewares/bcrypt";
+import UserDto from "../../domain/dtos/UserDto";
 import { Signjwt } from "../../../0-framework/middlewares/jwt";
+import { UpdateUserDto } from "../../domain/dtos/UpdateUserDto";
+import {
+  comparePassword,
+  hashPassword,
+} from "./../../../0-framework/middlewares/bcrypt";
 
 export default class UserApplication implements IUserApplication {
   private _repo: UserRepository;
@@ -17,10 +22,10 @@ export default class UserApplication implements IUserApplication {
   }
 
   // Register
-  async create(req: express.Request, res: express.Response): Promise<any> {
+  async register(req: express.Request, res: express.Response): Promise<any> {
     const { username, email, password } = req.body;
+
     try {
-      // Check existing user by email and username
       const exists = await this._repo.existsBy(username, email);
 
       if (exists) {
@@ -30,20 +35,18 @@ export default class UserApplication implements IUserApplication {
         );
       }
 
-      // Hash password
-      const hashedPass: any = await hashPassword(password);
-
-      if (!hashPassword) {
-        return this._responseHandler.BadRequest(res, "could not hash password");
-      }
-
       const uuid = uuidv4();
 
-      // Create token
-      const jwt = await Signjwt(uuid);
+      const [hashedPass, jwt]: any = await Promise.all([
+        await hashPassword(password),
+        await Signjwt(uuid),
+      ]);
 
-      if (!jwt) {
-        return this._responseHandler.BadRequest(res, "could not create jwt");
+      if (!hashPassword || !jwt) {
+        return this._responseHandler.BadRequest(
+          res,
+          "A problem happened while logging in, please try again"
+        );
       }
 
       const data: Partial<User> = {
@@ -58,7 +61,10 @@ export default class UserApplication implements IUserApplication {
       const result = await this._repo.create(data);
 
       if (!result) {
-        await this._responseHandler.BadRequest(res, "Bad Requset");
+        await this._responseHandler.BadRequest(
+          res,
+          "A problem happened while logging in, please try again"
+        );
       }
 
       return this._responseHandler.Ok(
@@ -66,12 +72,113 @@ export default class UserApplication implements IUserApplication {
         "Account created successfully",
         result
       );
+
+      //
     } catch (err) {
-      return this._responseHandler.BadRequest(res, "Bad Request");
+      return this._responseHandler.BadRequest(
+        res,
+        "A problem happened while logging in, please try again"
+      );
     }
   }
 
-  async update(req: express.Request, res: express.Response): Promise<any> {}
+  async login(req: express.Request, res: express.Response): Promise<any> {
+    try {
+      const { email, password } = req.body;
+
+      if (!email || !password) {
+        return this._responseHandler.BadRequest(
+          res,
+          "Email and password are required"
+        );
+      }
+
+      const result = await this._repo.getBy(email);
+
+      // check password
+      const checkPassword = await comparePassword(password, result.password);
+
+      if (!result || !checkPassword) {
+        return this._responseHandler.BadRequest(
+          res,
+          "Username or password is incorrect"
+        );
+      }
+
+      let clientUserData: Partial<UserDto> = {
+        u_t: result.u_t,
+        uuid: result.uuid,
+        username: result.username,
+        email: result.email,
+        profile: result.profile,
+        location: result.location,
+        name: result.name,
+        lastname: result.lastname,
+      };
+
+      res.cookie("rememberme", "1", {
+        expires: new Date(Date.now() + 900000),
+        httpOnly: true,
+      });
+
+      //
+      return this._responseHandler.Ok(
+        res,
+        "You loggedin successfully",
+        clientUserData
+      );
+      //
+    } catch (err) {
+      return this._responseHandler.BadRequest(
+        res,
+        "Username or password is incorrect"
+      );
+    }
+  }
+
+  async update(req: express.Request, res: express.Response): Promise<any> {
+    const {
+      _id,
+      username,
+      email,
+      password,
+      profile,
+      location,
+      name,
+      lastname,
+    } = req.body;
+
+    try {
+      // Check _id in database
+      const userExists = await this._repo.existsById(_id);
+
+      if (!userExists) {
+        return this._responseHandler.NotFound(res, "NOT_FOUND");
+      }
+
+      const userData: UpdateUserDto = {
+        username,
+        email,
+        password,
+        profile,
+        location,
+        name,
+        lastname,
+      };
+
+      // Updata user data
+      const result = await this._repo.update(_id, userData);
+
+      if (!result) {
+        return this._responseHandler.BadRequest(res, "PROBLEM_HAPPENED");
+      }
+
+      return this._responseHandler.Ok(res, "OK", result);
+    } catch (err: any) {
+      return this._responseHandler.BadRequest(res, "PROBLEM_HAPPENED");
+    }
+  }
+
   async remove(req: express.Request, res: express.Response): Promise<any> {}
   async refactor(req: express.Request, res: express.Response): Promise<any> {}
 }

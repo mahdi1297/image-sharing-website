@@ -1,0 +1,36 @@
+@import "./_colors.scss";
+@import "./_grid.scss";
+@import "./_sizes.scss";
+
+@mixin reset {
+  margin: 0;
+  padding: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  max-width: 1800px;
+  margin: auto;
+  @include reset;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+ul,
+li,
+p {
+  @include reset;
+}

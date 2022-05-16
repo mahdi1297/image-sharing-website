@@ -4,12 +4,11 @@ import cookieParser from "cookie-parser";
 import BaseRoutes from "./BaseRoutes";
 import path from "path";
 import morgan from "morgan";
-import * as dotenv from "dotenv";
 import busboy from "connect-busboy";
 import fileUpload from "express-fileupload";
-
 import cors from "cors";
 import winstonLogger from "./0-framework/logger/winston";
+import * as dotenv from "dotenv";
 
 const app = express();
 
@@ -17,7 +16,6 @@ dotenv.config({ path: __dirname + "/.env" });
 dotenv.config();
 
 // Logger - winston
-
 winstonLogger();
 
 app.use(express.static(path.resolve("./public")));
@@ -58,9 +56,6 @@ route.use(function (req, res, next) {
 
 app.use(new BaseRoutes().routes);
 
-// app.listen(9000, "127.0.0.1", () =>
-//     console.log("Api server is running on PORT 9000")
-// );
 app.listen(7000, () => console.log("Api server is running on PORT 5000"));
 
 // lloyd

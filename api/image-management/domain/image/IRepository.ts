@@ -10,4 +10,5 @@ export default interface IImageRepository {
   getRelated: (tags: any) => Promise<any>;
   search: (tags: any) => Promise<any>;
   getCategories: (items: any) => Promise<any>;
+  getIds: () => Promise<any>;
 }

@@ -34,6 +34,11 @@ class ImageController {
     const _app = new ImageApplication();
     await _app.search(req, res);
   }
+
+  async getIds(req: express.Request, res: express.Response) {
+    const _app = new ImageApplication();
+    await _app.getIds(req, res);
+  }
 }
 
 export default ImageController;
