@@ -1,3 +1,6 @@
+@import "@style/_variables.scss";
+@import "@style/_sizes.scss";
+
 @mixin center {
   display: flex;
   align-items: center;
@@ -24,24 +27,56 @@
         height: 100%;
       }
 
-      div.logo__wraper {
-        display: flex;
-      }
-
       div.menu__container {
-        input {
-          width: 80%;
-          height: 40px;
-        }
-        button {
-          border: none;
-          display: block;
-          width: 40px;
-          height: 40px;
-          color: $dark;
-        }
         height: 100%;
+
+        > div {
+          height: 100%;
+          @include center;
+        }
+
+        > div.logo {
+          @include center;
+          width: 80px;
+
+          svg {
+            color: $primary;
+            width: 35px;
+            height: 35px;
+          }
+        }
+
+        > div.search {
+          width: 100%;
+          input {
+            width: 80%;
+            height: 40px;
+            border-radius: 0 3px 3px 0;
+            border: none;
+            border: 1px solid $dark;
+            font-size: $md-size;
+            padding: $s-10;
+          }
+          button {
+            border: none;
+            display: block;
+            width: 40px;
+            height: 40px;
+            color: $dark;
+            border: 1px solid $dark;
+            background: none;
+            @include center;
+            border-radius: 3px 0 0 3px;
+          }
+        }
       }
+    }
+  }
+  li.auth__btns {
+    > div {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
     }
   }
 }

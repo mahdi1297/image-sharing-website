@@ -8,7 +8,7 @@ const nextConfig = {
 module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
-    prependData: `@import "_colors.scss";`,
+    prependData: `@import "_variables.scss";`,
   },
 };
 

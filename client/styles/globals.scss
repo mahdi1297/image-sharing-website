@@ -1,36 +1,149 @@
-@import "./_colors.scss";
+@import "./_variables.scss";
 @import "./_grid.scss";
 @import "./_sizes.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 @mixin reset {
   margin: 0;
   padding: 0;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-
 * {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-
 body {
   max-width: 1800px;
   margin: auto;
   @include reset;
 }
-
 a {
   color: inherit;
   text-decoration: none;
 }
-
 ul {
   list-style: none;
 }
-
 ul,
 li,
 p {
   @include reset;
+}
+button {
+  cursor: pointer;
+}
+button:hover {
+  opacity: 80%;
+}
+
+// Button
+.btn {
+  display: block;
+  font-size: $md-size;
+  border: none;
+  background: none;
+  border-radius: 3px;
+  padding: 10px 15px !important;
+}
+.btn-primary {
+  color: $white;
+  background: $primary;
+  border: 1px solid $primary;
+}
+.btn-danger {
+  color: $white;
+  background: $danger;
+  border: 1px solid $danger;
+}
+.btn-warning {
+  color: $dark;
+  background: $warning;
+  border: 1px solid $warning;
+}
+.btn-dark {
+  color: $white;
+  background: $dark;
+  border: 1px solid $dark;
+}
+.btn-primary-outline {
+  color: $primary;
+  border: 1px solid $primary;
+}
+
+.btn-sm {
+  font-size: $sm-size;
+}
+.btn-md {
+  font-size: $md-size;
+}
+.btn-lg {
+  font-size: $lg-size;
+}
+.btn-xl {
+  font-size: $xl-size;
+}
+
+// Margin
+.ml-5 {
+  margin-left: $s-5;
+}
+.ml-10 {
+  margin-left: $s-10;
+}
+.ml-15 {
+  margin-left: $s-15;
+}
+.ml-20 {
+  margin-left: $s-20;
+}
+.ml-30 {
+  margin-left: $s-30;
+}
+
+.mr-5 {
+  margin-right: $s-5;
+}
+.mr-10 {
+  margin-right: $s-10;
+}
+.mr-15 {
+  margin-right: $s-5;
+}
+.mr-20 {
+  margin-right: $s-20;
+}
+.mr-30 {
+  margin-right: $s-30;
+}
+
+.mt-5 {
+  margin-top: $s-5;
+}
+.mt-10 {
+  margin-top: $s-10;
+}
+.mt-15 {
+  margin-top: $s-5;
+}
+.mt-20 {
+  margin-top: $s-20;
+}
+.mt-30 {
+  margin-top: $s-30;
+}
+
+.mb-5 {
+  margin-bottom: $s-5;
+}
+.mb-10 {
+  margin-bottom: $s-10;
+}
+.mb-15 {
+  margin-bottom: $s-5;
+}
+.mb-20 {
+  margin-bottom: $s-20;
+}
+.mb-30 {
+  margin-bottom: $s-30;
 }
