@@ -1,12 +1,21 @@
-// import type { NextPage } from "next";
+import { Suspense } from "react";
 import NextNProgress from "nextjs-progressbar";
 import HomeLayout from "../layout/main-layouts/home";
+import dynamic from "next/dynamic";
 
-const Home: any = () => {
+const HomeView = dynamic(() => import("../views/home"), {
+  suspense: true,
+});
+
+const Home = () => {
   return (
     <>
       <NextNProgress height={3} color={"#ccc"} />
-      <HomeLayout>{/* <div>Hello Home.js</div> */}</HomeLayout>
+      <HomeLayout>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <HomeView />
+        </Suspense>
+      </HomeLayout>
     </>
   );
 };

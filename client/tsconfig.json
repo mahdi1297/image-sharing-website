@@ -19,7 +19,8 @@
       "@style/*": ["./styles/*"],
       "@helper/*": ["./helper/*"],
       "@shared/*": ["./shared/*"],
-      "@consts/*": ["./consts/*"]
+      "@consts/*": ["./consts/*"],
+      "@utils/*": ["./utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
