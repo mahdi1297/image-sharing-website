@@ -18,8 +18,11 @@
     justify-content: space-between;
     flex-wrap: nowrap;
 
+    li.search__container {
+      width: 100%;
+    }
+
     li {
-      width: 50%;
       height: 60px;
 
       > div {
@@ -49,7 +52,7 @@
         > div.search {
           width: 100%;
           input {
-            width: 80%;
+            width: 100%;
             height: 40px;
             border-radius: 0 3px 3px 0;
             border: none;
@@ -72,11 +75,39 @@
       }
     }
   }
+
   li.auth__btns {
+    display: none;
     > div {
       display: flex;
       width: 100%;
       justify-content: flex-end;
+    }
+  }
+
+  li.menu__btn {
+    @include center;
+    width: 70px;
+    justify-content: flex-end;
+
+    svg {
+      color: $dark;
+      cursor: pointer;
+    }
+    svg:hover {
+      color: $primary;
+    }
+  }
+
+  @media (min-width: 700px) {
+    li.search__container {
+      width: 50% !important;
+    }
+    li.auth__btns {
+      display: block !important;
+    }
+    li.menu__btn {
+      display: none !important;
     }
   }
 }

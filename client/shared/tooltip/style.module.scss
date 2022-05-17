@@ -1,0 +1,30 @@
+@import "@style/_variables.scss";
+@import "@style/_sizes.scss";
+
+.tooltip {
+  position: absolute;
+  z-index: 9999999999999999;
+  background: $dark;
+  color: $white;
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  top: -30px;
+  left: 50%;
+  transform: translate(-50%);
+  white-space: nowrap;
+}
+
+.show {
+  display: flex;
+  height: auto;
+  opacity: 1;
+  font-size: $sm-size;
+  text-overflow: ellipsis;
+}
+.hide {
+  display: none;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}

@@ -1,6 +1,4 @@
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-import fs from "fs";
-// import path from "path";
 
 export default class S3Uploader {
   async UploadImage(res: any, fileItem: any, theName: string) {
@@ -17,11 +15,10 @@ export default class S3Uploader {
 
     const s3 = new S3Client({
       region: "default",
-      endpoint: process.env.3S_ENDPOINT,
+      // endpoint: process.env.3S_ENDPOINT,
       credentials: {
         accessKeyId: process.env.ACCESS_KEY_ID,
-        secretAccessKey:
-          process.env.SECRET_ACCESS_KEY,
+        secretAccessKey: process.env.SECRET_ACCESS_KEY,
       },
     });
 

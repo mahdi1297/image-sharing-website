@@ -1,0 +1,41 @@
+@import "@style/_variables.scss";
+@import "@style/_sizes.scss";
+
+@mixin center {
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  a {
+    cursor: pointer;
+  }
+  a:hover {
+    opacity: 80%;
+  }
+
+  .card__footer {
+    width: 100%;
+    height: 50px;
+    @include center;
+    justify-content: space-between;
+
+    .card__meta {
+      > div {
+        position: relative;
+      }
+
+      @include center;
+
+      svg {
+        color: $dark;
+        width: $lg-size;
+        cursor: pointer;
+      }
+      svg :hover {
+        color: $primary;
+        opacity: 70%;
+      }
+    }
+  }
+}

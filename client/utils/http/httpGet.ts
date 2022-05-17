@@ -1,25 +1,25 @@
 import { checkStatus } from "@utils/error-handler/status-checker";
 import axios, { AxiosError } from "axios";
-import { Props, Response } from "./types";
+import { Props } from "./types";
 
 export const httpGet = async ({ url, showSuccess = false }: Props) => {
   try {
-    const response: Response = await axios.get(url);
+    const response = await axios.get(url);
 
     checkStatus(response.status);
 
-    const result: Response = {
-      result: response.result,
-      message: response.message,
+    const result = {
+      result: response.data.result,
+      message: response.data.message || response.statusText,
       status: response.status,
-      count: response.count || 0,
+      count: response.data.count || 0,
       error: null,
     };
 
     return result;
   } catch (error: AxiosError | any) {
     //
-    const result: Response = {
+    const result = {
       result: null,
       status: error?.response?.status | 500,
       message: null,
