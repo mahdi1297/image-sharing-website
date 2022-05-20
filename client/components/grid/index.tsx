@@ -32,7 +32,7 @@ const Grid: React.FC<Props> = ({ isLoaded, images }) => {
         images &&
         images.map((m: ImageProps) => (
           <div key={m._id} className={`m-item ${styles.card}`}>
-            <Link href="/">
+            <Link href={`/shots/${m._id}`}>
               <a>
                 <img
                   src={m.linkes.path}
