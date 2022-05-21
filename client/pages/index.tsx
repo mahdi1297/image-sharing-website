@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import NextNProgress from "nextjs-progressbar";
 import HomeLayout from "../layout/main-layouts/home";
 import dynamic from "next/dynamic";
+import { MultiSkeletonLoader } from "@shared/loader";
 
 const HomeView = dynamic(() => import("../views/home"), {
   suspense: true,
@@ -10,9 +10,8 @@ const HomeView = dynamic(() => import("../views/home"), {
 const Home = () => {
   return (
     <>
-      <NextNProgress height={3} color={"#ccc"} />
       <HomeLayout>
-        <Suspense fallback={<h1>Loading...</h1>}>
+        <Suspense fallback={<MultiSkeletonLoader />}>
           <HomeView />
         </Suspense>
       </HomeLayout>

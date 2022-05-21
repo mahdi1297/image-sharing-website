@@ -4,7 +4,7 @@ import { Props } from "./types";
 
 export const httpGet = async ({ url, showSuccess = false }: Props) => {
   try {
-    const response = await axios.get(url);
+    const response: any = await axios.get(url);
 
     checkStatus(response.status);
 

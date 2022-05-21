@@ -10,11 +10,10 @@
   border-radius: 3px;
   text-align: center;
   top: -30px;
-  left: 50%;
-  transform: translate(-50%);
+  left: inherit;
   white-space: nowrap;
+  margin-right: 10px;
 }
-
 .show {
   display: flex;
   height: auto;

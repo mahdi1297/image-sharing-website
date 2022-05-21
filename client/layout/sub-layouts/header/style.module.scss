@@ -56,7 +56,7 @@
             height: 40px;
             border-radius: 0 3px 3px 0;
             border: none;
-            border: 1px solid $dark;
+            background-color: #eee;
             font-size: $md-size;
             padding: $s-10;
           }
@@ -66,8 +66,8 @@
             width: 40px;
             height: 40px;
             color: $dark;
-            border: 1px solid $dark;
-            background: none;
+            border: none;
+            background-color: #eee;
             @include center;
             border-radius: 3px 0 0 3px;
           }
