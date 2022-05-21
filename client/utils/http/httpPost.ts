@@ -1,6 +1,6 @@
 import { checkStatus } from "@utils/error-handler/status-checker";
 import axios, { AxiosError } from "axios";
-import { Props, Response } from "./types";
+import { Props } from "./types";
 
 export const httpPost = async ({
   url,
@@ -8,22 +8,22 @@ export const httpPost = async ({
   showSuccess = false,
 }: Props) => {
   try {
-    const response: Response = await axios.post(url, dataObject);
+    const response: any = await axios.post(url, dataObject);
 
     checkStatus(response.status);
 
-    const result: Response = {
-      result: response.result,
-      message: response.message,
-      status: response.status,
-      count: response.count || 0,
+    const result: any = {
+      result: response.data.result,
+      message: response.data.message,
+      status: response.data.status,
+      count: response.data.count || 0,
       error: null,
     };
 
     return result;
   } catch (error: AxiosError | any) {
     //
-    const result: Response = {
+    const result: any = {
       result: null,
       status: error?.response?.status | 500,
       message: null,

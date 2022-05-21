@@ -2,20 +2,27 @@ import React, { MouseEventHandler } from "react";
 import styles from "./style.module.scss";
 
 type Props = {
-  text: string;
+  text?: string;
   buttonType?: "button" | "submit" | "reset";
   classname?: string;
   onclick?: MouseEventHandler<HTMLButtonElement>;
+  children?: React.ReactNode;
 };
 
-const Button: React.FC<Props> = ({ text, buttonType, classname, onclick }) => {
+const Button: React.FC<Props> = ({
+  text,
+  buttonType,
+  classname,
+  onclick,
+  children,
+}) => {
   return (
     <button
       className={`${styles.button} btn ${classname}`}
       type={buttonType}
       onClick={onclick}
     >
-      {text}
+      {text || children}
     </button>
   );
 };

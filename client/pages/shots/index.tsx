@@ -1,9 +1,17 @@
-import HomeLayout from "./../../layout/main-layouts/home";
-import React from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+
+// This page will be empty
+// And just navigates to home page
 
 const Shots = () => {
-  return <div>Shots</div>;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/");
+  }, [router]);
+
+  return <div></div>;
 };
-Shots.layout = HomeLayout;
 
 export default Shots;

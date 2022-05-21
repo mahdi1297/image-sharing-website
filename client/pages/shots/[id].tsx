@@ -1,31 +1,56 @@
+import React, { Suspense } from "react";
 import dynamic from "next/dynamic";
+import { ShotService } from "services/shots.service";
+import { ShotModel } from "models/shot.model";
 import HomeLayout from "layout/main-layouts/home";
-import { Suspense } from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
 
-const ShotDetail = dynamic(() => import("./../../views/shot-detail"), {
+const ShotDetail = dynamic(() => import("../../views/shot-detail"), {
   suspense: true,
 });
 
-const Detail = () => {
+type Props = {
+  shot: ShotModel;
+};
+
+type PathsProps = {
+  _id: string;
+};
+
+const Detail: React.FC<Props> = ({ shot }) => {
   return (
     <>
       <HomeLayout>
         <Suspense fallback={<h1>Loading...</h1>}>
-          <ShotDetail />
+          <ShotDetail shot={shot} />
         </Suspense>
       </HomeLayout>
     </>
   );
 };
 
-// export async function getStaticPaths(){
+export const getStaticPaths: GetStaticPaths = async () => {
+  const shotsApiProvider = new ShotService();
+  const { result } = await shotsApiProvider.getShotLenght();
 
-// }
+  return {
+    paths: result.map((id: PathsProps) => ({ params: { id: id._id } })),
+    fallback: true,
+  };
+};
 
-// export async function getStaticProps(){
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { id }: string | number | any = context.params;
 
-// }
+  const shotsApiProvider = new ShotService();
+  const data: ShotModel | undefined = await shotsApiProvider.getShot(id);
 
-Detail.layout = HomeLayout;
+  return {
+    props: {
+      shot: data,
+    },
+    revalidate: 1800,
+  };
+};
 
 export default Detail;

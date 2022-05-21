@@ -28,8 +28,7 @@ type Props = {
 const Grid: React.FC<Props> = ({ isLoaded, images }) => {
   return (
     <div className="masonry">
-      {isLoaded ? (
-        images &&
+      {images &&
         images.map((m: ImageProps) => (
           <div key={m._id} className={`m-item ${styles.card}`}>
             <Link href={`/shots/${m._id}`}>
@@ -62,10 +61,7 @@ const Grid: React.FC<Props> = ({ isLoaded, images }) => {
               </div>
             </div>
           </div>
-        ))
-      ) : (
-        <span></span>
-      )}
+        ))}
     </div>
   );
 };

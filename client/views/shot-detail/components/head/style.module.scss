@@ -1,0 +1,40 @@
+@import "@style/_variables.scss";
+@import "@style/_sizes.scss";
+
+@mixin flex_jhstify_between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.head {
+  @include flex_jhstify_between;
+  width: 100%;
+  position: relative;
+
+  button {
+    font-size: 17px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+  }
+  svg {
+    width: $md-size;
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 580px) {
+  .hide_in_sm {
+    span {
+      display: none !important;
+    }
+    svg {
+      margin-right: 0 !important ;
+    }
+  }
+}
