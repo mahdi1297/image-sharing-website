@@ -21,7 +21,7 @@ interface ImageProps {
 }
 
 type Props = {
-  isLoaded: boolean;
+  isLoaded?: boolean;
   images: ImageProps[];
 };
 
