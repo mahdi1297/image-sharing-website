@@ -7,10 +7,11 @@ type Props = {
 
 const HomeLayout: React.FC<Props> = ({ children }) => {
   return (
-    <>
+    <div style={{ paddingTop: "60px" }}>
       <Header />
+
       <div>{children}</div>
-    </>
+    </div>
   );
 };
 
