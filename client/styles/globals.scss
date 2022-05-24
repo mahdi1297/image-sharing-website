@@ -45,6 +45,10 @@ button:hover {
   width: 93%;
 }
 
+.bar-of-progress {
+  z-index: 999999999999999999999999;
+}
+
 // Button
 
 @mixin btn {

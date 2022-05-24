@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Grid from "components/grid";
+import Grid from "@shared/grid";
 import { getImagesService } from "./service";
 import { MultiSkeletonLoader } from "@shared/loader";
 

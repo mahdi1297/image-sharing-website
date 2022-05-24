@@ -5,3 +5,6 @@ export const BUTTON = "button";
 export const RESET = "reset";
 
 export const DOWNLOAD_SHOT = "Download shot";
+
+export const MESSAGE = "message";
+export const FOLLOW = "follow";

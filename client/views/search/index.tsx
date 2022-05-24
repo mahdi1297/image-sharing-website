@@ -1,4 +1,4 @@
-import Grid from "@components/grid";
+import Grid from "@shared/grid";
 import { MultiSkeletonLoader } from "@shared/loader";
 import React, { useEffect, useState } from "react";
 import { getSearchedShots } from "./service";

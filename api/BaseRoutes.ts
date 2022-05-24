@@ -1,7 +1,7 @@
 import express from "express";
-import UserEndpoint from "./auth-management/presentaition/endpoints/UserEndpoint";
 import ImageCategoryEndpoints from "./image-management/presentation/endpoint/image-category/ImageCategoryEndpoint";
 import ImageEndpoints from "./image-management/presentation/endpoint/image/ImageEndpoints";
+import UserEndpoint from "./user-management/presentaition/endpoints/UserEndpoint";
 
 const app = express();
 

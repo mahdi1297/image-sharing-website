@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Avatar from "@components/avatar";
+import Avatar from "@shared/avatar";
 import Button from "@shared/button";
 import styles from "./style.module.scss";
 import { Download, Heart, PlusSquare, ZoomIn } from "react-feather";
