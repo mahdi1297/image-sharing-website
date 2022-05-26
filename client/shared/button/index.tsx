@@ -7,6 +7,8 @@ type Props = {
   classname?: string;
   onclick?: MouseEventHandler<HTMLButtonElement>;
   children?: React.ReactNode;
+  block?: boolean;
+  disabled?: boolean;
 };
 
 const Button: React.FC<Props> = ({
@@ -15,12 +17,17 @@ const Button: React.FC<Props> = ({
   classname,
   onclick,
   children,
+  block,
+  disabled,
 }) => {
   return (
     <button
-      className={`${styles.button} btn ${classname}`}
+      className={`${styles.button} btn ${classname} ${
+        block && styles.btn_block
+      }`}
       type={buttonType}
       onClick={onclick}
+      disabled={disabled}
     >
       {text || children}
     </button>

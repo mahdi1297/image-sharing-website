@@ -1,0 +1,37 @@
+@import "styles/_variables.scss";
+@import "styles/_sizes.scss";
+
+.auth__container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth_card {
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: $s-15;
+
+  h1 {
+    text-align: center;
+    a {
+      color: $primary;
+      font-size: 30px;
+
+      &:hover {
+        opacity: 70%;
+      }
+    }
+  }
+}
+
+.have__acount {
+  font-size: $sm-size;
+  a {
+    color: $primary;
+  }
+}

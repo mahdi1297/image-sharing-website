@@ -1,0 +1,37 @@
+@import "@style/_variables.scss";
+@import "@style/_sizes.scss";
+
+.field__container {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+
+  label {
+    color: $dark;
+    font-size: $md-size;
+    display: flex;
+    align-items: center;
+
+    span {
+      color: $danger;
+    }
+  }
+
+  input {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+
+    &:focus {
+      box-shadow: $box-shadow;
+    }
+  }
+
+  p {
+    font-size: $sm-size;
+    color: $danger;
+  }
+}

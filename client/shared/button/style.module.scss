@@ -4,3 +4,18 @@
 .button {
   padding: $s-10;
 }
+.btn_block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  a {
+    display: flex;
+    justify-content: center;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 80%;
+  }
+}

@@ -51,6 +51,16 @@ button:hover {
 
 // Button
 
+.lg {
+  width: 100%;
+}
+.md {
+  width: 50%;
+}
+.sm {
+  width: 33%;
+}
+
 @mixin btn {
   display: flex;
   align-items: center;

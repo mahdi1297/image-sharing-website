@@ -1,4 +1,5 @@
 import { checkStatus } from "@utils/error-handler/status-checker";
+import { showErrorToast, showSuccessToast } from "@utils/toast-handler";
 import axios, { AxiosError } from "axios";
 import { Props } from "./types";
 
@@ -6,6 +7,7 @@ export const httpPost = async ({
   url,
   dataObject,
   showSuccess = false,
+  returnIfFail = false,
 }: Props) => {
   try {
     const response: any = await axios.post(url, dataObject);
@@ -20,19 +22,29 @@ export const httpPost = async ({
       error: null,
     };
 
+    if (showSuccess) {
+      showSuccessToast(response.data.message);
+    }
+
     return result;
   } catch (error: AxiosError | any) {
-    //
-    const result: any = {
-      result: null,
-      status: error?.response?.status | 500,
-      message: null,
-      count: null,
-      error: error?.response?.data,
-    };
+    if (error.response) {
+      //
+      const result: any = {
+        result: null,
+        status: error?.response?.status,
+        message: null,
+        count: null,
+        error: error?.response?.data,
+      };
 
-    checkStatus(error?.response?.status || 500);
+      checkStatus(error?.response?.status, returnIfFail);
 
-    return result;
+      showErrorToast(error?.response?.data?.message);
+
+      return result;
+    } else if (error.request) {
+      alert("Request never sent");
+    }
   }
 };

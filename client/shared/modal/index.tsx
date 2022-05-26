@@ -2,7 +2,15 @@ import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import style from "./style.module.scss";
 
-const Modal = ({ show, onClose, children, title, setShow, size }: any) => {
+type Props = {
+  show: boolean;
+  onClose: Function;
+  children: React.ReactNode;
+  title?: string;
+  size?: string;
+};
+
+const Modal: React.FC<Props> = ({ show, onClose, children, title, size }) => {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {

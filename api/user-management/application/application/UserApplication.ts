@@ -60,6 +60,11 @@ export default class UserApplication implements IUserApplication {
       // Submit to database
       const result = await this._repo.create(data);
 
+      const resultObject = {
+        result,
+        u_t: jwt,
+      };
+
       if (!result) {
         await this._responseHandler.BadRequest(
           res,
@@ -70,7 +75,7 @@ export default class UserApplication implements IUserApplication {
       return this._responseHandler.Ok(
         res,
         "Account created successfully",
-        result
+        resultObject
       );
 
       //
@@ -101,7 +106,7 @@ export default class UserApplication implements IUserApplication {
       if (!result || !checkPassword) {
         return this._responseHandler.BadRequest(
           res,
-          "Username or password is incorrect"
+          "Email or password is incorrect"
         );
       }
 
