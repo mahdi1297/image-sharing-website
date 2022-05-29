@@ -1,4 +1,4 @@
-import { TEXT, PASSWORD, NUMBER } from "@consts/index";
+import { TEXT, PASSWORD, NUMBER, LG } from "@consts/index";
 import React, { useEffect, useRef } from "react";
 import Input from "./input";
 
@@ -10,7 +10,13 @@ type Props = {
 
 const FormWrapper: React.FC<Props> = ({ formArray, register, errors }) => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
+      }}
+    >
       {formArray &&
         formArray.map((form: any) => {
           if (
@@ -19,7 +25,10 @@ const FormWrapper: React.FC<Props> = ({ formArray, register, errors }) => {
             form.type === NUMBER
           ) {
             return (
-              <div key={form.id}>
+              <div
+                key={form.id}
+                className={form.size_class ? form.size_class : LG}
+              >
                 <Input
                   label={form.label}
                   type={form.type}

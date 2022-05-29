@@ -14,8 +14,9 @@ class UserEndpoint {
     router
       .post("/register", this._controller.register)
       .post("/login", this._controller.login)
-      .put("/", this._controller.update)
-      .post("/get-profile", this._controller.getProfile);
+      .post("/get-profile", this._controller.getProfile)
+      .post("/", this._controller.getToken)
+      .put("/", this._controller.update);
 
     return router;
   }

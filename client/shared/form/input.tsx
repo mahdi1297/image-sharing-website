@@ -15,13 +15,10 @@ const Input: React.FC<Props> = ({
   required,
   register,
   errors,
-  size_class,
   type,
 }) => {
   return (
-    <div
-      className={`${styles.field__container} ${size_class ? size_class : "lg"}`}
-    >
+    <div className={`${styles.field__container} `}>
       <label>
         {label} {required && <span className="ml-5">*</span>}
       </label>

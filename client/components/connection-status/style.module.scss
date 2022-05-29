@@ -1,0 +1,27 @@
+@import "@style/_variables.scss";
+
+.internet__alert {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 999999999999999999999;
+  box-shadow: $box_shadow;
+}
+
+.online {
+  background: $success;
+  span {
+    color: $white;
+  }
+}
+
+.offline {
+  background: $danger;
+  span {
+    color: $white;
+  }
+}

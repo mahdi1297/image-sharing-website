@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Button from "@shared/button";
 import FormWrapper from "@shared/form";
 import Spinner from "@shared/spinner";
-import Cookies from "universal-cookie";
 import { useForm } from "react-hook-form";
 import { AuthService } from "services/auth.service";
 import { loginFormStructure } from "./formStructure";
@@ -31,22 +30,16 @@ export const LoginView = () => {
       password: data.password,
     };
 
-    await service.login(loginData).then((data) => {
-      if (data.error) {
+    await service
+      .login(loginData)
+      .then(() => {
+        setTimeout(() => {
+          router.push("/");
+        }, 2000);
+      })
+      .catch(() => {
         setIsLoading(false);
-        return;
-      }
-
-      const { result } = data;
-
-      if (result.u_t) {
-        coockie.set("u_t_k", result.u_t);
-      }
-
-      setTimeout(() => {
-        router.push("/");
-      }, 2000);
-    });
+      });
   };
 
   return (
@@ -85,4 +78,3 @@ export const LoginView = () => {
 };
 
 const service = new AuthService();
-const coockie = new Cookies();

@@ -1,10 +1,11 @@
 import { checkStatus } from "@utils/error-handler/status-checker";
 import axios, { AxiosError } from "axios";
+import { instance } from "./config";
 import { Props } from "./types";
 
 export const httpGet = async ({ url, showSuccess = false }: Props) => {
   try {
-    const response: any = await axios.get(url);
+    const response: any = await instance.get(url);
 
     checkStatus(response.status);
 

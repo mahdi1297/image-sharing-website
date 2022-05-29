@@ -1,16 +1,27 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable @next/next/no-img-element */
+import React, { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Button from "@shared/button";
-import styles from "./style.module.scss";
 import { useForm } from "react-hook-form";
 import { Menu, Search, Slack } from "react-feather";
 import SearchWrapper from "./components/search";
 import { getSearcheItems } from "./service";
-import { SEARCH_VIA_IMAGES } from "consts";
 import Sidebar from "../sidebar";
+import styles from "./style.module.scss";
+import { LOGIN, REGISTER, SEARCH_VIA_IMAGES } from "consts";
+import Subment from "./components/submenu";
 
-const Header: React.FC = () => {
+type Props = {
+  userData: any;
+  showPanel?: boolean;
+};
+
+const Header: React.FC<Props> = ({ userData, showPanel = true }) => {
+  const [showSubmenu, setShowSubmenu] = useState(false);
+
+  const { data } = userData;
+
   const { register, handleSubmit } = useForm();
 
   const [suggests, setSuggests] = useState([]);
@@ -39,16 +50,23 @@ const Header: React.FC = () => {
     }
   };
 
-  const submitSearchHandler = (data: any) => {
+  const submitSearchHandler = (dataForm: any) => {
     setSuggests([]);
 
-    if (data.search_input !== "") {
-      router.push(`/search/${data.search_input}`);
+    if (dataForm.search_input !== "") {
+      router.push(`/search/${dataForm.search_input}`);
     }
   };
 
   const openSidebarHandler = () => {
     setOpenSidebar(true);
+  };
+
+  const showSubmenuHandler = () => {
+    setShowSubmenu(true);
+  };
+  const hideSubmenuHandler = () => {
+    setShowSubmenu(false);
   };
 
   return (
@@ -85,16 +103,37 @@ const Header: React.FC = () => {
             </li>
             <li className={styles.auth__btns}>
               <div>
-                <Button
-                  text="register"
-                  buttonType="button"
-                  classname="btn-primary-outline btn-md"
-                />
-                <Button
-                  text="Login"
-                  buttonType="button"
-                  classname="btn-primary btn-md ml-15"
-                />
+                {data && data.profile ? (
+                  <div
+                    onMouseEnter={showSubmenuHandler}
+                    onMouseLeave={hideSubmenuHandler}
+                    className={styles.user__section}
+                  >
+                    <span>{data && data.username}</span>
+                    <img
+                      src={`https://${data.profile}`}
+                      width="40"
+                      className="ml-10"
+                      alt=""
+                    />
+                    {showPanel && showSubmenu && <Subment />}
+                  </div>
+                ) : (
+                  <>
+                    <Button
+                      buttonType="button"
+                      classname="btn-primary-outline btn-md"
+                    >
+                      <Link href="/auth/register">{REGISTER}</Link>
+                    </Button>
+                    <Button
+                      buttonType="button"
+                      classname="btn-primary btn-md ml-15"
+                    >
+                      <Link href="/auth/login">{LOGIN}</Link>
+                    </Button>
+                  </>
+                )}
               </div>
             </li>
             <li className={styles.menu__btn}>

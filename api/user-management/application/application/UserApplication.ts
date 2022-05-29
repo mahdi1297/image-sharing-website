@@ -4,13 +4,20 @@ import { v4 as uuidv4 } from "uuid";
 import UserRepository from "../../infrastructure/repository/UserRepository";
 import ResponseHandler from "../../../0-framework/response-handler";
 import User from "../../domain/User";
-import UserDto from "../../domain/dtos/UserDto";
 import { Signjwt } from "../../../0-framework/middlewares/jwt";
 import { UpdateUserDto } from "../../domain/dtos/UpdateUserDto";
+import jwt_decode from "jwt-decode";
 import {
   comparePassword,
   hashPassword,
 } from "./../../../0-framework/middlewares/bcrypt";
+
+type DecodedToken = {
+  identity: string;
+  date: Date;
+  iat: Date;
+  exp: Date;
+};
 
 export default class UserApplication implements IUserApplication {
   private _repo: UserRepository;
@@ -110,29 +117,20 @@ export default class UserApplication implements IUserApplication {
         );
       }
 
-      let clientUserData: Partial<UserDto> = {
-        u_t: result.u_t,
-        uuid: result.uuid,
-        username: result.username,
-        email: result.email,
-        profile: result.profile,
-        location: result.location,
-        name: result.name,
-        lastname: result.lastname,
-      };
+      const today = new Date();
+      const nextDate = new Date(today);
+      nextDate.setDate(nextDate.getDate() + 3);
 
-      res.cookie("rememberme", "1", {
-        expires: new Date(Date.now() + 900000),
-        httpOnly: true,
-      });
-
-      //
-      return this._responseHandler.Ok(
-        res,
-        "You loggedin successfully",
-        clientUserData
-      );
-      //
+      res
+        .status(200)
+        .cookie("u_t", result.u_t, {
+          sameSite: "strict",
+          path: "/",
+          expires: nextDate,
+          httpOnly: true,
+          secure: true,
+        })
+        .json({ message: "You loggedin successfully", result: {} });
     } catch (err) {
       return this._responseHandler.BadRequest(
         res,
@@ -213,6 +211,34 @@ export default class UserApplication implements IUserApplication {
       return this._responseHandler.Ok(res, "Ok", reSettedResult);
     } catch (err: any) {
       return this._responseHandler.BadRequest(res, "PROBLEM_HAPPENED");
+    }
+  }
+
+  async getToken(req: express.Request, res: express.Response) {
+    const { u_t } = req.cookies;
+    try {
+      if (!u_t) {
+        return res.json({ message: "no user" });
+      }
+
+      const decodeJwt: DecodedToken = jwt_decode(u_t);
+
+      if (!decodeJwt.identity) {
+        return res.json({ message: "no user" });
+      }
+
+      const getUser = await this._repo.getByIdentity(decodeJwt.identity);
+
+      const userData = {
+        username: getUser.username,
+        _id: getUser._id,
+        profile: getUser.profile,
+        email: getUser.email,
+      };
+
+      return this._responseHandler.Ok(res, "Ok", userData);
+    } catch (err) {
+      return this._responseHandler.BadRequest(res, "Problem happened");
     }
   }
 

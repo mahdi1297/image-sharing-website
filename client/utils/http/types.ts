@@ -3,4 +3,5 @@ export type Props = {
   dataObject?: any;
   showSuccess?: boolean;
   returnIfFail?: boolean;
+  Token?: string;
 };

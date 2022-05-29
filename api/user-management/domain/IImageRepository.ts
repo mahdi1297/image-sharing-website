@@ -11,4 +11,5 @@ export default interface IUserRepository {
   existsById: (_id: string) => Promise<boolean>;
   getProfile: (username: string) => Promise<any>;
   getBy: (email: string) => Promise<UserDto>;
+  getByIdentity: (identity: string) => Promise<any>;
 }

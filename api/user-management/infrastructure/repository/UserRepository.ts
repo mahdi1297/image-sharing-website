@@ -19,7 +19,11 @@ export default class UserRepository implements IUserRepository {
   }
 
   async getBy(email: string): Promise<UserDto> {
-    return await this._context.findOne({ email });
+    return await this._context.findOne({ email }).lean();
+  }
+
+  async getByIdentity(identity: string) {
+    return await this._context.findOne({ uuid: identity });
   }
 
   async existsBy(username: string, email: string): Promise<any> {

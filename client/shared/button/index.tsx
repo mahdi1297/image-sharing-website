@@ -24,7 +24,7 @@ const Button: React.FC<Props> = ({
     <button
       className={`${styles.button} btn ${classname} ${
         block && styles.btn_block
-      }`}
+      } ${disabled && styles.disabled}`}
       type={buttonType}
       onClick={onclick}
       disabled={disabled}

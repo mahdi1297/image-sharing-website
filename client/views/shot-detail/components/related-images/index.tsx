@@ -22,9 +22,6 @@ const ShotDetailRelatedImages = ({ tags }: any) => {
     getteRelatedShots();
   }, [tags]);
 
-  console.log(isLoaded);
-
-  //
   return (
     <div className="container mt-30">
       {isLoaded === true ? (

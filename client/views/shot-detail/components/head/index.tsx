@@ -70,12 +70,7 @@ const ShotDetailHead: React.FC<Props> = ({
           </div>
         </div>
 
-        <Modal
-          onClose={closeZoomViewModal}
-          setShow={setIsZoomView}
-          show={isZoomView}
-          size={"90%"}
-        >
+        <Modal onClose={closeZoomViewModal} show={isZoomView} size={"90%"}>
           <ViewShotWindow path={imagePath} />
         </Modal>
       </div>

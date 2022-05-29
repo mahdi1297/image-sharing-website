@@ -1,6 +1,7 @@
 import { checkStatus } from "@utils/error-handler/status-checker";
 import { showErrorToast, showSuccessToast } from "@utils/toast-handler";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
+import { instance } from "./config";
 import { Props } from "./types";
 
 export const httpPost = async ({
@@ -8,11 +9,10 @@ export const httpPost = async ({
   dataObject,
   showSuccess = false,
   returnIfFail = false,
+  Token,
 }: Props) => {
   try {
-    const response: any = await axios.post(url, dataObject);
-
-    checkStatus(response.status);
+    const response: any = await instance.post(url, dataObject);
 
     const result: any = {
       result: response.data.result,

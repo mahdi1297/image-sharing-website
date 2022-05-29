@@ -78,6 +78,7 @@ export const registerFormStructure = [
     size: "lg",
     type: TEXT,
     label: USERNAME_LABEL,
+    required: true,
     name: USERNAME,
     placeholder: USERNAME_PLACEHOLDER,
     validation: {

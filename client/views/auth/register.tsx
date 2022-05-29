@@ -41,7 +41,7 @@ const RegisterView = () => {
       const { result } = data;
 
       if (result.u_t) {
-        cookies.set("u_t_k", result.u_t);
+        cookies.set("u_t_k", result.u_t, { path: "/" });
       }
 
       setTimeout(() => {

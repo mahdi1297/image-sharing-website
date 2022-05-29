@@ -84,6 +84,14 @@
       }
     }
   }
+  .user__section {
+    display: flex;
+    align-items: center;
+
+    img {
+      border-radius: 5px;
+    }
+  }
 
   li.auth__btns {
     display: none;

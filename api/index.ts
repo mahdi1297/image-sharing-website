@@ -26,6 +26,7 @@ app.use(express.static("public"));
 app
   .use(
     cors({
+      credentials: true,
       origin: ["http://127.0.0.1:8080", "http://localhost:3000"],
       optionsSuccessStatus: 200,
     })
@@ -40,7 +41,7 @@ app
 
 const route = express.Router();
 
-route.use(function (req, res, next) {
+route.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",

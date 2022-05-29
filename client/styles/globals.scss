@@ -55,8 +55,9 @@ button:hover {
   width: 100%;
 }
 .md {
-  width: 50%;
+  width: 48% !important;
 }
+
 .sm {
   width: 33%;
 }
@@ -120,6 +121,9 @@ button:hover {
 
 .flex {
   display: flex;
+}
+.justify-between {
+  justify-content: space-between;
 }
 
 .align-center {
@@ -351,6 +355,12 @@ button:hover {
   }
   .loder-container:last-child {
     display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .md {
+    width: 100% !important;
   }
 }
 

@@ -1,7 +1,7 @@
+import React, { Suspense } from "react";
+import dynamic from "next/dynamic";
 import { MultiSkeletonLoader } from "@shared/loader";
 import { ProfileModel } from "models/profile.model";
-import dynamic from "next/dynamic";
-import React, { Suspense } from "react";
 import ProfileDetailHero from "./components/hero";
 
 type Props = {
@@ -13,7 +13,6 @@ const ProfileDetailShots = dynamic(() => import("./components/shots"), {
 });
 
 const ProfileView: React.FC<Props> = ({ profile }) => {
-  console.log(profile);
   return (
     <div className="container mt-30">
       <ProfileDetailHero

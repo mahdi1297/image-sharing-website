@@ -21,4 +21,9 @@ export default class UserController {
     const _app = new UserApplication();
     await _app.getProfile(req, res);
   }
+
+  async getToken(req: express.Request, res: express.Response) {
+    const _app = new UserApplication();
+    await _app.getToken(req, res);
+  }
 }

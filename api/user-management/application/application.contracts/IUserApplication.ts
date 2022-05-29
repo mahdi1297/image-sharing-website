@@ -7,4 +7,5 @@ export default interface IUserApplication {
   remove: (req: express.Request, res: express.Response) => Promise<any>;
   getProfile: (req: express.Request, res: express.Response) => Promise<any>;
   refactor: (req: express.Request, res: express.Response) => Promise<any>;
+  getToken: (req: express.Request, res: express.Response) => Promise<any>;
 }

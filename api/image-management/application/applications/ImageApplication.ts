@@ -1,17 +1,16 @@
+import express from "express";
+import cookieParser from "cookie-parser";
 import ImageRepository from "../../infrastructure/repository/ImageRepository";
 import CreateImage from "../../domain/image/dtos/CreateImage";
 import IIMageApplication from "../application.contracts/image/IImageApplication";
 import ResponseHandler from "../../../0-framework/response-handler";
-import express from "express";
 import S3Uploader from "../../../0-framework/s3-uploader";
 import sharp from "sharp";
 import { v4 as uuidv4 } from "uuid";
-import fileUpload from "express-fileupload";
-// import { FileUploaderHelper } from "../../../0-framework/helper/file-uploader/FileUploader";
 
 const app = express();
 
-app.use(fileUpload());
+app.use(cookieParser());
 
 class ImageApplication extends S3Uploader implements IIMageApplication {
   private _repo: ImageRepository;
@@ -27,7 +26,7 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
 
   async list(req: express.Request, res: express.Response) {
     try {
-      let itemsToShow = [
+      const itemsToShow = [
         "userId",
         "title",
         "likes",
