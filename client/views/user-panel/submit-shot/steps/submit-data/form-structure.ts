@@ -37,7 +37,7 @@ import {
   CITY_MINLENGTH_ERROR,
   CITY_MAXLENGTH_ERROR,
   MD,
-} from "@consts/index";
+} from "@consts/consts";
 
 export const formStructure = [
   {

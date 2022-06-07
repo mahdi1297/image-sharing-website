@@ -1,9 +1,9 @@
 import React, { Suspense, useEffect, useState } from "react";
+import { GetServerSideProps } from "next";
+import dynamic from "next/dynamic";
 import { MultiSkeletonLoader } from "@shared/loader";
 import HomeLayout from "layout/main-layouts/home";
-import dynamic from "next/dynamic";
 import { ProfileService } from "services/profile.service";
-import { GetServerSideProps } from "next";
 import { ProfileModel } from "models/profile.model";
 
 type Props = {
@@ -25,10 +25,9 @@ const PofileDetail: React.FC<Props> = ({ slug }) => {
       await service
         .getProfile(slug)
         .then((data) => {
-          //
           if (data && data.result) {
-            //
             setProfile(data.result);
+
             setTimeout(() => {
               setLoading(false);
             }, 700);

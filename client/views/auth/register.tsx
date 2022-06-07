@@ -6,7 +6,7 @@ import Spinner from "@shared/spinner";
 import { useForm } from "react-hook-form";
 import { registerFormStructure } from "./formStructure";
 import styles from "./style.module.scss";
-import { REGISTER } from "@consts/index";
+import { REGISTER } from "@consts/consts";
 import { RegisterUserModel } from "models/user.model";
 import { AuthService } from "services/auth.service";
 import Cookies from "universal-cookie";
@@ -83,6 +83,7 @@ const RegisterView = () => {
     </div>
   );
 };
+
 export default RegisterView;
 
 const service = new AuthService();

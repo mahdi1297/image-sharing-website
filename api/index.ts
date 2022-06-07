@@ -9,6 +9,7 @@ import fileUpload from "express-fileupload";
 import cors from "cors";
 import winstonLogger from "./0-framework/logger/winston";
 import * as dotenv from "dotenv";
+import { variables } from "./variables/variables";
 
 const app = express();
 
@@ -27,7 +28,7 @@ app
   .use(
     cors({
       credentials: true,
-      origin: ["http://127.0.0.1:8080", "http://localhost:3000"],
+      origin: variables.cors.origins,
       optionsSuccessStatus: 200,
     })
   )

@@ -7,4 +7,5 @@ export interface UpdateUserDto {
   location: string;
   name: string;
   lastname: string;
+  images: number;
 }

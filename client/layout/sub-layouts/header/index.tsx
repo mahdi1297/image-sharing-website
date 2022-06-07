@@ -9,7 +9,7 @@ import SearchWrapper from "./components/search";
 import { getSearcheItems } from "./service";
 import Sidebar from "../sidebar";
 import styles from "./style.module.scss";
-import { LOGIN, REGISTER, SEARCH_VIA_IMAGES } from "consts";
+import { LOGIN, REGISTER, SEARCH_VIA_IMAGES } from "@consts/consts";
 import Subment from "./components/submenu";
 
 type Props = {

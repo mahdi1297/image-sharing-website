@@ -1,7 +1,7 @@
-import { API_URL } from "@consts/data";
+import { enviroments } from "@consts/enviroments";
 import { httpGet } from "@utils/http/httpGet";
 
-const GET_IMAGES_URL = `${API_URL}image`;
+const GET_IMAGES_URL = `${enviroments.API_ADDRESS}image`;
 
 export const getImagesService = async () => {
   const data = await httpGet({

@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { AuthService } from "services/auth.service";
 import { loginFormStructure } from "./formStructure";
 import styles from "./style.module.scss";
-import { LOGIN } from "@consts/index";
+import { LOGIN } from "@consts/consts";
 import { LoginUserModel } from "models/user.model";
 
 export const LoginView = () => {

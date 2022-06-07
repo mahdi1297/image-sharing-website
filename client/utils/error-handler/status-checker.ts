@@ -1,4 +1,4 @@
-export function checkStatus(status: number, returnIfFail: boolean = false) {
+export function checkStatus(status: number, returnIfFail = false) {
   if (typeof window !== undefined) {
     switch (status) {
       case 400:

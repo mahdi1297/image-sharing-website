@@ -1,4 +1,4 @@
-import { TEXT, PASSWORD, NUMBER, LG } from "@consts/index";
+import { TEXT, PASSWORD, NUMBER, LG } from "@consts/consts";
 import React, { useEffect, useRef } from "react";
 import Input from "./input";
 

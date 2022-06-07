@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import ImageCategory from "../../domain/image-category/ImageCategory";
-import Context from "../../../config/context";
+import Context from "../../../config/Context";
 
 const Schema = mongoose.Schema;
 const dbContextConnection = Context.mongooseConnection;

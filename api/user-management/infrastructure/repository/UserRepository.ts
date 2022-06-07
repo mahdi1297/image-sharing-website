@@ -22,8 +22,12 @@ export default class UserRepository implements IUserRepository {
     return await this._context.findOne({ email }).lean();
   }
 
-  async getByIdentity(identity: string) {
+  async getByUid(identity: string) {
     return await this._context.findOne({ uuid: identity });
+  }
+
+  async getById(_id: string) {
+    return await this._context.findOne({ _id }).lean();
   }
 
   async existsBy(username: string, email: string): Promise<any> {
@@ -51,10 +55,17 @@ export default class UserRepository implements IUserRepository {
   }
 
   async getProfile(username: string) {
-    return await this._context.findOne({ username });
+    return await this._context.findOne({ "user.username": username });
   }
 
   async existsById(_id: string): Promise<boolean> {
     return await this._context.exists({ _id });
+  }
+
+  async activate(_id: string): Promise<any> {
+    return await this._context.findByIdAndUpdate(
+      { _id },
+      { isCompleted: "true" }
+    );
   }
 }

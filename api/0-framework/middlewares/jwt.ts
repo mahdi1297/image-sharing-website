@@ -6,7 +6,7 @@ export const Signjwt = (ident: string) => {
     { identity: ident, date: time },
     process.env.JWT_SECRET_KEY || "",
     {
-      expiresIn: "20s",
+      expiresIn: "1y",
       algorithm: "HS256",
     }
   );

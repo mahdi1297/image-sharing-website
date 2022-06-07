@@ -7,6 +7,7 @@ import ResponseHandler from "../../../0-framework/response-handler";
 import S3Uploader from "../../../0-framework/s3-uploader";
 import sharp from "sharp";
 import { v4 as uuidv4 } from "uuid";
+import UserRepository from "../../../user-management/infrastructure/repository/UserRepository";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cookieParser());
 
 class ImageApplication extends S3Uploader implements IIMageApplication {
   private _repo: ImageRepository;
+  private _userRepo: UserRepository;
   private _responseHandler: ResponseHandler;
 
   abrAravanEndpoint: string = "https://s3.ir-thr-at1.arvanstorage.com";
@@ -22,6 +24,7 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
     super();
     this._repo = new ImageRepository();
     this._responseHandler = new ResponseHandler();
+    this._userRepo = new UserRepository();
   }
 
   async list(req: express.Request, res: express.Response) {
@@ -158,23 +161,23 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
         let tagItems = req.body.tags.split(",");
 
         const imageDataToSave: CreateImage = {
-          userId: req.body.userId,
-          title: req.body.title,
-          description: req.body.description,
-          alt: req.body.alt,
-          color: req.body.color,
+          userId: req.body.userId.trim(),
+          title: req.body.title.trim(),
+          description: req.body.description.trim(),
+          alt: req.body.alt.trim(),
+          color: req.body.color.trim(),
           tags: tagItems,
           user: {
-            username: req.body.username,
-            profile: req.body.profile,
+            username: req.body.username.trim(),
+            profile: req.body.profile.trim(),
           },
           linkes: {
             download_link: `https://imagepicker.s3.ir-thr-at1.arvanstorage.com/${imageName}`,
             path: `https://imagepicker.s3.ir-thr-at1.arvanstorage.com/${resizedShowableImageName}`,
           },
           location: {
-            country: req.body.country,
-            city: req.body.city,
+            country: req.body.country.trim(),
+            city: req.body.city.trim(),
           },
         };
         await this.UploadImage(res, resizedDownloadableImage, imageName);
@@ -184,6 +187,12 @@ class ImageApplication extends S3Uploader implements IIMageApplication {
           resizedShowableImageName
         );
         const result = await this._repo.create(imageDataToSave);
+
+        const shotOwnerResult = await this._userRepo.getById(req.body.userId);
+
+        await this._userRepo.update(req.body.userId, {
+          images: shotOwnerResult.images + 1,
+        });
 
         if (!result) {
           return this._responseHandler.BadRequest(

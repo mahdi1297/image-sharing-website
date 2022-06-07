@@ -38,9 +38,44 @@ export const USERNAME_LABEL = "Username";
 export const USERNAME = "username";
 export const USERNAME_PLACEHOLDER = "@mahdi_alipour";
 
+export const NAME_LABEL = "Name";
+export const NAME = "name";
+export const NAME_PLACEHOLDER = "mahdi";
+
+export const LASTNAME_LABEL = "Lastame";
+export const LASTNAME = "lastname";
+export const LASTNAME_PLACEHOLDER = "alipoor";
+
+export const LOCATION_LABEL = "Location";
+export const LOCATION = "location";
+export const LOCATION_PLACEHOLDER = "Qom, Iran";
+
 export const PASSWORD_LABEL = "Password";
 export const PASSWORD_PLACEHOLDER = "********";
 export const AUTH_PASSWORD_MINLENGTH = 8;
+
+export const NAME_MINLENGTH = 2;
+export const NAME_MAXLENGTH = 50;
+
+export const LASTNAME_MINLENGTH = 2;
+export const LASTNAME_MAXLENGTH = 50;
+
+export const LOCATION_MINLENGTH = 2;
+export const LOCATION_MAXLENGTH = 80;
+
+export const LOCATION_MINLENGTH_ERROR =
+  "Location must be at least 2 characters";
+export const LOCATION_MAXLENGTH_ERROR =
+  "Location must be less than 80 characters";
+
+export const NAME_MINLENGTH_ERROR = "Name must be at least 2 characters";
+export const NAME_MAXLENGTH_ERROR = "Name must be less than 50 characters";
+
+export const LASTNAME_MINLENGTH_ERROR =
+  "Lastname must be at least 2 characters";
+export const LASTNAME_MAXLENGTH_ERROR =
+  "Lastname must be less than 50 characters";
+
 export const PASSWORD_MINLENGTH_ERROR =
   "Password must be at least 8 characters";
 export const AUTH_USERNAME_MAXLENGTH = 50;
@@ -93,6 +128,9 @@ export const TITLE_MINLENGTH_ERROR = "Title must be at least 3 characters";
 export const TITLE_MAXLENGTH_ERROR =
   "Title must be at less than 200 characters";
 
+export const DESCRIPTION_MINLENGTH = 3;
+export const DESCRIPTION_MAXLENGTH = 350;
+
 // Description
 export const DESCRIPTION_REQUIRED_ERROR = "Description is required";
 export const DESCRIPTION_MINLENGTH_ERROR =
@@ -121,3 +159,6 @@ export const COUNTRY_MAXLENGTH_ERROR =
 export const CITY_REQUIRED_ERROR = "City text is required";
 export const CITY_MINLENGTH_ERROR = "City must be at least 2 characters";
 export const CITY_MAXLENGTH_ERROR = "City must be at less than 50 characters";
+
+export const INACTIVE_ACCOUNT_ERROR =
+  "Your account is inactive, please fill your data to active your account";

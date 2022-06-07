@@ -6,7 +6,7 @@ import { MultiSkeletonLoader } from "@shared/loader";
 import Button from "@shared/button";
 import styles from "./style.module.scss";
 import ErrorsIndicator from "./error-indicator";
-import { UPDATE, CLICK_OR_DRAG_IMAGE, REMOVE } from "@consts/index";
+import { UPDATE, CLICK_OR_DRAG_IMAGE, REMOVE } from "@consts/consts";
 import { uploadImageUrl } from "@consts/data";
 
 type Props = {

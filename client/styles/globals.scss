@@ -102,6 +102,12 @@ button:hover {
   background: $dark;
   border: 1px solid $dark;
 }
+.btn-success {
+  @include btn;
+  color: $white;
+  background: $success;
+  border: 1px solid $success;
+}
 .btn-primary-outline {
   @include btn;
   color: $primary;

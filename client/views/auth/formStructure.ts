@@ -22,7 +22,7 @@ import {
   USERNAME_MAXLENGTH_ERROR,
   USERNAME_MINLENGTH_ERROR,
   USERNAME_PLACEHOLDER,
-} from "@consts/index";
+} from "@consts/consts";
 import { EMAIL_REGAX } from "@consts/regax";
 
 export const loginFormStructure = [

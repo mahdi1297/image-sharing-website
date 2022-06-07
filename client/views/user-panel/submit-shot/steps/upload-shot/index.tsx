@@ -1,4 +1,4 @@
-import { Next } from "@consts/index";
+import { Next } from "@consts/consts";
 import Button from "@shared/button";
 import Uploader from "@shared/uploader";
 import { useContext, useEffect, useState } from "react";

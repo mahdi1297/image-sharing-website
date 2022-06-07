@@ -1,0 +1,12 @@
+@import "@style/_variables.scss";
+
+.alert__body {
+  width: 100%;
+  background: $warning;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  padding: 25px 20px;
+  font-size: 17px;
+}

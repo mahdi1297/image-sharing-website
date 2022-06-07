@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 
-import { FOLLOW } from "@consts/index";
-import { MESSAGE } from "@consts/index";
+import { FOLLOW } from "@consts/consts";
+import { MESSAGE } from "@consts/consts";
 import Button from "@shared/button";
 import React from "react";
 import styles from "./style.module.scss";

@@ -1,3 +1,4 @@
+import Spinner from "@shared/spinner";
 import React, { MouseEventHandler } from "react";
 import styles from "./style.module.scss";
 
@@ -9,6 +10,7 @@ type Props = {
   children?: React.ReactNode;
   block?: boolean;
   disabled?: boolean;
+  isLoading?: boolean;
 };
 
 const Button: React.FC<Props> = ({
@@ -19,6 +21,7 @@ const Button: React.FC<Props> = ({
   children,
   block,
   disabled,
+  isLoading = false,
 }) => {
   return (
     <button
@@ -29,7 +32,13 @@ const Button: React.FC<Props> = ({
       onClick={onclick}
       disabled={disabled}
     >
-      {text || children}
+      {isLoading === true ? (
+        <div>
+          <Spinner />
+        </div>
+      ) : (
+        text || children
+      )}
     </button>
   );
 };

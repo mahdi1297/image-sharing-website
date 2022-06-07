@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Context from "../../../config/context";
+import Context from "../../../config/Context";
 import User from "../../domain/User";
 
 const Schema = mongoose.Schema;
@@ -58,7 +58,7 @@ class UserSchema {
           type: String,
           default: "false",
         },
-        isCommpleted: {
+        isCompleted: {
           type: String,
           default: "false",
         },

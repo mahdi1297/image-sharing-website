@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import Image from "../../domain/image/Image";
-import Context from "../../../config/context";
+import Context from "../../../config/Context";
 
 var Schema = mongoose.Schema;
 var mongooseConnection = Context.mongooseConnection;

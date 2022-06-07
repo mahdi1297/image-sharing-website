@@ -11,6 +11,18 @@ import {
   comparePassword,
   hashPassword,
 } from "./../../../0-framework/middlewares/bcrypt";
+import {
+  EMAIL_PASSWORD_REQUIRED_ERROR,
+  INCORRECT_EMAIL_PASSWORD_ERROR,
+  LOGGING_IN_PROBLEM_ERROR,
+  LOGGIN_SUCCESS_MESSAGE,
+  NOT_FOUND,
+  NO_USER_ERROR,
+  OK,
+  PROBLEM_HAPPEND,
+  UNIQUE_USERNAME_PASSWORD_ERR,
+  UPDATED_SUCCESSFULLY,
+} from "../../../variables/consts";
 
 type DecodedToken = {
   identity: string;
@@ -38,11 +50,15 @@ export default class UserApplication implements IUserApplication {
       if (exists) {
         return this._responseHandler.BadRequest(
           res,
-          "Username or password are not unique!"
+          UNIQUE_USERNAME_PASSWORD_ERR
         );
       }
 
-      const uuid = uuidv4();
+      const uuid = uuidv4(),
+        today = new Date(),
+        nextDate = new Date(today);
+
+      nextDate.setDate(nextDate.getDate() + 365);
 
       const [hashedPass, jwt]: any = await Promise.all([
         await hashPassword(password),
@@ -50,10 +66,7 @@ export default class UserApplication implements IUserApplication {
       ]);
 
       if (!hashPassword || !jwt) {
-        return this._responseHandler.BadRequest(
-          res,
-          "A problem happened while logging in, please try again"
-        );
+        return this._responseHandler.BadRequest(res, LOGGING_IN_PROBLEM_ERROR);
       }
 
       const data: Partial<User> = {
@@ -67,30 +80,24 @@ export default class UserApplication implements IUserApplication {
       // Submit to database
       const result = await this._repo.create(data);
 
-      const resultObject = {
-        result,
-        u_t: jwt,
-      };
-
       if (!result) {
-        await this._responseHandler.BadRequest(
-          res,
-          "A problem happened while logging in, please try again"
-        );
+        await this._responseHandler.BadRequest(res, LOGGING_IN_PROBLEM_ERROR);
       }
 
-      return this._responseHandler.Ok(
-        res,
-        "Account created successfully",
-        resultObject
-      );
+      res
+        .status(200)
+        .cookie("u_t", result.u_t, {
+          sameSite: "strict",
+          path: "/",
+          expires: nextDate,
+          httpOnly: true,
+          secure: true,
+        })
+        .json({ message: LOGGIN_SUCCESS_MESSAGE, result: {} });
 
       //
     } catch (err) {
-      return this._responseHandler.BadRequest(
-        res,
-        "A problem happened while logging in, please try again"
-      );
+      return this._responseHandler.BadRequest(res, LOGGING_IN_PROBLEM_ERROR);
     }
   }
 
@@ -101,7 +108,7 @@ export default class UserApplication implements IUserApplication {
       if (!email || !password) {
         return this._responseHandler.BadRequest(
           res,
-          "Email and password are required"
+          EMAIL_PASSWORD_REQUIRED_ERROR
         );
       }
 
@@ -113,7 +120,7 @@ export default class UserApplication implements IUserApplication {
       if (!result || !checkPassword) {
         return this._responseHandler.BadRequest(
           res,
-          "Email or password is incorrect"
+          INCORRECT_EMAIL_PASSWORD_ERROR
         );
       }
 
@@ -130,41 +137,59 @@ export default class UserApplication implements IUserApplication {
           httpOnly: true,
           secure: true,
         })
-        .json({ message: "You loggedin successfully", result: {} });
+        .json({ message: LOGGIN_SUCCESS_MESSAGE, result: {} });
     } catch (err) {
       return this._responseHandler.BadRequest(
         res,
-        "Username or password is incorrect"
+        INCORRECT_EMAIL_PASSWORD_ERROR
       );
     }
   }
 
-  async update(req: express.Request, res: express.Response): Promise<any> {
-    const {
-      _id,
-      username,
-      email,
-      password,
-      profile,
-      location,
-      name,
-      lastname,
-      description,
-    } = req.body;
+  async getById(req: express.Request, res: express.Response): Promise<any> {
+    const { _id } = req.body;
+
+    try {
+      const result = await this._repo.getById(_id);
+
+      const data = {
+        username: result.username,
+        email: result.email,
+        profile: result.profile,
+        isRemoved: result.isRemoved,
+        isCompleted: result.isCompleted,
+        name: result.name || "",
+        lastname: result.lastname || "",
+        location: result.location || "",
+        description: result.description || "",
+      };
+
+      if (!result) {
+        return this._responseHandler.NotFound(res, NOT_FOUND);
+      }
+
+      return this._responseHandler.Ok(res, OK, data);
+    } catch (err) {
+      console.log(err);
+      return this._responseHandler.NotFound(res, NOT_FOUND);
+    }
+  }
+
+  async updateCommon(
+    req: express.Request,
+    res: express.Response
+  ): Promise<any> {
+    const { _id, location, name, lastname, description } = req.body;
 
     try {
       // Check _id in database
       const userExists = await this._repo.existsById(_id);
 
       if (!userExists) {
-        return this._responseHandler.NotFound(res, "NOT_FOUND");
+        return this._responseHandler.NotFound(res, NOT_FOUND);
       }
 
-      const userData: UpdateUserDto = {
-        username,
-        email,
-        password,
-        profile,
+      const userData = {
         location,
         description,
         name,
@@ -172,15 +197,26 @@ export default class UserApplication implements IUserApplication {
       };
 
       // Updata user data
-      const result = await this._repo.update(_id, userData);
+      const result: any = await this._repo.update(_id, userData);
 
       if (!result) {
-        return this._responseHandler.BadRequest(res, "PROBLEM_HAPPENED");
+        return this._responseHandler.BadRequest(res, PROBLEM_HAPPEND);
       }
 
-      return this._responseHandler.Ok(res, "OK", result);
+      if (
+        result.name &&
+        result.lastname &&
+        result.location &&
+        result.description
+      ) {
+        await this._repo.activate(result._id);
+      }
+
+      console.log(result);
+
+      return this._responseHandler.Ok(res, UPDATED_SUCCESSFULLY, result);
     } catch (err: any) {
-      return this._responseHandler.BadRequest(res, "PROBLEM_HAPPENED");
+      return this._responseHandler.BadRequest(res, PROBLEM_HAPPEND);
     }
   }
 
@@ -205,12 +241,12 @@ export default class UserApplication implements IUserApplication {
       };
 
       if (!result) {
-        return this._responseHandler.NotFound(res, "Not Found");
+        return this._responseHandler.NotFound(res, NOT_FOUND);
       }
 
-      return this._responseHandler.Ok(res, "Ok", reSettedResult);
+      return this._responseHandler.Ok(res, OK, reSettedResult);
     } catch (err: any) {
-      return this._responseHandler.BadRequest(res, "PROBLEM_HAPPENED");
+      return this._responseHandler.BadRequest(res, PROBLEM_HAPPEND);
     }
   }
 
@@ -218,16 +254,16 @@ export default class UserApplication implements IUserApplication {
     const { u_t } = req.cookies;
     try {
       if (!u_t) {
-        return res.json({ message: "no user" });
+        return res.json({ message: NO_USER_ERROR });
       }
 
       const decodeJwt: DecodedToken = jwt_decode(u_t);
 
       if (!decodeJwt.identity) {
-        return res.json({ message: "no user" });
+        return res.json({ message: NO_USER_ERROR });
       }
 
-      const getUser = await this._repo.getByIdentity(decodeJwt.identity);
+      const getUser = await this._repo.getByUid(decodeJwt.identity);
 
       const userData = {
         username: getUser.username,
@@ -236,9 +272,9 @@ export default class UserApplication implements IUserApplication {
         email: getUser.email,
       };
 
-      return this._responseHandler.Ok(res, "Ok", userData);
+      return this._responseHandler.Ok(res, OK, userData);
     } catch (err) {
-      return this._responseHandler.BadRequest(res, "Problem happened");
+      return this._responseHandler.BadRequest(res, PROBLEM_HAPPEND);
     }
   }
 

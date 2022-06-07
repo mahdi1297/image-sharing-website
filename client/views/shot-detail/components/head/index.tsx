@@ -3,7 +3,7 @@ import Avatar from "@shared/avatar";
 import Button from "@shared/button";
 import styles from "./style.module.scss";
 import { Download, Heart, PlusSquare, ZoomIn } from "react-feather";
-import { DOWNLOAD_SHOT } from "@consts/index";
+import { DOWNLOAD_SHOT } from "@consts/consts";
 import Tooltip from "@shared/tooltip";
 import Modal from "@shared/modal";
 import ViewShotWindow from "./zoom-modal";
